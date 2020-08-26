@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>boneka</title>
-      <link>/posts/boneka/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/boneka/</guid>
-      <description>Nada para ver aqui!</description>
-    </item>
-    
-    <item>
       <title>Dummy</title>
       <link>/posts/dummy/</link>
       <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
@@ -41,17 +32,6 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown.id/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown.id/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
       <title>Creating a New Theme</title>
       <link>/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
@@ -62,41 +42,12 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
-      <title>membuat tema baru</title>
-      <link>/posts/membuat-tema-baru/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/membuat-tema-baru/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Rauzan Sumara   Saya menyelesaikan S1 Statistika di Universitas Brawijaya Malang pada tahun 2017. Saat ini saya sedang melanjutkan studi master dibidang Informatics &amp;amp; Econometrics: specialization in big data analytics di Warsaw University of Life Sciences, Polandia. Peminatan penelitian saya di penerapan inferensi Bayesian and pemodelan data deret waktu. Selain itu saya juga saat ini sedang mendalami big data analytics dan machine learning.
-  Pendidikan  2019-Sekarang MSc, Big Data Analytics; Warsaw University of Life Sciences, Polandia Melalui Beasiswa:</description>
-    </item>
-    
-    <item>
       <title></title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
       <description>Rauzan Sumara   I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia. Currently, I study my master at Warsaw University of Life Sciences in the field of Computer Science &amp;amp; Econometrics: specialization in big data analytics in Poland. My research is focused on Bayesian inference and time series analysis as well as I am interested in big data analytics and machine learning. I am used to doing for living as a freelance data analyst.</description>
-    </item>
-    
-    <item>
-      <title>Bagaimana Cara Mendukung Rauzan?</title>
-      <link>/support/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/support/</guid>
-      <description>Tidak ada yang bisa dilihat disini sekarang&amp;hellip; Kunjungi lagi dilain waktu!</description>
     </item>
     
     <item>
@@ -125,15 +76,6 @@ pwd </description>
       
       <guid>/projects/</guid>
       <description>Nothing to see here&amp;hellip; Move along!</description>
-    </item>
-    
-    <item>
-      <title>Proyek</title>
-      <link>/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/</guid>
-      <description>Tidak ada yang bisa dilihat disini sekarang&amp;hellip; Kunjungi lagi dilain waktu!</description>
     </item>
     
     <item>

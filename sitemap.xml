@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>/posts/boneka/</loc>
-    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/categories/</loc>
     <lastmod>2018-12-31T00:00:00+00:00</lastmod>
   </url>
@@ -53,11 +48,6 @@
   </url>
   
   <url>
-    <loc>/post/2015-07-23-r-rmarkdown.id/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/plot/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
   </url>
@@ -88,11 +78,6 @@
   </url>
   
   <url>
-    <loc>/posts/membuat-tema-baru/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/series/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
@@ -107,23 +92,11 @@
   </url>
   
   <url>
-    <loc>/about/</loc>
-  </url>
-  
-  <url>
-    <loc>/support/</loc>
-  </url>
-  
-  <url>
     <loc>/snippets/first/</loc>
   </url>
   
   <url>
     <loc>/support/</loc>
-  </url>
-  
-  <url>
-    <loc>/projects/</loc>
   </url>
   
   <url>
