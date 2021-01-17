@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Rauzan Sumara">
+    <meta name="description" content="Rauzan&#39;s personal website">
+    <meta name="keywords" content="blog,data,analyst,scientist,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Implementation of GAN and cGAN Models"/>
+<meta name="twitter:description" content="Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my GitHub. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator (&ldquo;the artist&rdquo;) learns to create images that look real, while a discriminator (&ldquo;the art critic&rdquo;) learns to tell real images apart from fakes."/>
+
+    <meta property="og:title" content="Implementation of GAN and cGAN Models" />
+<meta property="og:description" content="Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my GitHub. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator (&ldquo;the artist&rdquo;) learns to create images that look real, while a discriminator (&ldquo;the art critic&rdquo;) learns to tell real images apart from fakes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/" />
+<meta property="article:published_time" content="2020-01-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-18T00:00:00+00:00" />
+
+
+    
+      <base href="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/">
+    
+    <title>
+  Implementation of GAN and cGAN Models · RAUZAN SUMARA&#39;S WEBSITE
+</title>
+
+    
+      <link rel="canonical" href="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://rauzansumara.github.io/">
+      RAUZAN SUMARA&#39;S WEBSITE
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://rauzansumara.github.io/post/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Implementation of GAN and cGAN Models</h1>
+    </header>
+
+    <p>Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my <a href="https://github.com/rauzansumara/gan-and-cgan/tree/main"><strong>GitHub</strong></a>. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator <strong>(&ldquo;the artist&rdquo;)</strong> learns to create images that look real, while a discriminator <strong>(&ldquo;the art critic&rdquo;)</strong> learns to tell real images apart from fakes. Thanks so much to <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a>, <a href="https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/"><em>Jason Brownlee</em></a> and <a href="https://www.tensorflow.org/tutorials/generative/dcgan"><em>www.tensorflow.org</em></a> that inspired me from their articles.</p>
+<h2 id="generative-adversarial-network-gan">Generative Adversarial Network (GAN)</h2>
+<p>Generative Adversarial Networks (GAN) is one of the most promising recent developments in Deep Learning. GAN, introduced by <a href="https://arxiv.org/abs/1406.2661">Ian Goodfellow and friends</a> in 2014, attacks the problem of unsupervised learning by training two deep networks, called <strong>Generator</strong> and <strong>Discriminator</strong>, that compete and cooperate with each other. In the course of training, both networks eventually learn how to perform their tasks.</p>
+<p>Figure 1 : A diagram of a generator and discriminator</p>
+<p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/gan1.png" alt="A diagram of a generator and discriminator" title="A diagram of a generator and discriminator">
+<em>Source: <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></em></p>
+<p>While the idea of GAN is simple in theory, it is very difficult to build a model that works. In GAN, there are two deep networks coupled together making back propagation of gradients twice as challenging. Deep Convolutional GAN (DCGAN) is one of the models that demonstrated how to build a practical GAN that is able to learn by itself how to synthesize new images.</p>
+<p>In this article, we discuss how a working GAN can be built using Keras on Tensorflow 2.x backend. We will train a DCGAN to learn how to write handwritten digits on the MNIST dataset.</p>
+<h3 id="setup-library">Setup library</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> os
+<span style="color:#fff;font-weight:bold">import</span> PIL
+<span style="color:#fff;font-weight:bold">import</span> time
+<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
+<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
+<span style="color:#fff;font-weight:bold">import</span> tensorflow <span style="color:#fff;font-weight:bold">as</span> tf
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras <span style="color:#fff;font-weight:bold">import</span> datasets, Sequential, optimizers, losses
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> BatchNormalization
+<span style="color:#fff;font-weight:bold">from</span> IPython <span style="color:#fff;font-weight:bold">import</span> display
+tf.__version__
+</code></pre></div><pre><code>'2.4.0'
+</code></pre>
+<h3 id="load-the-dataset">Load the dataset</h3>
+<p>We will use the MNIST dataset to train the <strong>generator</strong> and the <strong>discriminator</strong>. The generator will generate handwritten digits resembling the MNIST data.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">(train_images, train_labels), (_, _) = datasets.mnist.load_data()
+
+train_images = train_images.reshape(train_images.shape[<span style="color:#ff0;font-weight:bold">0</span>], <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>).astype(<span style="color:#0ff;font-weight:bold">&#39;float32&#39;</span>)
+train_images = (train_images - <span style="color:#ff0;font-weight:bold">127.5</span>) / <span style="color:#ff0;font-weight:bold">127.5</span> <span style="color:#007f7f"># Normalize the images to [-1, 1]</span>
+
+BUFFER_SIZE = <span style="color:#ff0;font-weight:bold">60000</span>
+BATCH_SIZE = <span style="color:#ff0;font-weight:bold">256</span>
+
+<span style="color:#007f7f"># Batch and shuffle the data</span>
+train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
+</code></pre></div><h3 id="the-discriminator-model">The Discriminator model</h3>
+<p>A discriminator that tells how real image is, is basically a deep Convolutional Neural Network (CNN) as shown in Figure 2. The discriminator model takes as input one 28×28 grayscale image and outputs a binary prediction as to whether the image is real (class=1) or fake (class=0). It is implemented as a modest convolutional neural network using best practices for GAN design such as using the LeakyReLU activation function, using a 2×2 stride to downsample. The activation function used in each CNN layer is a leaky ReLU. A dropout between 0.3 and 0.3 between layers prevent over fitting and memorization.</p>
+<p>Figure 2 : The Discriminator</p>
+<p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/Discriminator.png" alt="The discriminator" title="The discriminator"></p>
+<p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> make_discriminator_model():
+    model = Sequential()
+    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, input_shape=[<span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>]))
+    model.add(LeakyReLU())
+    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+
+    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>))
+    model.add(LeakyReLU())
+    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+
+    model.add(Flatten())
+    model.add(Dense(<span style="color:#ff0;font-weight:bold">1</span>))
+
+    <span style="color:#fff;font-weight:bold">return</span> model
+</code></pre></div><h3 id="the-generator-model">The Generator model</h3>
+<p>The generator synthesizes fake images. In Figure 3, the fake image is generated from a 100-dimensional noise (uniform distribution between -1.0 to 1.0) using the inverse of convolution, called transposed convolution. Instead of fractionally-strided convolution as suggested in DCGAN, upsampling between the first three layers is used since it synthesizes more realistic handwriting images. In between layers, batch normalization stabilizes learning. The activation function after each layer is a LeakyReLU. The output of the tanh at the last layer produces the fake image.</p>
+<p>Figure 3 : The Generator</p>
+<p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/Generator.png" alt="The Generator" title="The Generator"></p>
+<p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> make_generator_model():
+    model = Sequential()
+    model.add(Dense(<span style="color:#ff0;font-weight:bold">7</span>*<span style="color:#ff0;font-weight:bold">7</span>*<span style="color:#ff0;font-weight:bold">256</span>, use_bias=False, input_shape=(<span style="color:#ff0;font-weight:bold">100</span>,)))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+
+    model.add(Reshape((<span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>)))
+    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>) <span style="color:#007f7f"># Note: None is the batch size</span>
+
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">128</span>)
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">14</span>, <span style="color:#ff0;font-weight:bold">14</span>, <span style="color:#ff0;font-weight:bold">64</span>)
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">1</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False, activation=<span style="color:#0ff;font-weight:bold">&#39;tanh&#39;</span>))
+    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>)
+
+    <span style="color:#fff;font-weight:bold">return</span> model
+</code></pre></div><h3 id="define-the-loss-and-optimizers">Define the loss and optimizers</h3>
+<p>Define loss functions and optimizers for both models.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Define the loss and optimizers</span>
+cross_entropy = losses.BinaryCrossentropy(from_logits=True)
+
+<span style="color:#007f7f"># Discriminator loss</span>
+<span style="color:#fff;font-weight:bold">def</span> discriminator_loss(real_output, fake_output):
+    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+    fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
+    total_loss = real_loss + fake_loss
+    <span style="color:#fff;font-weight:bold">return</span> total_loss
+
+<span style="color:#007f7f"># Generator loss</span>
+<span style="color:#fff;font-weight:bold">def</span> generator_loss(fake_output):
+    <span style="color:#fff;font-weight:bold">return</span> cross_entropy(tf.ones_like(fake_output), fake_output)
+
+generator_optimizer = optimizers.Adam(<span style="color:#ff0;font-weight:bold">1e-4</span>)
+discriminator_optimizer = optimizers.Adam(<span style="color:#ff0;font-weight:bold">1e-4</span>)
+</code></pre></div><h3 id="training">Training</h3>
+<p>So far, there are no models yet. It is time to build the models for training. We need two models: 1) Discriminator Model  and 2) Generator-Discriminator model. The generator-discriminator stacked together as shown in Figure 4. The Generator part is trying to fool the Discriminator and learning from its feedback at the same time. The training parameters are the same as in the Discriminator model except for a reduced learning rate and corresponding weight decay.</p>
+<p>Training is the hardest part. We determine first if Discriminator model is correct by training it alone with real and fake images. Afterwards, the Discriminator and Generator-Discriminator model are trained one after the other.</p>
+<p>Figure 4 : The Training Process</p>
+<p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/gan2.png" alt="The Training Process" title="The Training Process"></p>
+<p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Define the training loop</span>
+EPOCHS = <span style="color:#ff0;font-weight:bold">50</span>
+noise_dim = <span style="color:#ff0;font-weight:bold">100</span>
+num_examples_to_generate = <span style="color:#ff0;font-weight:bold">16</span>
+
+<span style="color:#007f7f"># Define generator and discriminator</span>
+generator = make_generator_model()
+discriminator = make_discriminator_model()
+
+<span style="color:#007f7f"># We will reuse this seed overtime (so it&#39;s easier)</span>
+<span style="color:#007f7f"># to visualize progress in the animated GIF)</span>
+seed = tf.random.normal([num_examples_to_generate, noise_dim])
+
+<span style="color:#007f7f"># Training steps</span>
+<span style="color:#fff;font-weight:bold">def</span> train_step(images):
+    noise = tf.random.normal([BATCH_SIZE, noise_dim])
+
+    <span style="color:#fff;font-weight:bold">with</span> tf.GradientTape() <span style="color:#fff;font-weight:bold">as</span> gen_tape, tf.GradientTape() <span style="color:#fff;font-weight:bold">as</span> disc_tape:
+      generated_images = generator(noise, training=True)
+
+      real_output = discriminator(images, training=True)
+      fake_output = discriminator(generated_images, training=True)
+
+      gen_loss = generator_loss(fake_output)
+      disc_loss = discriminator_loss(real_output, fake_output)
+
+    gradients_of_generator = gen_tape.gradient(gen_loss, generator.trainable_variables)
+    gradients_of_discriminator = disc_tape.gradient(disc_loss, discriminator.trainable_variables)
+
+    generator_optimizer.apply_gradients(<span style="color:#fff;font-weight:bold">zip</span>(gradients_of_generator, generator.trainable_variables))
+    discriminator_optimizer.apply_gradients(<span style="color:#fff;font-weight:bold">zip</span>(gradients_of_discriminator, discriminator.trainable_variables))
+
+
+<span style="color:#fff;font-weight:bold">def</span> train(dataset, epochs):
+  <span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(epochs):
+    start = time.time()
+
+    <span style="color:#fff;font-weight:bold">for</span> image_batch in dataset:
+      train_step(image_batch)
+
+    <span style="color:#007f7f"># Produce images for the GIF as we go</span>
+    display.clear_output(wait=True)
+    generate_and_save_images(generator,
+                             epoch + <span style="color:#ff0;font-weight:bold">1</span>,
+                             seed)
+
+    <span style="color:#007f7f"># Save the model every 15 epochs</span>
+    <span style="color:#fff;font-weight:bold">if</span> (epoch + <span style="color:#ff0;font-weight:bold">1</span>) % <span style="color:#ff0;font-weight:bold">15</span> == <span style="color:#ff0;font-weight:bold">0</span>:
+      checkpoint.save(file_prefix = checkpoint_prefix)
+
+    <span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;Time for epoch {} is {} sec&#39;</span>.format(epoch + <span style="color:#ff0;font-weight:bold">1</span>, time.time()-start))
+
+  <span style="color:#007f7f"># Generate after the final epoch</span>
+  display.clear_output(wait=True)
+  generate_and_save_images(generator,
+                           epochs,
+                           seed)
+
+<span style="color:#007f7f"># Generate and save images</span>
+<span style="color:#fff;font-weight:bold">def</span> generate_and_save_images(model, epoch, test_input):
+  <span style="color:#007f7f"># Notice `training` is set to False.</span>
+  <span style="color:#007f7f"># This is so all layers run in inference mode (batchnorm).</span>
+  predictions = model(test_input, training=False)
+
+  fig = plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">4</span>,<span style="color:#ff0;font-weight:bold">4</span>))
+
+  <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(predictions.shape[<span style="color:#ff0;font-weight:bold">0</span>]):
+      plt.subplot(<span style="color:#ff0;font-weight:bold">4</span>, <span style="color:#ff0;font-weight:bold">4</span>, i+<span style="color:#ff0;font-weight:bold">1</span>)
+      plt.imshow(predictions[i, :, :, <span style="color:#ff0;font-weight:bold">0</span>] * <span style="color:#ff0;font-weight:bold">127.5</span> + <span style="color:#ff0;font-weight:bold">127.5</span>, cmap=<span style="color:#0ff;font-weight:bold">&#39;gray&#39;</span>)
+      plt.axis(<span style="color:#0ff;font-weight:bold">&#39;off&#39;</span>)
+
+  plt.savefig(<span style="color:#0ff;font-weight:bold">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch))
+  plt.show()
+</code></pre></div><p>Call the <code>train()</code> method defined above to train the generator and discriminator simultaneously. Note, training GANs can be tricky. It&rsquo;s important that the generator and discriminator do not overpower each other (e.g., that they train at a similar rate).</p>
+<p>At the beginning of the training, the generated images look like random noise. As training progresses, the generated digits will look increasingly real. After about 50 epochs, they resemble MNIST digits. This may take about 3 minutes / epoch with the default settings on Colab.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># This notebook also demonstrates how to save and restore models, </span>
+<span style="color:#007f7f"># which can be helpful in case a long running training task is interrupted.</span>
+checkpoint_dir = <span style="color:#0ff;font-weight:bold">&#39;./training_checkpoints&#39;</span>
+checkpoint_prefix = os.path.join(checkpoint_dir, <span style="color:#0ff;font-weight:bold">&#34;ckpt&#34;</span>)
+checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
+                                 discriminator_optimizer=discriminator_optimizer,
+                                 generator=generator,
+                                 discriminator=discriminator)
+
+train(train_dataset, EPOCHS) <span style="color:#007f7f"># train process</span>
+
+<span style="color:#007f7f"># Display a single image using the epoch number</span>
+<span style="color:#fff;font-weight:bold">def</span> display_image(epoch_no):
+    <span style="color:#fff;font-weight:bold">return</span> PIL.Image.open(<span style="color:#0ff;font-weight:bold">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch_no))
+
+display_image(EPOCHS) <span style="color:#007f7f"># display created images</span>
+</code></pre></div><p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_17_0.svg" alt="svg"></p>
+<p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_17_1.png" alt="png"></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+</code></pre></div><h2 id="conditional-generative-adversarial-network-cgan">Conditional Generative Adversarial Network (cGAN)</h2>
+<p>Generative Adversarial Networks, or GANs, are an architecture for training generative models, such as deep convolutional neural networks for generating images. Although GAN models are capable of generating new random plausible examples for a given dataset, there is no way to control the types of images that are generated other than trying to figure out the complex relationship between the latent space input to the generator and the generated images.</p>
+<p>The conditional generative adversarial network, or cGAN for short, is a type of GAN that involves the conditional generation of images by a generator model. Image generation can be conditional on a class label, if available, allowing the targeted generated of images of a given type.</p>
+<p>For example, the MNIST handwritten digit dataset has class labels of the corresponding integers, the CIFAR-10 small object photograph dataset has class labels for the corresponding objects in the photographs, and the Fashion-MNIST clothing dataset has class labels for the corresponding items of clothing.</p>
+<p>There are two motivations for making use of the class label information in a GAN model.</p>
+<ul>
+<li>Improve the GAN.</li>
+<li>Targeted Image Generation.</li>
+</ul>
+<p>Additional information that is correlated with the input images, such as class labels, can be used to improve the GAN. This improvement may come in the form of more stable training, faster training, and/or generated images that have better quality. Class labels can also be used for the deliberate or targeted generation of images of a given type.</p>
+<p>Alternately, a GAN can be trained in such a way that both the generator and the discriminator models are conditioned on the class label. This means that when the trained generator model is used as a standalone model to generate images in the domain, images of a given type, or class label, can be generated.</p>
+<p>The cGAN was first described by Mehdi Mirza and Simon Osindero in their 2014 paper titled <a href="https://arxiv.org/abs/1411.1784"><em>“Conditional Generative Adversarial Nets.”</em></a> In the paper, the authors motivate the approach based on the desire to direct the image generation process of the generator model.</p>
+<p>Figure 5 : The cGAN</p>
+<p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/cgan.png" alt="The cGAN" title="The cGAN"></p>
+<p><em>Source:</em> <a href="https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/"><em>Jason Brownlee</em></a></p>
+<p>And now we will also discuss how cGAN can be built using Keras on Tensorflow 2.x backend. We will train a the model to learn how to write handwritten digits on the MNIST dataset as well.</p>
+<h3 id="setup-library-1">Setup library</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Import library</span>
+<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> expand_dims
+<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> zeros
+<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> ones
+<span style="color:#fff;font-weight:bold">from</span> matplotlib <span style="color:#fff;font-weight:bold">import</span> pyplot
+<span style="color:#fff;font-weight:bold">from</span> numpy.random <span style="color:#fff;font-weight:bold">import</span> randn
+<span style="color:#fff;font-weight:bold">from</span> numpy.random <span style="color:#fff;font-weight:bold">import</span> randint
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras <span style="color:#fff;font-weight:bold">import</span> datasets, Sequential, optimizers, losses
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> BatchNormalization
+<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.models <span style="color:#fff;font-weight:bold">import</span> load_model
+
+
+</code></pre></div><h3 id="load-the-dataset-1">Load the dataset</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># example of loading the MNIST dataset</span>
+(trainX, trainy), (testX, testy) = datasets.mnist.load_data()
+
+<span style="color:#007f7f"># summarize the shape of the dataset</span>
+<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Train&#39;</span>, trainX.shape, trainy.shape)
+<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Test&#39;</span>, testX.shape, testy.shape)
+</code></pre></div><pre><code>Train (60000, 28, 28) (60000,)
+Test (10000, 28, 28) (10000,)
+</code></pre>
+<h3 id="define-the-discriminator-model">Define the discriminator model</h3>
+<p>The discriminator model takes as input one 28×28 grayscale image and outputs a binary prediction as to whether the image is real (class=1) or fake (class=0). It is implemented as a modest convolutional neural network using best practices for GAN design such as using the LeakyReLU activation function, using a 2×2 stride to downsample, and the adam version of stochastic gradient descent with a learning rate of 0.0001.</p>
+<p>The <em>define_discriminator()</em> function below implements this, defining and compiling the discriminator model and returning it. The input shape of the image is parameterized as a default function argument in case you want to re-use the function for your own image data later.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># define the standalone discriminator model</span>
+<span style="color:#fff;font-weight:bold">def</span> define_discriminator(in_shape=(<span style="color:#ff0;font-weight:bold">28</span>,<span style="color:#ff0;font-weight:bold">28</span>,<span style="color:#ff0;font-weight:bold">1</span>)):
+    model = Sequential()
+
+    <span style="color:#007f7f"># downsample</span>
+    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, input_shape=in_shape))
+    model.add(LeakyReLU())
+    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+
+    <span style="color:#007f7f"># downsample</span>
+    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>))
+    model.add(LeakyReLU())
+    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+
+    <span style="color:#007f7f"># classifier</span>
+    model.add(Flatten())
+    model.add(Dense(<span style="color:#ff0;font-weight:bold">1</span>, activation=<span style="color:#0ff;font-weight:bold">&#39;sigmoid&#39;</span>))
+    
+    <span style="color:#007f7f"># compile model</span>
+    opt = optimizers.Adam(lr=<span style="color:#ff0;font-weight:bold">1e-4</span>)
+    model.compile(loss=<span style="color:#0ff;font-weight:bold">&#39;binary_crossentropy&#39;</span>, optimizer=opt, metrics=[<span style="color:#0ff;font-weight:bold">&#39;accuracy&#39;</span>])
+    <span style="color:#fff;font-weight:bold">return</span> model
+</code></pre></div><h3 id="define-the-generator-model">Define the generator model</h3>
+<p>The generator model takes as input a point in the latent space and outputs a single 28×28 grayscale image. This is achieved by using a fully connected layer to interpret the point in the latent space and provide sufficient activations that can be reshaped into many copies (in this case 128) of a low-resolution version of the output image (e.g. 7×7). This is then upsampled twice, doubling the size and quadrupling the area of the activations each time using transpose convolutional layers. The model uses best practices such as the LeakyReLU activation, a kernel size that is a factor of the stride size, and a hyperbolic tangent (tanh) activation function in the output layer.</p>
+<p>The define_generator() function below defines the generator model, but intentionally does not compile it as it is not trained directly, then returns the model. The size of the latent space is parameterized as a function argument.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># define the standalone generator model</span>
+<span style="color:#fff;font-weight:bold">def</span> define_generator(latent_dim):
+    model = Sequential()
+
+    <span style="color:#007f7f"># foundation for 7x7 image</span>
+    n_nodes = <span style="color:#ff0;font-weight:bold">256</span> * <span style="color:#ff0;font-weight:bold">7</span> * <span style="color:#ff0;font-weight:bold">7</span>
+    model.add(Dense(n_nodes, use_bias=False, input_dim=latent_dim))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+    model.add(Reshape((<span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>)))
+
+    <span style="color:#007f7f"># upsample to 14x14</span>
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">1</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+
+    <span style="color:#007f7f"># upsample to 28x28</span>
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    model.add(BatchNormalization())
+    model.add(LeakyReLU())
+
+    <span style="color:#007f7f"># generate</span>
+    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">1</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False, activation=<span style="color:#0ff;font-weight:bold">&#39;tanh&#39;</span>))
+
+    <span style="color:#fff;font-weight:bold">return</span> model
+</code></pre></div><h3 id="the-cgan-model">The cGAN model</h3>
+<p>Next, a cGAN model can be defined that combines both the generator model and the discriminator model into one larger model. This larger model will be used to train the model weights in the generator, using the output and error calculated by the discriminator model. The discriminator model is trained separately, and as such, the model weights are marked as not trainable in this larger GAN model to ensure that only the weights of the generator model are updated. This change to the trainability of the discriminator weights only has an effect when training the combined GAN model, not when training the discriminator standalone.</p>
+<p>This larger cGAN model takes as input a point in the latent space, uses the generator model to generate an image which is fed as input to the discriminator model, then is output or classified as real or fake.</p>
+<p>The <em>define_gan()</em> function below implements this, taking the already-defined generator and discriminator models as input.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> define_gan(generator, discriminator):
+    <span style="color:#007f7f"># make weights in the discriminator not trainable</span>
+    discriminator.trainable = False
+
+    <span style="color:#007f7f"># connect them</span>
+    model = Sequential()
+
+    <span style="color:#007f7f"># add generator</span>
+    model.add(generator)
+
+    <span style="color:#007f7f"># add the discriminator</span>
+    model.add(discriminator)
+    
+    <span style="color:#007f7f"># compile model</span>
+    opt = optimizers.Adam(lr=<span style="color:#ff0;font-weight:bold">1e-4</span>)
+    model.compile(loss=<span style="color:#0ff;font-weight:bold">&#39;binary_crossentropy&#39;</span>, optimizer=opt)
+    <span style="color:#fff;font-weight:bold">return</span> model
+</code></pre></div><h3 id="load-and-generate-function">Load and generate function</h3>
+<p>Now that we have defined the cGAN model, we need to train it. But, before we can train the model, we require input data.</p>
+<ul>
+<li>
+<p>The first step is to load and prepare the Fashion MNIST dataset. We only require the images in the training dataset. The images are black and white, therefore we must add an additional channel dimension to transform them to be three dimensional, as expected by the convolutional layers of our models. Finally, the pixel values must be scaled to the range [-1,1] to match the output of the generator model. <em>The load_real_samples()</em> function below implements this, returning the loaded and scaled MNIST training dataset ready for modeling.</p>
+</li>
+<li>
+<p>We will require one batch (or a half) batch of real images from the dataset each update to the cGAN model. A simple way to achieve this is to select a random sample of images from the dataset each time. <em>The generate_real_samples()</em> function below implements this, taking the prepared dataset as an argument, selecting and returning a random sample of MNIST images and their corresponding class label for the discriminator, specifically class=1, indicating that they are real images.</p>
+</li>
+<li>
+<p>Next, we need inputs for the generator model. These are random points from the latent space, specifically Gaussian distributed random variables. <em>The generate_latent_points()</em> function implements this, taking the size of the latent space as an argument and the number of points required and returning them as a batch of input samples for the generator model.</p>
+</li>
+<li>
+<p>Next, we need to use the points in the latent space as input to the generator in order to generate new images. <em>The generate_fake_samples()</em> function below implements this, taking the generator model and size of the latent space as arguments, then generating points in the latent space and using them as input to the generator model. The function returns the generated images and their corresponding class label for the discriminator model, specifically class=0 to indicate they are fake or generated.</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># load real samples</span>
+<span style="color:#fff;font-weight:bold">def</span> load_real_samples():
+	<span style="color:#007f7f"># load dataset</span>
+	(trainX, _), (_, _) = datasets.mnist.load_data()
+	<span style="color:#007f7f"># expand to 3d, e.g. add channels</span>
+	X = expand_dims(trainX, axis=-<span style="color:#ff0;font-weight:bold">1</span>)
+	<span style="color:#007f7f"># convert from ints to floats</span>
+	X = X.astype(<span style="color:#0ff;font-weight:bold">&#39;float32&#39;</span>)
+	<span style="color:#007f7f"># scale from [0,255] to [-1,1]</span>
+	X = (X - <span style="color:#ff0;font-weight:bold">127.5</span>) / <span style="color:#ff0;font-weight:bold">127.5</span>
+	<span style="color:#fff;font-weight:bold">return</span> X
+
+<span style="color:#007f7f"># select real samples</span>
+<span style="color:#fff;font-weight:bold">def</span> generate_real_samples(dataset, n_samples):
+	<span style="color:#007f7f"># choose random instances</span>
+	ix = randint(<span style="color:#ff0;font-weight:bold">0</span>, dataset.shape[<span style="color:#ff0;font-weight:bold">0</span>], n_samples)
+	<span style="color:#007f7f"># select images</span>
+	X = dataset[ix]
+	<span style="color:#007f7f"># generate class labels</span>
+	y = ones((n_samples, <span style="color:#ff0;font-weight:bold">1</span>))
+	<span style="color:#fff;font-weight:bold">return</span> X, y
+
+<span style="color:#007f7f"># generate points in latent space as input for the generator</span>
+<span style="color:#fff;font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
+	<span style="color:#007f7f"># generate points in the latent space</span>
+	x_input = randn(latent_dim * n_samples)
+	<span style="color:#007f7f"># reshape into a batch of inputs for the network</span>
+	x_input = x_input.reshape(n_samples, latent_dim)
+	<span style="color:#fff;font-weight:bold">return</span> x_input
+
+<span style="color:#007f7f"># use the generator to generate n fake examples, with class labels</span>
+<span style="color:#fff;font-weight:bold">def</span> generate_fake_samples(generator, latent_dim, n_samples):
+	<span style="color:#007f7f"># generate points in latent space</span>
+	x_input = generate_latent_points(latent_dim, n_samples)
+	<span style="color:#007f7f"># predict outputs</span>
+	X = generator.predict(x_input)
+	<span style="color:#007f7f"># create class labels</span>
+	y = zeros((n_samples, <span style="color:#ff0;font-weight:bold">1</span>))
+	<span style="color:#fff;font-weight:bold">return</span> X, y
+</code></pre></div><h3 id="training-model">Training model</h3>
+<p>We are now ready to fit the cGAN models.</p>
+<p>The model is fit for 100 training epochs, which is arbitrary, as the model begins generating plausible handwriten digits after perhaps 20 epochs. A batch size of 128 samples is used, and each training epoch involves 60,000/128, or about 468 batches of real and fake samples and updates to the model.</p>
+<p>First, the discriminator model is updated for a half batch of real samples, then a half batch of fake samples, together forming one batch of weight updates. The generator is then updated via the composite gan model. Importantly, the class label is set to 1 or real for the fake samples. This has the effect of updating the generator toward getting better at generating real samples on the next batch.</p>
+<p>The <em>train()</em> function below implements this, taking the defined models, dataset, and size of the latent dimension as arguments and parameterizing the number of epochs and batch size with default arguments. The generator model is saved at the end of training.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># train the generator and discriminator</span>
+<span style="color:#fff;font-weight:bold">def</span> train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=<span style="color:#ff0;font-weight:bold">100</span>, n_batch=<span style="color:#ff0;font-weight:bold">128</span>):
+	bat_per_epo = <span style="color:#fff;font-weight:bold">int</span>(dataset.shape[<span style="color:#ff0;font-weight:bold">0</span>] / n_batch)
+	half_batch = <span style="color:#fff;font-weight:bold">int</span>(n_batch / <span style="color:#ff0;font-weight:bold">2</span>)
+	<span style="color:#007f7f"># manually enumerate epochs</span>
+	<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n_epochs):
+		<span style="color:#007f7f"># enumerate batches over the training set</span>
+		<span style="color:#fff;font-weight:bold">for</span> j in <span style="color:#fff;font-weight:bold">range</span>(bat_per_epo):
+			<span style="color:#007f7f"># get randomly selected &#39;real&#39; samples</span>
+			X_real, y_real = generate_real_samples(dataset, half_batch)
+			<span style="color:#007f7f"># update discriminator model weights</span>
+			d_loss1, _ = d_model.train_on_batch(X_real, y_real)
+			<span style="color:#007f7f"># generate &#39;fake&#39; examples</span>
+			X_fake, y_fake = generate_fake_samples(g_model, latent_dim, half_batch)
+			<span style="color:#007f7f"># update discriminator model weights</span>
+			d_loss2, _ = d_model.train_on_batch(X_fake, y_fake)
+			<span style="color:#007f7f"># prepare points in latent space as input for the generator</span>
+			X_gan = generate_latent_points(latent_dim, n_batch)
+			<span style="color:#007f7f"># create inverted labels for the fake samples</span>
+			y_gan = ones((n_batch, <span style="color:#ff0;font-weight:bold">1</span>))
+			<span style="color:#007f7f"># update the generator via the discriminator&#39;s error</span>
+			g_loss = gan_model.train_on_batch(X_gan, y_gan)
+			<span style="color:#007f7f"># summarize loss on this batch</span>
+			<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;&gt;</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">, </span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">/</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">, d1=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold">, d2=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold"> g=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold">&#39;</span> %
+				(i+<span style="color:#ff0;font-weight:bold">1</span>, j+<span style="color:#ff0;font-weight:bold">1</span>, bat_per_epo, d_loss1, d_loss2, g_loss))
+	<span style="color:#007f7f"># save the generator model</span>
+	g_model.save(<span style="color:#0ff;font-weight:bold">&#39;generator.h5&#39;</span>)
+ 
+<span style="color:#007f7f"># size of the latent space</span>
+latent_dim = <span style="color:#ff0;font-weight:bold">16</span>
+<span style="color:#007f7f"># create the discriminator</span>
+discriminator = define_discriminator()
+<span style="color:#007f7f"># create the generator</span>
+generator = define_generator(latent_dim)
+<span style="color:#007f7f"># create the gan</span>
+gan_model = define_gan(generator, discriminator)
+<span style="color:#007f7f"># load image data</span>
+dataset = load_real_samples()
+<span style="color:#007f7f"># train model</span>
+train(generator, discriminator, gan_model, dataset, latent_dim)
+
+</code></pre></div><pre><code>&gt;99, 458/468, d1=0.655, d2=0.662 g=0.804
+&gt;99, 459/468, d1=0.639, d2=0.653 g=0.779
+&gt;99, 460/468, d1=0.674, d2=0.618 g=0.819
+&gt;99, 461/468, d1=0.634, d2=0.682 g=0.814
+&gt;99, 462/468, d1=0.673, d2=0.676 g=0.788
+&gt;99, 463/468, d1=0.644, d2=0.644 g=0.833
+&gt;99, 464/468, d1=0.681, d2=0.655 g=0.823
+&gt;99, 465/468, d1=0.660, d2=0.652 g=0.786
+&gt;99, 466/468, d1=0.648, d2=0.606 g=0.781
+&gt;99, 467/468, d1=0.645, d2=0.663 g=0.830
+&gt;99, 468/468, d1=0.658, d2=0.626 g=0.784
+&gt;100, 1/468, d1=0.691, d2=0.649 g=0.809
+&gt;100, 2/468, d1=0.633, d2=0.653 g=0.810
+&gt;100, 3/468, d1=0.693, d2=0.630 g=0.794
+&gt;100, 4/468, d1=0.656, d2=0.686 g=0.799
+&gt;100, 5/468, d1=0.696, d2=0.631 g=0.792
+&gt;100, 6/468, d1=0.642, d2=0.691 g=0.757
+&gt;100, 7/468, d1=0.677, d2=0.696 g=0.806
+&gt;100, 8/468, d1=0.650, d2=0.627 g=0.811
+&gt;100, 9/468, d1=0.673, d2=0.657 g=0.800
+&gt;100, 10/468, d1=0.709, d2=0.618 g=0.779
+&gt;100, 11/468, d1=0.645, d2=0.658 g=0.836
+&gt;100, 12/468, d1=0.660, d2=0.645 g=0.837
+&gt;100, 13/468, d1=0.689, d2=0.600 g=0.781
+&gt;100, 14/468, d1=0.658, d2=0.662 g=0.818
+&gt;100, 15/468, d1=0.657, d2=0.660 g=0.835
+&gt;100, 16/468, d1=0.685, d2=0.674 g=0.793
+&gt;100, 17/468, d1=0.724, d2=0.617 g=0.810
+&gt;100, 18/468, d1=0.643, d2=0.668 g=0.751
+&gt;100, 19/468, d1=0.674, d2=0.658 g=0.789
+&gt;100, 20/468, d1=0.681, d2=0.690 g=0.820
+&gt;100, 21/468, d1=0.710, d2=0.719 g=0.802
+&gt;100, 22/468, d1=0.717, d2=0.698 g=0.756
+&gt;100, 23/468, d1=0.748, d2=0.716 g=0.794
+&gt;100, 24/468, d1=0.721, d2=0.667 g=0.780
+&gt;100, 25/468, d1=0.636, d2=0.646 g=0.736
+&gt;100, 26/468, d1=0.676, d2=0.729 g=0.782
+&gt;100, 27/468, d1=0.634, d2=0.684 g=0.750
+&gt;100, 28/468, d1=0.629, d2=0.684 g=0.770
+&gt;100, 29/468, d1=0.685, d2=0.707 g=0.759
+&gt;100, 30/468, d1=0.686, d2=0.677 g=0.761
+&gt;100, 31/468, d1=0.690, d2=0.676 g=0.768
+&gt;100, 32/468, d1=0.674, d2=0.672 g=0.743
+&gt;100, 33/468, d1=0.619, d2=0.679 g=0.761
+&gt;100, 34/468, d1=0.653, d2=0.659 g=0.766
+&gt;100, 35/468, d1=0.660, d2=0.703 g=0.741
+&gt;100, 36/468, d1=0.677, d2=0.678 g=0.768
+&gt;100, 37/468, d1=0.629, d2=0.668 g=0.728
+&gt;100, 38/468, d1=0.689, d2=0.705 g=0.727
+&gt;100, 39/468, d1=0.674, d2=0.715 g=0.732
+&gt;100, 40/468, d1=0.652, d2=0.713 g=0.710
+&gt;100, 41/468, d1=0.636, d2=0.700 g=0.737
+&gt;100, 42/468, d1=0.703, d2=0.725 g=0.714
+&gt;100, 43/468, d1=0.670, d2=0.707 g=0.746
+&gt;100, 44/468, d1=0.667, d2=0.709 g=0.733
+&gt;100, 45/468, d1=0.685, d2=0.689 g=0.724
+&gt;100, 46/468, d1=0.656, d2=0.695 g=0.754
+&gt;100, 47/468, d1=0.675, d2=0.712 g=0.708
+&gt;100, 48/468, d1=0.611, d2=0.682 g=0.732
+&gt;100, 49/468, d1=0.684, d2=0.679 g=0.769
+&gt;100, 50/468, d1=0.644, d2=0.731 g=0.767
+&gt;100, 51/468, d1=0.676, d2=0.634 g=0.761
+&gt;100, 52/468, d1=0.650, d2=0.639 g=0.767
+&gt;100, 53/468, d1=0.648, d2=0.646 g=0.765
+&gt;100, 54/468, d1=0.706, d2=0.691 g=0.785
+&gt;100, 55/468, d1=0.712, d2=0.681 g=0.744
+&gt;100, 56/468, d1=0.712, d2=0.673 g=0.761
+&gt;100, 57/468, d1=0.690, d2=0.691 g=0.720
+&gt;100, 58/468, d1=0.688, d2=0.736 g=0.786
+&gt;100, 59/468, d1=0.616, d2=0.673 g=0.736
+&gt;100, 60/468, d1=0.678, d2=0.697 g=0.767
+&gt;100, 61/468, d1=0.611, d2=0.688 g=0.786
+&gt;100, 62/468, d1=0.664, d2=0.654 g=0.796
+&gt;100, 63/468, d1=0.663, d2=0.679 g=0.778
+&gt;100, 64/468, d1=0.652, d2=0.666 g=0.763
+&gt;100, 65/468, d1=0.683, d2=0.695 g=0.763
+&gt;100, 66/468, d1=0.691, d2=0.656 g=0.776
+&gt;100, 67/468, d1=0.643, d2=0.674 g=0.754
+&gt;100, 68/468, d1=0.680, d2=0.641 g=0.750
+&gt;100, 69/468, d1=0.712, d2=0.688 g=0.764
+&gt;100, 70/468, d1=0.674, d2=0.733 g=0.789
+&gt;100, 71/468, d1=0.697, d2=0.668 g=0.774
+&gt;100, 72/468, d1=0.731, d2=0.680 g=0.779
+&gt;100, 73/468, d1=0.713, d2=0.631 g=0.776
+&gt;100, 74/468, d1=0.698, d2=0.635 g=0.780
+&gt;100, 75/468, d1=0.687, d2=0.652 g=0.810
+&gt;100, 76/468, d1=0.688, d2=0.679 g=0.798
+&gt;100, 77/468, d1=0.684, d2=0.626 g=0.803
+&gt;100, 78/468, d1=0.640, d2=0.600 g=0.795
+&gt;100, 79/468, d1=0.701, d2=0.623 g=0.831
+&gt;100, 80/468, d1=0.659, d2=0.623 g=0.798
+&gt;100, 81/468, d1=0.692, d2=0.646 g=0.795
+&gt;100, 82/468, d1=0.699, d2=0.625 g=0.813
+&gt;100, 83/468, d1=0.684, d2=0.616 g=0.834
+&gt;100, 84/468, d1=0.742, d2=0.587 g=0.828
+&gt;100, 85/468, d1=0.711, d2=0.648 g=0.819
+&gt;100, 86/468, d1=0.696, d2=0.617 g=0.809
+&gt;100, 87/468, d1=0.667, d2=0.659 g=0.862
+&gt;100, 88/468, d1=0.670, d2=0.645 g=0.794
+&gt;100, 89/468, d1=0.722, d2=0.641 g=0.813
+&gt;100, 90/468, d1=0.680, d2=0.660 g=0.794
+&gt;100, 91/468, d1=0.703, d2=0.684 g=0.809
+&gt;100, 92/468, d1=0.661, d2=0.668 g=0.787
+&gt;100, 93/468, d1=0.643, d2=0.686 g=0.755
+&gt;100, 94/468, d1=0.636, d2=0.648 g=0.769
+&gt;100, 95/468, d1=0.671, d2=0.672 g=0.770
+&gt;100, 96/468, d1=0.649, d2=0.694 g=0.724
+&gt;100, 97/468, d1=0.636, d2=0.656 g=0.750
+&gt;100, 98/468, d1=0.645, d2=0.652 g=0.758
+&gt;100, 99/468, d1=0.634, d2=0.685 g=0.771
+&gt;100, 100/468, d1=0.622, d2=0.661 g=0.760
+&gt;100, 101/468, d1=0.635, d2=0.653 g=0.780
+&gt;100, 102/468, d1=0.653, d2=0.686 g=0.744
+&gt;100, 103/468, d1=0.613, d2=0.661 g=0.795
+&gt;100, 104/468, d1=0.642, d2=0.672 g=0.764
+&gt;100, 105/468, d1=0.655, d2=0.652 g=0.745
+&gt;100, 106/468, d1=0.656, d2=0.702 g=0.766
+&gt;100, 107/468, d1=0.646, d2=0.626 g=0.779
+&gt;100, 108/468, d1=0.695, d2=0.691 g=0.746
+&gt;100, 109/468, d1=0.664, d2=0.714 g=0.796
+&gt;100, 110/468, d1=0.633, d2=0.656 g=0.768
+&gt;100, 111/468, d1=0.645, d2=0.643 g=0.748
+&gt;100, 112/468, d1=0.672, d2=0.651 g=0.789
+&gt;100, 113/468, d1=0.677, d2=0.666 g=0.796
+&gt;100, 114/468, d1=0.613, d2=0.678 g=0.770
+&gt;100, 115/468, d1=0.643, d2=0.655 g=0.747
+&gt;100, 116/468, d1=0.659, d2=0.684 g=0.761
+&gt;100, 117/468, d1=0.696, d2=0.701 g=0.771
+&gt;100, 118/468, d1=0.636, d2=0.690 g=0.748
+&gt;100, 119/468, d1=0.661, d2=0.690 g=0.810
+&gt;100, 120/468, d1=0.658, d2=0.664 g=0.791
+&gt;100, 121/468, d1=0.579, d2=0.659 g=0.784
+&gt;100, 122/468, d1=0.650, d2=0.670 g=0.782
+&gt;100, 123/468, d1=0.605, d2=0.639 g=0.790
+&gt;100, 124/468, d1=0.613, d2=0.652 g=0.769
+&gt;100, 125/468, d1=0.682, d2=0.658 g=0.809
+&gt;100, 126/468, d1=0.663, d2=0.604 g=0.825
+&gt;100, 127/468, d1=0.680, d2=0.644 g=0.787
+&gt;100, 128/468, d1=0.629, d2=0.675 g=0.805
+&gt;100, 129/468, d1=0.650, d2=0.651 g=0.806
+&gt;100, 130/468, d1=0.589, d2=0.655 g=0.814
+&gt;100, 131/468, d1=0.696, d2=0.634 g=0.827
+&gt;100, 132/468, d1=0.636, d2=0.668 g=0.823
+&gt;100, 133/468, d1=0.648, d2=0.666 g=0.777
+&gt;100, 134/468, d1=0.624, d2=0.620 g=0.824
+&gt;100, 135/468, d1=0.663, d2=0.593 g=0.793
+&gt;100, 136/468, d1=0.649, d2=0.609 g=0.786
+&gt;100, 137/468, d1=0.674, d2=0.722 g=0.807
+&gt;100, 138/468, d1=0.641, d2=0.623 g=0.811
+&gt;100, 139/468, d1=0.622, d2=0.643 g=0.735
+&gt;100, 140/468, d1=0.695, d2=0.658 g=0.746
+&gt;100, 141/468, d1=0.661, d2=0.675 g=0.815
+&gt;100, 142/468, d1=0.677, d2=0.609 g=0.810
+&gt;100, 143/468, d1=0.683, d2=0.668 g=0.786
+&gt;100, 144/468, d1=0.697, d2=0.679 g=0.799
+&gt;100, 145/468, d1=0.677, d2=0.649 g=0.751
+&gt;100, 146/468, d1=0.687, d2=0.677 g=0.757
+&gt;100, 147/468, d1=0.673, d2=0.672 g=0.770
+&gt;100, 148/468, d1=0.648, d2=0.632 g=0.803
+&gt;100, 149/468, d1=0.712, d2=0.634 g=0.813
+&gt;100, 150/468, d1=0.715, d2=0.645 g=0.806
+&gt;100, 151/468, d1=0.741, d2=0.678 g=0.778
+&gt;100, 152/468, d1=0.717, d2=0.641 g=0.768
+&gt;100, 153/468, d1=0.659, d2=0.667 g=0.825
+&gt;100, 154/468, d1=0.714, d2=0.666 g=0.817
+&gt;100, 155/468, d1=0.757, d2=0.668 g=0.820
+&gt;100, 156/468, d1=0.686, d2=0.614 g=0.809
+&gt;100, 157/468, d1=0.691, d2=0.635 g=0.798
+&gt;100, 158/468, d1=0.726, d2=0.701 g=0.793
+&gt;100, 159/468, d1=0.687, d2=0.619 g=0.845
+&gt;100, 160/468, d1=0.699, d2=0.658 g=0.759
+&gt;100, 161/468, d1=0.694, d2=0.684 g=0.769
+&gt;100, 162/468, d1=0.622, d2=0.703 g=0.793
+&gt;100, 163/468, d1=0.703, d2=0.666 g=0.799
+&gt;100, 164/468, d1=0.729, d2=0.668 g=0.762
+&gt;100, 165/468, d1=0.664, d2=0.658 g=0.772
+&gt;100, 166/468, d1=0.648, d2=0.637 g=0.730
+&gt;100, 167/468, d1=0.639, d2=0.691 g=0.790
+&gt;100, 168/468, d1=0.674, d2=0.678 g=0.785
+&gt;100, 169/468, d1=0.713, d2=0.668 g=0.786
+&gt;100, 170/468, d1=0.703, d2=0.677 g=0.782
+&gt;100, 171/468, d1=0.706, d2=0.716 g=0.727
+&gt;100, 172/468, d1=0.675, d2=0.697 g=0.720
+&gt;100, 173/468, d1=0.659, d2=0.683 g=0.757
+&gt;100, 174/468, d1=0.644, d2=0.729 g=0.725
+&gt;100, 175/468, d1=0.664, d2=0.721 g=0.710
+&gt;100, 176/468, d1=0.620, d2=0.724 g=0.732
+&gt;100, 177/468, d1=0.633, d2=0.746 g=0.738
+&gt;100, 178/468, d1=0.685, d2=0.755 g=0.730
+&gt;100, 179/468, d1=0.664, d2=0.701 g=0.733
+&gt;100, 180/468, d1=0.725, d2=0.678 g=0.728
+&gt;100, 181/468, d1=0.676, d2=0.658 g=0.727
+&gt;100, 182/468, d1=0.656, d2=0.696 g=0.711
+&gt;100, 183/468, d1=0.619, d2=0.681 g=0.741
+&gt;100, 184/468, d1=0.655, d2=0.736 g=0.708
+&gt;100, 185/468, d1=0.660, d2=0.718 g=0.739
+&gt;100, 186/468, d1=0.649, d2=0.691 g=0.724
+&gt;100, 187/468, d1=0.731, d2=0.714 g=0.760
+&gt;100, 188/468, d1=0.652, d2=0.696 g=0.739
+&gt;100, 189/468, d1=0.664, d2=0.609 g=0.754
+&gt;100, 190/468, d1=0.645, d2=0.724 g=0.746
+&gt;100, 191/468, d1=0.632, d2=0.709 g=0.740
+&gt;100, 192/468, d1=0.666, d2=0.749 g=0.754
+&gt;100, 193/468, d1=0.695, d2=0.647 g=0.766
+&gt;100, 194/468, d1=0.672, d2=0.635 g=0.819
+&gt;100, 195/468, d1=0.650, d2=0.681 g=0.778
+&gt;100, 196/468, d1=0.650, d2=0.680 g=0.776
+&gt;100, 197/468, d1=0.612, d2=0.675 g=0.772
+&gt;100, 198/468, d1=0.657, d2=0.681 g=0.774
+&gt;100, 199/468, d1=0.601, d2=0.691 g=0.781
+&gt;100, 200/468, d1=0.676, d2=0.662 g=0.774
+&gt;100, 201/468, d1=0.688, d2=0.683 g=0.818
+&gt;100, 202/468, d1=0.703, d2=0.665 g=0.793
+&gt;100, 203/468, d1=0.643, d2=0.717 g=0.808
+&gt;100, 204/468, d1=0.610, d2=0.661 g=0.764
+&gt;100, 205/468, d1=0.613, d2=0.649 g=0.810
+&gt;100, 206/468, d1=0.695, d2=0.672 g=0.817
+&gt;100, 207/468, d1=0.655, d2=0.649 g=0.812
+&gt;100, 208/468, d1=0.673, d2=0.693 g=0.798
+&gt;100, 209/468, d1=0.678, d2=0.646 g=0.804
+&gt;100, 210/468, d1=0.680, d2=0.626 g=0.801
+&gt;100, 211/468, d1=0.650, d2=0.657 g=0.856
+&gt;100, 212/468, d1=0.692, d2=0.621 g=0.832
+&gt;100, 213/468, d1=0.665, d2=0.659 g=0.822
+&gt;100, 214/468, d1=0.670, d2=0.640 g=0.821
+&gt;100, 215/468, d1=0.655, d2=0.636 g=0.804
+&gt;100, 216/468, d1=0.654, d2=0.672 g=0.820
+&gt;100, 217/468, d1=0.634, d2=0.668 g=0.848
+&gt;100, 218/468, d1=0.703, d2=0.625 g=0.841
+&gt;100, 219/468, d1=0.693, d2=0.596 g=0.815
+&gt;100, 220/468, d1=0.696, d2=0.637 g=0.849
+&gt;100, 221/468, d1=0.700, d2=0.648 g=0.881
+&gt;100, 222/468, d1=0.701, d2=0.567 g=0.882
+&gt;100, 223/468, d1=0.708, d2=0.593 g=0.873
+&gt;100, 224/468, d1=0.672, d2=0.630 g=0.866
+&gt;100, 225/468, d1=0.658, d2=0.606 g=0.912
+&gt;100, 226/468, d1=0.698, d2=0.633 g=0.877
+&gt;100, 227/468, d1=0.691, d2=0.608 g=0.887
+&gt;100, 228/468, d1=0.677, d2=0.629 g=0.807
+&gt;100, 229/468, d1=0.710, d2=0.549 g=0.853
+&gt;100, 230/468, d1=0.658, d2=0.607 g=0.846
+&gt;100, 231/468, d1=0.720, d2=0.593 g=0.833
+&gt;100, 232/468, d1=0.684, d2=0.636 g=0.850
+&gt;100, 233/468, d1=0.708, d2=0.660 g=0.821
+&gt;100, 234/468, d1=0.638, d2=0.683 g=0.785
+&gt;100, 235/468, d1=0.647, d2=0.649 g=0.805
+&gt;100, 236/468, d1=0.608, d2=0.713 g=0.823
+&gt;100, 237/468, d1=0.654, d2=0.662 g=0.800
+&gt;100, 238/468, d1=0.614, d2=0.712 g=0.798
+&gt;100, 239/468, d1=0.682, d2=0.699 g=0.811
+&gt;100, 240/468, d1=0.673, d2=0.682 g=0.770
+&gt;100, 241/468, d1=0.625, d2=0.744 g=0.819
+&gt;100, 242/468, d1=0.664, d2=0.648 g=0.792
+&gt;100, 243/468, d1=0.723, d2=0.647 g=0.747
+&gt;100, 244/468, d1=0.654, d2=0.660 g=0.780
+&gt;100, 245/468, d1=0.669, d2=0.686 g=0.758
+&gt;100, 246/468, d1=0.664, d2=0.727 g=0.778
+&gt;100, 247/468, d1=0.641, d2=0.735 g=0.745
+&gt;100, 248/468, d1=0.618, d2=0.750 g=0.744
+&gt;100, 249/468, d1=0.625, d2=0.697 g=0.745
+&gt;100, 250/468, d1=0.653, d2=0.766 g=0.722
+&gt;100, 251/468, d1=0.638, d2=0.699 g=0.762
+&gt;100, 252/468, d1=0.663, d2=0.719 g=0.762
+&gt;100, 253/468, d1=0.619, d2=0.691 g=0.712
+&gt;100, 254/468, d1=0.619, d2=0.724 g=0.722
+&gt;100, 255/468, d1=0.678, d2=0.740 g=0.744
+&gt;100, 256/468, d1=0.672, d2=0.697 g=0.743
+&gt;100, 257/468, d1=0.638, d2=0.703 g=0.743
+&gt;100, 258/468, d1=0.664, d2=0.771 g=0.757
+&gt;100, 259/468, d1=0.666, d2=0.683 g=0.804
+&gt;100, 260/468, d1=0.684, d2=0.667 g=0.753
+&gt;100, 261/468, d1=0.632, d2=0.683 g=0.816
+&gt;100, 262/468, d1=0.683, d2=0.679 g=0.805
+&gt;100, 263/468, d1=0.654, d2=0.649 g=0.787
+&gt;100, 264/468, d1=0.689, d2=0.752 g=0.784
+&gt;100, 265/468, d1=0.719, d2=0.707 g=0.773
+&gt;100, 266/468, d1=0.685, d2=0.708 g=0.782
+&gt;100, 267/468, d1=0.619, d2=0.645 g=0.776
+&gt;100, 268/468, d1=0.667, d2=0.694 g=0.768
+&gt;100, 269/468, d1=0.620, d2=0.693 g=0.769
+&gt;100, 270/468, d1=0.618, d2=0.737 g=0.775
+&gt;100, 271/468, d1=0.709, d2=0.716 g=0.797
+&gt;100, 272/468, d1=0.656, d2=0.683 g=0.740
+&gt;100, 273/468, d1=0.676, d2=0.676 g=0.779
+&gt;100, 274/468, d1=0.670, d2=0.667 g=0.779
+&gt;100, 275/468, d1=0.640, d2=0.642 g=0.831
+&gt;100, 276/468, d1=0.692, d2=0.653 g=0.753
+&gt;100, 277/468, d1=0.646, d2=0.685 g=0.856
+&gt;100, 278/468, d1=0.628, d2=0.668 g=0.809
+&gt;100, 279/468, d1=0.665, d2=0.685 g=0.811
+&gt;100, 280/468, d1=0.681, d2=0.589 g=0.768
+&gt;100, 281/468, d1=0.697, d2=0.696 g=0.790
+&gt;100, 282/468, d1=0.670, d2=0.642 g=0.741
+&gt;100, 283/468, d1=0.713, d2=0.678 g=0.762
+&gt;100, 284/468, d1=0.725, d2=0.703 g=0.743
+&gt;100, 285/468, d1=0.662, d2=0.642 g=0.768
+&gt;100, 286/468, d1=0.748, d2=0.677 g=0.761
+&gt;100, 287/468, d1=0.677, d2=0.700 g=0.723
+&gt;100, 288/468, d1=0.675, d2=0.678 g=0.771
+&gt;100, 289/468, d1=0.720, d2=0.661 g=0.781
+&gt;100, 290/468, d1=0.699, d2=0.667 g=0.782
+&gt;100, 291/468, d1=0.713, d2=0.686 g=0.823
+&gt;100, 292/468, d1=0.724, d2=0.618 g=0.778
+&gt;100, 293/468, d1=0.718, d2=0.615 g=0.798
+&gt;100, 294/468, d1=0.690, d2=0.623 g=0.812
+&gt;100, 295/468, d1=0.699, d2=0.642 g=0.830
+&gt;100, 296/468, d1=0.738, d2=0.606 g=0.823
+&gt;100, 297/468, d1=0.735, d2=0.589 g=0.850
+&gt;100, 298/468, d1=0.671, d2=0.624 g=0.839
+&gt;100, 299/468, d1=0.757, d2=0.614 g=0.854
+&gt;100, 300/468, d1=0.736, d2=0.554 g=0.864
+&gt;100, 301/468, d1=0.670, d2=0.596 g=0.868
+&gt;100, 302/468, d1=0.666, d2=0.602 g=0.858
+&gt;100, 303/468, d1=0.728, d2=0.643 g=0.881
+&gt;100, 304/468, d1=0.668, d2=0.593 g=0.861
+&gt;100, 305/468, d1=0.712, d2=0.596 g=0.866
+&gt;100, 306/468, d1=0.676, d2=0.654 g=0.863
+&gt;100, 307/468, d1=0.706, d2=0.564 g=0.832
+&gt;100, 308/468, d1=0.667, d2=0.708 g=0.885
+&gt;100, 309/468, d1=0.617, d2=0.638 g=0.809
+&gt;100, 310/468, d1=0.593, d2=0.579 g=0.868
+&gt;100, 311/468, d1=0.663, d2=0.692 g=0.813
+&gt;100, 312/468, d1=0.691, d2=0.687 g=0.822
+&gt;100, 313/468, d1=0.602, d2=0.660 g=0.864
+&gt;100, 314/468, d1=0.687, d2=0.675 g=0.787
+&gt;100, 315/468, d1=0.651, d2=0.681 g=0.801
+&gt;100, 316/468, d1=0.617, d2=0.665 g=0.788
+&gt;100, 317/468, d1=0.653, d2=0.668 g=0.812
+&gt;100, 318/468, d1=0.617, d2=0.666 g=0.805
+&gt;100, 319/468, d1=0.657, d2=0.686 g=0.750
+&gt;100, 320/468, d1=0.618, d2=0.750 g=0.732
+&gt;100, 321/468, d1=0.684, d2=0.742 g=0.774
+&gt;100, 322/468, d1=0.619, d2=0.685 g=0.777
+&gt;100, 323/468, d1=0.653, d2=0.706 g=0.788
+&gt;100, 324/468, d1=0.683, d2=0.740 g=0.720
+&gt;100, 325/468, d1=0.671, d2=0.650 g=0.776
+&gt;100, 326/468, d1=0.683, d2=0.709 g=0.747
+&gt;100, 327/468, d1=0.650, d2=0.697 g=0.753
+&gt;100, 328/468, d1=0.645, d2=0.689 g=0.741
+&gt;100, 329/468, d1=0.649, d2=0.737 g=0.740
+&gt;100, 330/468, d1=0.599, d2=0.675 g=0.744
+&gt;100, 331/468, d1=0.628, d2=0.654 g=0.726
+&gt;100, 332/468, d1=0.582, d2=0.697 g=0.731
+&gt;100, 333/468, d1=0.583, d2=0.680 g=0.754
+&gt;100, 334/468, d1=0.680, d2=0.688 g=0.784
+&gt;100, 335/468, d1=0.619, d2=0.690 g=0.829
+&gt;100, 336/468, d1=0.618, d2=0.673 g=0.783
+&gt;100, 337/468, d1=0.674, d2=0.617 g=0.785
+&gt;100, 338/468, d1=0.616, d2=0.664 g=0.805
+&gt;100, 339/468, d1=0.599, d2=0.674 g=0.810
+&gt;100, 340/468, d1=0.612, d2=0.647 g=0.790
+&gt;100, 341/468, d1=0.591, d2=0.644 g=0.822
+&gt;100, 342/468, d1=0.620, d2=0.661 g=0.816
+&gt;100, 343/468, d1=0.664, d2=0.611 g=0.838
+&gt;100, 344/468, d1=0.667, d2=0.696 g=0.833
+&gt;100, 345/468, d1=0.603, d2=0.617 g=0.830
+&gt;100, 346/468, d1=0.664, d2=0.655 g=0.796
+&gt;100, 347/468, d1=0.634, d2=0.617 g=0.797
+&gt;100, 348/468, d1=0.654, d2=0.650 g=0.857
+&gt;100, 349/468, d1=0.595, d2=0.647 g=0.806
+&gt;100, 350/468, d1=0.633, d2=0.678 g=0.822
+&gt;100, 351/468, d1=0.650, d2=0.656 g=0.780
+&gt;100, 352/468, d1=0.670, d2=0.644 g=0.755
+&gt;100, 353/468, d1=0.627, d2=0.720 g=0.777
+&gt;100, 354/468, d1=0.694, d2=0.754 g=0.757
+&gt;100, 355/468, d1=0.653, d2=0.694 g=0.760
+&gt;100, 356/468, d1=0.673, d2=0.720 g=0.779
+&gt;100, 357/468, d1=0.753, d2=0.706 g=0.782
+&gt;100, 358/468, d1=0.705, d2=0.642 g=0.778
+&gt;100, 359/468, d1=0.769, d2=0.665 g=0.784
+&gt;100, 360/468, d1=0.747, d2=0.653 g=0.799
+&gt;100, 361/468, d1=0.702, d2=0.595 g=0.833
+&gt;100, 362/468, d1=0.722, d2=0.663 g=0.865
+&gt;100, 363/468, d1=0.757, d2=0.595 g=0.855
+&gt;100, 364/468, d1=0.758, d2=0.583 g=0.821
+&gt;100, 365/468, d1=0.759, d2=0.635 g=0.884
+&gt;100, 366/468, d1=0.801, d2=0.598 g=0.889
+&gt;100, 367/468, d1=0.802, d2=0.558 g=0.882
+&gt;100, 368/468, d1=0.735, d2=0.571 g=0.912
+&gt;100, 369/468, d1=0.748, d2=0.582 g=0.865
+&gt;100, 370/468, d1=0.742, d2=0.549 g=0.871
+&gt;100, 371/468, d1=0.682, d2=0.566 g=0.896
+&gt;100, 372/468, d1=0.691, d2=0.583 g=0.836
+&gt;100, 373/468, d1=0.695, d2=0.611 g=0.880
+&gt;100, 374/468, d1=0.706, d2=0.581 g=0.894
+&gt;100, 375/468, d1=0.721, d2=0.544 g=0.858
+&gt;100, 376/468, d1=0.668, d2=0.594 g=0.885
+&gt;100, 377/468, d1=0.665, d2=0.593 g=0.901
+&gt;100, 378/468, d1=0.644, d2=0.638 g=0.917
+&gt;100, 379/468, d1=0.702, d2=0.622 g=0.894
+&gt;100, 380/468, d1=0.645, d2=0.549 g=0.941
+&gt;100, 381/468, d1=0.670, d2=0.684 g=0.972
+&gt;100, 382/468, d1=0.682, d2=0.646 g=0.896
+&gt;100, 383/468, d1=0.673, d2=0.585 g=0.882
+&gt;100, 384/468, d1=0.777, d2=0.644 g=0.884
+&gt;100, 385/468, d1=0.604, d2=0.624 g=0.818
+&gt;100, 386/468, d1=0.634, d2=0.632 g=0.843
+&gt;100, 387/468, d1=0.707, d2=0.597 g=0.821
+&gt;100, 388/468, d1=0.643, d2=0.667 g=0.814
+&gt;100, 389/468, d1=0.656, d2=0.696 g=0.769
+&gt;100, 390/468, d1=0.703, d2=0.690 g=0.792
+&gt;100, 391/468, d1=0.577, d2=0.671 g=0.785
+&gt;100, 392/468, d1=0.559, d2=0.630 g=0.740
+&gt;100, 393/468, d1=0.663, d2=0.698 g=0.725
+&gt;100, 394/468, d1=0.701, d2=0.727 g=0.726
+&gt;100, 395/468, d1=0.651, d2=0.743 g=0.696
+&gt;100, 396/468, d1=0.669, d2=0.748 g=0.681
+&gt;100, 397/468, d1=0.693, d2=0.720 g=0.704
+&gt;100, 398/468, d1=0.627, d2=0.790 g=0.684
+&gt;100, 399/468, d1=0.615, d2=0.763 g=0.673
+&gt;100, 400/468, d1=0.706, d2=0.778 g=0.652
+&gt;100, 401/468, d1=0.602, d2=0.773 g=0.672
+&gt;100, 402/468, d1=0.648, d2=0.794 g=0.666
+&gt;100, 403/468, d1=0.583, d2=0.750 g=0.672
+&gt;100, 404/468, d1=0.598, d2=0.729 g=0.693
+&gt;100, 405/468, d1=0.607, d2=0.709 g=0.691
+&gt;100, 406/468, d1=0.641, d2=0.670 g=0.722
+&gt;100, 407/468, d1=0.631, d2=0.705 g=0.757
+&gt;100, 408/468, d1=0.628, d2=0.715 g=0.761
+&gt;100, 409/468, d1=0.666, d2=0.680 g=0.781
+&gt;100, 410/468, d1=0.649, d2=0.683 g=0.796
+&gt;100, 411/468, d1=0.632, d2=0.642 g=0.794
+&gt;100, 412/468, d1=0.620, d2=0.625 g=0.800
+&gt;100, 413/468, d1=0.654, d2=0.623 g=0.834
+&gt;100, 414/468, d1=0.598, d2=0.574 g=0.840
+&gt;100, 415/468, d1=0.555, d2=0.625 g=0.869
+&gt;100, 416/468, d1=0.606, d2=0.597 g=0.839
+&gt;100, 417/468, d1=0.600, d2=0.670 g=0.910
+&gt;100, 418/468, d1=0.640, d2=0.646 g=0.894
+&gt;100, 419/468, d1=0.582, d2=0.619 g=0.834
+&gt;100, 420/468, d1=0.601, d2=0.614 g=0.918
+&gt;100, 421/468, d1=0.555, d2=0.615 g=0.899
+&gt;100, 422/468, d1=0.594, d2=0.634 g=0.874
+&gt;100, 423/468, d1=0.590, d2=0.627 g=0.898
+&gt;100, 424/468, d1=0.546, d2=0.677 g=0.846
+&gt;100, 425/468, d1=0.592, d2=0.645 g=0.834
+&gt;100, 426/468, d1=0.690, d2=0.719 g=0.892
+&gt;100, 427/468, d1=0.598, d2=0.687 g=0.925
+&gt;100, 428/468, d1=0.605, d2=0.679 g=0.835
+&gt;100, 429/468, d1=0.578, d2=0.661 g=0.820
+&gt;100, 430/468, d1=0.627, d2=0.657 g=0.839
+&gt;100, 431/468, d1=0.674, d2=0.625 g=0.864
+&gt;100, 432/468, d1=0.697, d2=0.674 g=0.884
+&gt;100, 433/468, d1=0.686, d2=0.680 g=0.839
+&gt;100, 434/468, d1=0.644, d2=0.639 g=0.826
+&gt;100, 435/468, d1=0.693, d2=0.600 g=0.884
+&gt;100, 436/468, d1=0.683, d2=0.692 g=0.845
+&gt;100, 437/468, d1=0.697, d2=0.655 g=0.830
+&gt;100, 438/468, d1=0.751, d2=0.590 g=0.857
+&gt;100, 439/468, d1=0.749, d2=0.663 g=0.817
+&gt;100, 440/468, d1=0.728, d2=0.603 g=0.831
+&gt;100, 441/468, d1=0.755, d2=0.634 g=0.857
+&gt;100, 442/468, d1=0.726, d2=0.614 g=0.845
+&gt;100, 443/468, d1=0.706, d2=0.618 g=0.845
+&gt;100, 444/468, d1=0.800, d2=0.614 g=0.890
+&gt;100, 445/468, d1=0.729, d2=0.597 g=0.890
+&gt;100, 446/468, d1=0.721, d2=0.611 g=0.868
+&gt;100, 447/468, d1=0.726, d2=0.568 g=0.869
+&gt;100, 448/468, d1=0.733, d2=0.602 g=0.842
+&gt;100, 449/468, d1=0.715, d2=0.577 g=0.884
+&gt;100, 450/468, d1=0.693, d2=0.563 g=0.890
+&gt;100, 451/468, d1=0.743, d2=0.580 g=0.903
+&gt;100, 452/468, d1=0.767, d2=0.563 g=0.917
+&gt;100, 453/468, d1=0.692, d2=0.554 g=0.903
+&gt;100, 454/468, d1=0.709, d2=0.553 g=0.913
+&gt;100, 455/468, d1=0.671, d2=0.588 g=0.917
+&gt;100, 456/468, d1=0.663, d2=0.581 g=0.950
+&gt;100, 457/468, d1=0.732, d2=0.569 g=0.916
+&gt;100, 458/468, d1=0.736, d2=0.532 g=0.960
+&gt;100, 459/468, d1=0.645, d2=0.595 g=0.975
+&gt;100, 460/468, d1=0.626, d2=0.560 g=0.952
+&gt;100, 461/468, d1=0.753, d2=0.519 g=0.897
+&gt;100, 462/468, d1=0.642, d2=0.595 g=0.912
+&gt;100, 463/468, d1=0.658, d2=0.567 g=0.899
+&gt;100, 464/468, d1=0.747, d2=0.615 g=0.889
+&gt;100, 465/468, d1=0.585, d2=0.650 g=0.840
+&gt;100, 466/468, d1=0.652, d2=0.685 g=0.898
+&gt;100, 467/468, d1=0.645, d2=0.566 g=0.870
+&gt;100, 468/468, d1=0.656, d2=0.677 g=0.790
+</code></pre>
+<h3 id="generate-16-random-handwritten-digits">Generate 16 random handwritten digits</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># generate points in latent space as input for the generator</span>
+<span style="color:#fff;font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
+	<span style="color:#007f7f"># generate points in the latent space</span>
+	x_input = randn(latent_dim * n_samples)
+	<span style="color:#007f7f"># reshape into a batch of inputs for the network</span>
+	x_input = x_input.reshape(n_samples, latent_dim)
+	<span style="color:#fff;font-weight:bold">return</span> x_input
+ 
+<span style="color:#007f7f"># create and save a plot of generated images (reversed grayscale)</span>
+<span style="color:#fff;font-weight:bold">def</span> show_plot(examples, n):
+	<span style="color:#007f7f"># plot images</span>
+	<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n * n):
+		<span style="color:#007f7f"># define subplot</span>
+		pyplot.subplot(n, n, <span style="color:#ff0;font-weight:bold">1</span> + i)
+		<span style="color:#007f7f"># turn off axis</span>
+		pyplot.axis(<span style="color:#0ff;font-weight:bold">&#39;off&#39;</span>)
+		<span style="color:#007f7f"># plot raw pixel data</span>
+		pyplot.imshow(examples[i, :, :, <span style="color:#ff0;font-weight:bold">0</span>], cmap=<span style="color:#0ff;font-weight:bold">&#39;gray_r&#39;</span>)
+	pyplot.show()
+ 
+<span style="color:#007f7f"># load model</span>
+model = load_model(<span style="color:#0ff;font-weight:bold">&#39;generator.h5&#39;</span>)
+<span style="color:#007f7f"># generate images</span>
+latent_points = generate_latent_points(<span style="color:#ff0;font-weight:bold">16</span>, <span style="color:#ff0;font-weight:bold">16</span>)
+<span style="color:#007f7f"># generate images</span>
+X = model.predict(latent_points)
+<span style="color:#007f7f"># plot the result</span>
+show_plot(X, <span style="color:#ff0;font-weight:bold">4</span>)
+</code></pre></div><pre><code>WARNING:tensorflow:No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+</code></pre>
+<p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_35_1.svg" alt="svg"></p>
+<p>As conclution between two aproach above, we can see that there is no significant difference on both models. Event the result of the cGAN model looks a bit good than the GAN model, but it&rsquo;s no much different. But when we go to training time, honestly the cGAN model is quite fast than the GAN model. Unfortunately I did record time every model at that moment, so I can not explain how fast the cGAN model is compared to the GAN model.</p>
+
+  </article>
+</section>
+
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Use data to reveal the future</p>
+      
+      
+        ©
+        
+        2021
+         Rauzan Sumara 
+      
+      
+      
+        
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
