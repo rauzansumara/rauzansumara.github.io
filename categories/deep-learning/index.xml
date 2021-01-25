@@ -6,7 +6,16 @@
     <description>Recent content in deep learning on RAUZAN SUMARA&#39;S WEBSITE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improving Siamese Network Using Gabor Filter</title>
+      <link>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</guid>
+      <description>Siamese Network In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well. But for particular problems, we can’t always rely on getting more data, to solve this kind of tasks we have a new type of the CNN architecture called Siamese Networks. It uses only a few numbers of images to get better predictions. The ability to learn from very small data made Siamese networks more popular in nowadays.</description>
+    </item>
+    
     <item>
       <title>Implementation of GAN and cGAN Models</title>
       <link>https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/</link>
