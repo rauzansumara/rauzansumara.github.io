@@ -56,15 +56,6 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
-      <title></title>
-      <link>https://rauzansumara.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/about/</guid>
-      <description>Rauzan Sumara      I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia. Currently, I study my master at Warsaw University of Life Sciences in the field of Computer Science &amp;amp; Econometrics: specialization in big data analytics in Poland. My research is focused on Bayesian inference and time series analysis as well as I am interested in big data analytics and machine learning.</description>
-    </item>
-    
-    <item>
       <title>First snippet</title>
       <link>https://rauzansumara.github.io/post/snippets/first/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -90,6 +81,15 @@ pwd </description>
       
       <guid>https://rauzansumara.github.io/projects/</guid>
       <description>Nothing to see here&amp;hellip; Move along!</description>
+    </item>
+    
+    <item>
+      <title>Rauzan Sumara</title>
+      <link>https://rauzansumara.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/about/</guid>
+      <description>I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia. Currently, I study my master at Warsaw University of Life Sciences in the field of Computer Science &amp;amp; Econometrics: specialization in big data analytics in Poland. My research is focused on Bayesian inference and time series analysis as well as I am interested in big data analytics and machine learning. I am used to doing for living as a freelance data analyst.</description>
     </item>
     
     <item>
