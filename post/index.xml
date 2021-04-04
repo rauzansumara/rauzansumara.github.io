@@ -14,7 +14,7 @@
       
       <guid>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</guid>
       <description>Here we are going to talk into the detail of how to improve Siamese Network Using Gabor Filter. I will also explain and give a comparison of Siamese Network without and with Gabor Filter seperately. Full code also can be obtained from my GitHub.
-Siamese Network In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well. But for particular problems, we can’t always rely on getting more data, to solve this kind of tasks we have a new type of the CNN architecture called Siamese Networks.</description>
+Siamese Network    In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well.</description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@ Siamese Network In recent years, convolutional neural networks (CNNs) are almost
       <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://rauzansumara.github.io/post/predict-churning-customers/</guid>
-      <description>Final Project of Data Mining Course - Big Data Analysis This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+      <description>Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
 A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction</description>
     </item>
     
@@ -51,7 +51,7 @@ A manager at the bank is disturbed with more and more customers leaving their cr
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>https://rauzansumara.github.io/post/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+      <description>Introduction    This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     

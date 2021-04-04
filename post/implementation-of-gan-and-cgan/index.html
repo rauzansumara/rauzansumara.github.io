@@ -4,9 +4,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
 
     <meta name="author" content="Rauzan Sumara">
-    <meta name="description" content="Rauzan&#39;s personal website">
+    <meta name="description" content="Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my GitHub. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator (&ldquo;the artist&rdquo;) learns to create images that look real, while a discriminator (&ldquo;the art critic&rdquo;) learns to tell real images apart from fakes.">
     <meta name="keywords" content="blog,data,analyst,scientist,personal">
 
     <meta name="twitter:card" content="summary"/>
@@ -21,9 +25,6 @@
 <meta property="article:modified_time" content="2020-01-18T00:00:00+00:00" />
 
 
-    
-      <base href="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/">
-    
     <title>
   Implementation of GAN and cGAN Models · RAUZAN SUMARA&#39;S WEBSITE
 </title>
@@ -32,20 +33,22 @@
       <link rel="canonical" href="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/">
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="preload" href="https://rauzansumara.github.io/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
     
       
       
-      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
     
 
     
 
     
-
+      
+        
+        
+        <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
     
 
     
@@ -55,12 +58,29 @@
     <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-16x16.png" sizes="16x16">
 
+    <link rel="apple-touch-icon" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
+
+    
+
     <meta name="generator" content="Hugo 0.80.0" />
   </head>
 
   
   
-  <body class="colorscheme-light">
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
@@ -68,30 +88,32 @@
       RAUZAN SUMARA&#39;S WEBSITE
     </a>
     
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
-          </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/post/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
+            </li>
+          
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/post/">Blog</a>
-          </li>
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
-          </li>
-        
-      
-      
-    </ul>
+      </ul>
     
   </section>
 </nav>
@@ -102,133 +124,172 @@
   <section class="container page">
   <article>
     <header>
-      <h1>Implementation of GAN and cGAN Models</h1>
+      <h1 class="title">
+        <a class="title-link" href="https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/">
+          Implementation of GAN and cGAN Models
+        </a>
+      </h1>
     </header>
 
     <p>Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my <a href="https://github.com/rauzansumara/gan-and-cgan/tree/main"><strong>GitHub</strong></a>. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator <strong>(&ldquo;the artist&rdquo;)</strong> learns to create images that look real, while a discriminator <strong>(&ldquo;the art critic&rdquo;)</strong> learns to tell real images apart from fakes. Thanks so much to <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a>, <a href="https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/"><em>Jason Brownlee</em></a> and <a href="https://www.tensorflow.org/tutorials/generative/dcgan"><em>www.tensorflow.org</em></a> that inspired me from their articles.</p>
-<h2 id="generative-adversarial-network-gan">Generative Adversarial Network (GAN)</h2>
+<h2 id="generative-adversarial-network-gan">
+  Generative Adversarial Network (GAN)
+  <a class="heading-link" href="#generative-adversarial-network-gan">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Generative Adversarial Networks (GAN) is one of the most promising recent developments in Deep Learning. GAN, introduced by <a href="https://arxiv.org/abs/1406.2661">Ian Goodfellow and friends</a> in 2014, attacks the problem of unsupervised learning by training two deep networks, called <strong>Generator</strong> and <strong>Discriminator</strong>, that compete and cooperate with each other. In the course of training, both networks eventually learn how to perform their tasks.</p>
 <p>Figure 1 : A diagram of a generator and discriminator</p>
 <p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/gan1.png" alt="A diagram of a generator and discriminator" title="A diagram of a generator and discriminator">
 <em>Source: <a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a></em></p>
 <p>While the idea of GAN is simple in theory, it is very difficult to build a model that works. In GAN, there are two deep networks coupled together making back propagation of gradients twice as challenging. Deep Convolutional GAN (DCGAN) is one of the models that demonstrated how to build a practical GAN that is able to learn by itself how to synthesize new images.</p>
 <p>In this article, we discuss how a working GAN can be built using Keras on Tensorflow 2.x backend. We will train a DCGAN to learn how to write handwritten digits on the MNIST dataset.</p>
-<h3 id="setup-library">Setup library</h3>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> os
-<span style="color:#fff;font-weight:bold">import</span> PIL
-<span style="color:#fff;font-weight:bold">import</span> time
-<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
-<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
-<span style="color:#fff;font-weight:bold">import</span> tensorflow <span style="color:#fff;font-weight:bold">as</span> tf
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras <span style="color:#fff;font-weight:bold">import</span> datasets, Sequential, optimizers, losses
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> BatchNormalization
-<span style="color:#fff;font-weight:bold">from</span> IPython <span style="color:#fff;font-weight:bold">import</span> display
+<h3 id="setup-library">
+  Setup library
+  <a class="heading-link" href="#setup-library">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">import</span> <span style="font-weight:bold">os</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">PIL</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">time</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">np</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">matplotlib.pyplot</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">plt</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">tensorflow</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">tf</span>
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras</span> <span style="font-weight:bold">import</span> datasets, Sequential, optimizers, losses
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> BatchNormalization
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">IPython</span> <span style="font-weight:bold">import</span> display
 tf.__version__
 </code></pre></div><pre><code>'2.4.0'
 </code></pre>
-<h3 id="load-the-dataset">Load the dataset</h3>
+<h3 id="load-the-dataset">
+  Load the dataset
+  <a class="heading-link" href="#load-the-dataset">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>We will use the MNIST dataset to train the <strong>generator</strong> and the <strong>discriminator</strong>. The generator will generate handwritten digits resembling the MNIST data.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">(train_images, train_labels), (_, _) = datasets.mnist.load_data()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">(train_images, train_labels), (_, _) = datasets.mnist.load_data()
 
-train_images = train_images.reshape(train_images.shape[<span style="color:#ff0;font-weight:bold">0</span>], <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>).astype(<span style="color:#0ff;font-weight:bold">&#39;float32&#39;</span>)
-train_images = (train_images - <span style="color:#ff0;font-weight:bold">127.5</span>) / <span style="color:#ff0;font-weight:bold">127.5</span> <span style="color:#007f7f"># Normalize the images to [-1, 1]</span>
+train_images = train_images.reshape(train_images.shape[0], 28, 28, 1).astype(<span style="font-style:italic">&#39;float32&#39;</span>)
+train_images = (train_images - 127.5) / 127.5 <span style="font-style:italic"># Normalize the images to [-1, 1]</span>
 
-BUFFER_SIZE = <span style="color:#ff0;font-weight:bold">60000</span>
-BATCH_SIZE = <span style="color:#ff0;font-weight:bold">256</span>
+BUFFER_SIZE = 60000
+BATCH_SIZE = 256
 
-<span style="color:#007f7f"># Batch and shuffle the data</span>
+<span style="font-style:italic"># Batch and shuffle the data</span>
 train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
-</code></pre></div><h3 id="the-discriminator-model">The Discriminator model</h3>
+</code></pre></div><h3 id="the-discriminator-model">
+  The Discriminator model
+  <a class="heading-link" href="#the-discriminator-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>A discriminator that tells how real image is, is basically a deep Convolutional Neural Network (CNN) as shown in Figure 2. The discriminator model takes as input one 28×28 grayscale image and outputs a binary prediction as to whether the image is real (class=1) or fake (class=0). It is implemented as a modest convolutional neural network using best practices for GAN design such as using the LeakyReLU activation function, using a 2×2 stride to downsample. The activation function used in each CNN layer is a leaky ReLU. A dropout between 0.3 and 0.3 between layers prevent over fitting and memorization.</p>
 <p>Figure 2 : The Discriminator</p>
 <p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/Discriminator.png" alt="The discriminator" title="The discriminator"></p>
 <p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> make_discriminator_model():
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> make_discriminator_model():
     model = Sequential()
-    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, input_shape=[<span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>]))
+    model.add(Conv2D(64, (5, 5), strides=(2, 2), padding=<span style="font-style:italic">&#39;same&#39;</span>, input_shape=[28, 28, 1]))
     model.add(LeakyReLU())
-    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+    model.add(Dropout(0.3))
 
-    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>))
+    model.add(Conv2D(128, (5, 5), strides=(2, 2), padding=<span style="font-style:italic">&#39;same&#39;</span>))
     model.add(LeakyReLU())
-    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+    model.add(Dropout(0.3))
 
     model.add(Flatten())
-    model.add(Dense(<span style="color:#ff0;font-weight:bold">1</span>))
+    model.add(Dense(1))
 
-    <span style="color:#fff;font-weight:bold">return</span> model
-</code></pre></div><h3 id="the-generator-model">The Generator model</h3>
+    <span style="font-weight:bold">return</span> model
+</code></pre></div><h3 id="the-generator-model">
+  The Generator model
+  <a class="heading-link" href="#the-generator-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>The generator synthesizes fake images. In Figure 3, the fake image is generated from a 100-dimensional noise (uniform distribution between -1.0 to 1.0) using the inverse of convolution, called transposed convolution. Instead of fractionally-strided convolution as suggested in DCGAN, upsampling between the first three layers is used since it synthesizes more realistic handwriting images. In between layers, batch normalization stabilizes learning. The activation function after each layer is a LeakyReLU. The output of the tanh at the last layer produces the fake image.</p>
 <p>Figure 3 : The Generator</p>
 <p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/Generator.png" alt="The Generator" title="The Generator"></p>
 <p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> make_generator_model():
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> make_generator_model():
     model = Sequential()
-    model.add(Dense(<span style="color:#ff0;font-weight:bold">7</span>*<span style="color:#ff0;font-weight:bold">7</span>*<span style="color:#ff0;font-weight:bold">256</span>, use_bias=False, input_shape=(<span style="color:#ff0;font-weight:bold">100</span>,)))
+    model.add(Dense(7*7*256, use_bias=False, input_shape=(100,)))
     model.add(BatchNormalization())
     model.add(LeakyReLU())
 
-    model.add(Reshape((<span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>)))
-    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>) <span style="color:#007f7f"># Note: None is the batch size</span>
+    model.add(Reshape((7, 7, 256)))
+    <span style="font-weight:bold">assert</span> model.output_shape == (None, 7, 7, 256) <span style="font-style:italic"># Note: None is the batch size</span>
 
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
-    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">128</span>)
+    model.add(Conv2DTranspose(128, (5, 5), strides=(1, 1), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False))
+    <span style="font-weight:bold">assert</span> model.output_shape == (None, 7, 7, 128)
     model.add(BatchNormalization())
     model.add(LeakyReLU())
 
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
-    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">14</span>, <span style="color:#ff0;font-weight:bold">14</span>, <span style="color:#ff0;font-weight:bold">64</span>)
+    model.add(Conv2DTranspose(64, (5, 5), strides=(2, 2), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False))
+    <span style="font-weight:bold">assert</span> model.output_shape == (None, 14, 14, 64)
     model.add(BatchNormalization())
     model.add(LeakyReLU())
 
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">1</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False, activation=<span style="color:#0ff;font-weight:bold">&#39;tanh&#39;</span>))
-    <span style="color:#fff;font-weight:bold">assert</span> model.output_shape == (None, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">28</span>, <span style="color:#ff0;font-weight:bold">1</span>)
+    model.add(Conv2DTranspose(1, (5, 5), strides=(2, 2), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False, activation=<span style="font-style:italic">&#39;tanh&#39;</span>))
+    <span style="font-weight:bold">assert</span> model.output_shape == (None, 28, 28, 1)
 
-    <span style="color:#fff;font-weight:bold">return</span> model
-</code></pre></div><h3 id="define-the-loss-and-optimizers">Define the loss and optimizers</h3>
+    <span style="font-weight:bold">return</span> model
+</code></pre></div><h3 id="define-the-loss-and-optimizers">
+  Define the loss and optimizers
+  <a class="heading-link" href="#define-the-loss-and-optimizers">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>Define loss functions and optimizers for both models.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Define the loss and optimizers</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Define the loss and optimizers</span>
 cross_entropy = losses.BinaryCrossentropy(from_logits=True)
 
-<span style="color:#007f7f"># Discriminator loss</span>
-<span style="color:#fff;font-weight:bold">def</span> discriminator_loss(real_output, fake_output):
+<span style="font-style:italic"># Discriminator loss</span>
+<span style="font-weight:bold">def</span> discriminator_loss(real_output, fake_output):
     real_loss = cross_entropy(tf.ones_like(real_output), real_output)
     fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
     total_loss = real_loss + fake_loss
-    <span style="color:#fff;font-weight:bold">return</span> total_loss
+    <span style="font-weight:bold">return</span> total_loss
 
-<span style="color:#007f7f"># Generator loss</span>
-<span style="color:#fff;font-weight:bold">def</span> generator_loss(fake_output):
-    <span style="color:#fff;font-weight:bold">return</span> cross_entropy(tf.ones_like(fake_output), fake_output)
+<span style="font-style:italic"># Generator loss</span>
+<span style="font-weight:bold">def</span> generator_loss(fake_output):
+    <span style="font-weight:bold">return</span> cross_entropy(tf.ones_like(fake_output), fake_output)
 
-generator_optimizer = optimizers.Adam(<span style="color:#ff0;font-weight:bold">1e-4</span>)
-discriminator_optimizer = optimizers.Adam(<span style="color:#ff0;font-weight:bold">1e-4</span>)
-</code></pre></div><h3 id="training">Training</h3>
+generator_optimizer = optimizers.Adam(1e-4)
+discriminator_optimizer = optimizers.Adam(1e-4)
+</code></pre></div><h3 id="training">
+  Training
+  <a class="heading-link" href="#training">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>So far, there are no models yet. It is time to build the models for training. We need two models: 1) Discriminator Model  and 2) Generator-Discriminator model. The generator-discriminator stacked together as shown in Figure 4. The Generator part is trying to fool the Discriminator and learning from its feedback at the same time. The training parameters are the same as in the Discriminator model except for a reduced learning rate and corresponding weight decay.</p>
 <p>Training is the hardest part. We determine first if Discriminator model is correct by training it alone with real and fake images. Afterwards, the Discriminator and Generator-Discriminator model are trained one after the other.</p>
 <p>Figure 4 : The Training Process</p>
 <p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/gan2.png" alt="The Training Process" title="The Training Process"></p>
 <p><em>Source:</em> <a href="https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0"><em>Rowel Atienza</em></a></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Define the training loop</span>
-EPOCHS = <span style="color:#ff0;font-weight:bold">50</span>
-noise_dim = <span style="color:#ff0;font-weight:bold">100</span>
-num_examples_to_generate = <span style="color:#ff0;font-weight:bold">16</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Define the training loop</span>
+EPOCHS = 50
+noise_dim = 100
+num_examples_to_generate = 16
 
-<span style="color:#007f7f"># Define generator and discriminator</span>
+<span style="font-style:italic"># Define generator and discriminator</span>
 generator = make_generator_model()
 discriminator = make_discriminator_model()
 
-<span style="color:#007f7f"># We will reuse this seed overtime (so it&#39;s easier)</span>
-<span style="color:#007f7f"># to visualize progress in the animated GIF)</span>
+<span style="font-style:italic"># We will reuse this seed overtime (so it&#39;s easier)</span>
+<span style="font-style:italic"># to visualize progress in the animated GIF)</span>
 seed = tf.random.normal([num_examples_to_generate, noise_dim])
 
-<span style="color:#007f7f"># Training steps</span>
-<span style="color:#fff;font-weight:bold">def</span> train_step(images):
+<span style="font-style:italic"># Training steps</span>
+<span style="font-weight:bold">def</span> train_step(images):
     noise = tf.random.normal([BATCH_SIZE, noise_dim])
 
-    <span style="color:#fff;font-weight:bold">with</span> tf.GradientTape() <span style="color:#fff;font-weight:bold">as</span> gen_tape, tf.GradientTape() <span style="color:#fff;font-weight:bold">as</span> disc_tape:
+    <span style="font-weight:bold">with</span> tf.GradientTape() <span style="font-weight:bold">as</span> gen_tape, tf.GradientTape() <span style="font-weight:bold">as</span> disc_tape:
       generated_images = generator(noise, training=True)
 
       real_output = discriminator(images, training=True)
@@ -240,72 +301,77 @@ seed = tf.random.normal([num_examples_to_generate, noise_dim])
     gradients_of_generator = gen_tape.gradient(gen_loss, generator.trainable_variables)
     gradients_of_discriminator = disc_tape.gradient(disc_loss, discriminator.trainable_variables)
 
-    generator_optimizer.apply_gradients(<span style="color:#fff;font-weight:bold">zip</span>(gradients_of_generator, generator.trainable_variables))
-    discriminator_optimizer.apply_gradients(<span style="color:#fff;font-weight:bold">zip</span>(gradients_of_discriminator, discriminator.trainable_variables))
+    generator_optimizer.apply_gradients(zip(gradients_of_generator, generator.trainable_variables))
+    discriminator_optimizer.apply_gradients(zip(gradients_of_discriminator, discriminator.trainable_variables))
 
 
-<span style="color:#fff;font-weight:bold">def</span> train(dataset, epochs):
-  <span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(epochs):
+<span style="font-weight:bold">def</span> train(dataset, epochs):
+  <span style="font-weight:bold">for</span> epoch <span style="font-weight:bold">in</span> range(epochs):
     start = time.time()
 
-    <span style="color:#fff;font-weight:bold">for</span> image_batch in dataset:
+    <span style="font-weight:bold">for</span> image_batch <span style="font-weight:bold">in</span> dataset:
       train_step(image_batch)
 
-    <span style="color:#007f7f"># Produce images for the GIF as we go</span>
+    <span style="font-style:italic"># Produce images for the GIF as we go</span>
     display.clear_output(wait=True)
     generate_and_save_images(generator,
-                             epoch + <span style="color:#ff0;font-weight:bold">1</span>,
+                             epoch + 1,
                              seed)
 
-    <span style="color:#007f7f"># Save the model every 15 epochs</span>
-    <span style="color:#fff;font-weight:bold">if</span> (epoch + <span style="color:#ff0;font-weight:bold">1</span>) % <span style="color:#ff0;font-weight:bold">15</span> == <span style="color:#ff0;font-weight:bold">0</span>:
+    <span style="font-style:italic"># Save the model every 15 epochs</span>
+    <span style="font-weight:bold">if</span> (epoch + 1) % 15 == 0:
       checkpoint.save(file_prefix = checkpoint_prefix)
 
-    <span style="color:#fff;font-weight:bold">print</span> (<span style="color:#0ff;font-weight:bold">&#39;Time for epoch {} is {} sec&#39;</span>.format(epoch + <span style="color:#ff0;font-weight:bold">1</span>, time.time()-start))
+    <span style="font-weight:bold">print</span> (<span style="font-style:italic">&#39;Time for epoch {} is {} sec&#39;</span>.format(epoch + 1, time.time()-start))
 
-  <span style="color:#007f7f"># Generate after the final epoch</span>
+  <span style="font-style:italic"># Generate after the final epoch</span>
   display.clear_output(wait=True)
   generate_and_save_images(generator,
                            epochs,
                            seed)
 
-<span style="color:#007f7f"># Generate and save images</span>
-<span style="color:#fff;font-weight:bold">def</span> generate_and_save_images(model, epoch, test_input):
-  <span style="color:#007f7f"># Notice `training` is set to False.</span>
-  <span style="color:#007f7f"># This is so all layers run in inference mode (batchnorm).</span>
+<span style="font-style:italic"># Generate and save images</span>
+<span style="font-weight:bold">def</span> generate_and_save_images(model, epoch, test_input):
+  <span style="font-style:italic"># Notice `training` is set to False.</span>
+  <span style="font-style:italic"># This is so all layers run in inference mode (batchnorm).</span>
   predictions = model(test_input, training=False)
 
-  fig = plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">4</span>,<span style="color:#ff0;font-weight:bold">4</span>))
+  fig = plt.figure(figsize=(4,4))
 
-  <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(predictions.shape[<span style="color:#ff0;font-weight:bold">0</span>]):
-      plt.subplot(<span style="color:#ff0;font-weight:bold">4</span>, <span style="color:#ff0;font-weight:bold">4</span>, i+<span style="color:#ff0;font-weight:bold">1</span>)
-      plt.imshow(predictions[i, :, :, <span style="color:#ff0;font-weight:bold">0</span>] * <span style="color:#ff0;font-weight:bold">127.5</span> + <span style="color:#ff0;font-weight:bold">127.5</span>, cmap=<span style="color:#0ff;font-weight:bold">&#39;gray&#39;</span>)
-      plt.axis(<span style="color:#0ff;font-weight:bold">&#39;off&#39;</span>)
+  <span style="font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(predictions.shape[0]):
+      plt.subplot(4, 4, i+1)
+      plt.imshow(predictions[i, :, :, 0] * 127.5 + 127.5, cmap=<span style="font-style:italic">&#39;gray&#39;</span>)
+      plt.axis(<span style="font-style:italic">&#39;off&#39;</span>)
 
-  plt.savefig(<span style="color:#0ff;font-weight:bold">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch))
+  plt.savefig(<span style="font-style:italic">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch))
   plt.show()
 </code></pre></div><p>Call the <code>train()</code> method defined above to train the generator and discriminator simultaneously. Note, training GANs can be tricky. It&rsquo;s important that the generator and discriminator do not overpower each other (e.g., that they train at a similar rate).</p>
 <p>At the beginning of the training, the generated images look like random noise. As training progresses, the generated digits will look increasingly real. After about 50 epochs, they resemble MNIST digits. This may take about 3 minutes / epoch with the default settings on Colab.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># This notebook also demonstrates how to save and restore models, </span>
-<span style="color:#007f7f"># which can be helpful in case a long running training task is interrupted.</span>
-checkpoint_dir = <span style="color:#0ff;font-weight:bold">&#39;./training_checkpoints&#39;</span>
-checkpoint_prefix = os.path.join(checkpoint_dir, <span style="color:#0ff;font-weight:bold">&#34;ckpt&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># This notebook also demonstrates how to save and restore models, </span>
+<span style="font-style:italic"># which can be helpful in case a long running training task is interrupted.</span>
+checkpoint_dir = <span style="font-style:italic">&#39;./training_checkpoints&#39;</span>
+checkpoint_prefix = os.path.join(checkpoint_dir, <span style="font-style:italic">&#34;ckpt&#34;</span>)
 checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
                                  discriminator_optimizer=discriminator_optimizer,
                                  generator=generator,
                                  discriminator=discriminator)
 
-train(train_dataset, EPOCHS) <span style="color:#007f7f"># train process</span>
+train(train_dataset, EPOCHS) <span style="font-style:italic"># train process</span>
 
-<span style="color:#007f7f"># Display a single image using the epoch number</span>
-<span style="color:#fff;font-weight:bold">def</span> display_image(epoch_no):
-    <span style="color:#fff;font-weight:bold">return</span> PIL.Image.open(<span style="color:#0ff;font-weight:bold">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch_no))
+<span style="font-style:italic"># Display a single image using the epoch number</span>
+<span style="font-weight:bold">def</span> display_image(epoch_no):
+    <span style="font-weight:bold">return</span> PIL.Image.open(<span style="font-style:italic">&#39;image_at_epoch_{:04d}.png&#39;</span>.format(epoch_no))
 
-display_image(EPOCHS) <span style="color:#007f7f"># display created images</span>
+display_image(EPOCHS) <span style="font-style:italic"># display created images</span>
 </code></pre></div><p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_17_0.svg" alt="svg"></p>
 <p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_17_1.png" alt="png"></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
-</code></pre></div><h2 id="conditional-generative-adversarial-network-cgan">Conditional Generative Adversarial Network (cGAN)</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+</code></pre></div><h2 id="conditional-generative-adversarial-network-cgan">
+  Conditional Generative Adversarial Network (cGAN)
+  <a class="heading-link" href="#conditional-generative-adversarial-network-cgan">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Generative Adversarial Networks, or GANs, are an architecture for training generative models, such as deep convolutional neural networks for generating images. Although GAN models are capable of generating new random plausible examples for a given dataset, there is no way to control the types of images that are generated other than trying to figure out the complex relationship between the latent space input to the generator and the generated images.</p>
 <p>The conditional generative adversarial network, or cGAN for short, is a type of GAN that involves the conditional generation of images by a generator model. Image generation can be conditional on a class label, if available, allowing the targeted generated of images of a given type.</p>
 <p>For example, the MNIST handwritten digit dataset has class labels of the corresponding integers, the CIFAR-10 small object photograph dataset has class labels for the corresponding objects in the photographs, and the Fashion-MNIST clothing dataset has class labels for the corresponding items of clothing.</p>
@@ -321,106 +387,136 @@ display_image(EPOCHS) <span style="color:#007f7f"># display created images</span
 <p><img src="https://raw.githubusercontent.com/rauzansumara/gan-and-cgan/master/images/cgan.png" alt="The cGAN" title="The cGAN"></p>
 <p><em>Source:</em> <a href="https://machinelearningmastery.com/how-to-develop-a-conditional-generative-adversarial-network-from-scratch/"><em>Jason Brownlee</em></a></p>
 <p>And now we will also discuss how cGAN can be built using Keras on Tensorflow 2.x backend. We will train a the model to learn how to write handwritten digits on the MNIST dataset as well.</p>
-<h3 id="setup-library-1">Setup library</h3>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Import library</span>
-<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> expand_dims
-<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> zeros
-<span style="color:#fff;font-weight:bold">from</span> numpy <span style="color:#fff;font-weight:bold">import</span> ones
-<span style="color:#fff;font-weight:bold">from</span> matplotlib <span style="color:#fff;font-weight:bold">import</span> pyplot
-<span style="color:#fff;font-weight:bold">from</span> numpy.random <span style="color:#fff;font-weight:bold">import</span> randn
-<span style="color:#fff;font-weight:bold">from</span> numpy.random <span style="color:#fff;font-weight:bold">import</span> randint
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras <span style="color:#fff;font-weight:bold">import</span> datasets, Sequential, optimizers, losses
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.layers <span style="color:#fff;font-weight:bold">import</span> BatchNormalization
-<span style="color:#fff;font-weight:bold">from</span> tensorflow.keras.models <span style="color:#fff;font-weight:bold">import</span> load_model
+<h3 id="setup-library-1">
+  Setup library
+  <a class="heading-link" href="#setup-library-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Import library</span>
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">import</span> expand_dims
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">import</span> zeros
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">import</span> ones
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">matplotlib</span> <span style="font-weight:bold">import</span> pyplot
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">numpy.random</span> <span style="font-weight:bold">import</span> randn
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">numpy.random</span> <span style="font-weight:bold">import</span> randint
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras</span> <span style="font-weight:bold">import</span> datasets, Sequential, optimizers, losses
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> Dense, Reshape, Conv2DTranspose, Conv2D
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> LeakyReLU, Dropout, Flatten
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.layers</span> <span style="font-weight:bold">import</span> BatchNormalization
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">tensorflow.keras.models</span> <span style="font-weight:bold">import</span> load_model
 
 
-</code></pre></div><h3 id="load-the-dataset-1">Load the dataset</h3>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># example of loading the MNIST dataset</span>
+</code></pre></div><h3 id="load-the-dataset-1">
+  Load the dataset
+  <a class="heading-link" href="#load-the-dataset-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># example of loading the MNIST dataset</span>
 (trainX, trainy), (testX, testy) = datasets.mnist.load_data()
 
-<span style="color:#007f7f"># summarize the shape of the dataset</span>
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Train&#39;</span>, trainX.shape, trainy.shape)
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Test&#39;</span>, testX.shape, testy.shape)
+<span style="font-style:italic"># summarize the shape of the dataset</span>
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Train&#39;</span>, trainX.shape, trainy.shape)
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Test&#39;</span>, testX.shape, testy.shape)
 </code></pre></div><pre><code>Train (60000, 28, 28) (60000,)
 Test (10000, 28, 28) (10000,)
 </code></pre>
-<h3 id="define-the-discriminator-model">Define the discriminator model</h3>
+<h3 id="define-the-discriminator-model">
+  Define the discriminator model
+  <a class="heading-link" href="#define-the-discriminator-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>The discriminator model takes as input one 28×28 grayscale image and outputs a binary prediction as to whether the image is real (class=1) or fake (class=0). It is implemented as a modest convolutional neural network using best practices for GAN design such as using the LeakyReLU activation function, using a 2×2 stride to downsample, and the adam version of stochastic gradient descent with a learning rate of 0.0001.</p>
 <p>The <em>define_discriminator()</em> function below implements this, defining and compiling the discriminator model and returning it. The input shape of the image is parameterized as a default function argument in case you want to re-use the function for your own image data later.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># define the standalone discriminator model</span>
-<span style="color:#fff;font-weight:bold">def</span> define_discriminator(in_shape=(<span style="color:#ff0;font-weight:bold">28</span>,<span style="color:#ff0;font-weight:bold">28</span>,<span style="color:#ff0;font-weight:bold">1</span>)):
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># define the standalone discriminator model</span>
+<span style="font-weight:bold">def</span> define_discriminator(in_shape=(28,28,1)):
     model = Sequential()
 
-    <span style="color:#007f7f"># downsample</span>
-    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, input_shape=in_shape))
+    <span style="font-style:italic"># downsample</span>
+    model.add(Conv2D(64, (5,5), strides=(2,2), padding=<span style="font-style:italic">&#39;same&#39;</span>, input_shape=in_shape))
     model.add(LeakyReLU())
-    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+    model.add(Dropout(0.3))
 
-    <span style="color:#007f7f"># downsample</span>
-    model.add(Conv2D(<span style="color:#ff0;font-weight:bold">128</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>))
+    <span style="font-style:italic"># downsample</span>
+    model.add(Conv2D(128, (5,5), strides=(2,2), padding=<span style="font-style:italic">&#39;same&#39;</span>))
     model.add(LeakyReLU())
-    model.add(Dropout(<span style="color:#ff0;font-weight:bold">0.3</span>))
+    model.add(Dropout(0.3))
 
-    <span style="color:#007f7f"># classifier</span>
+    <span style="font-style:italic"># classifier</span>
     model.add(Flatten())
-    model.add(Dense(<span style="color:#ff0;font-weight:bold">1</span>, activation=<span style="color:#0ff;font-weight:bold">&#39;sigmoid&#39;</span>))
+    model.add(Dense(1, activation=<span style="font-style:italic">&#39;sigmoid&#39;</span>))
     
-    <span style="color:#007f7f"># compile model</span>
-    opt = optimizers.Adam(lr=<span style="color:#ff0;font-weight:bold">1e-4</span>)
-    model.compile(loss=<span style="color:#0ff;font-weight:bold">&#39;binary_crossentropy&#39;</span>, optimizer=opt, metrics=[<span style="color:#0ff;font-weight:bold">&#39;accuracy&#39;</span>])
-    <span style="color:#fff;font-weight:bold">return</span> model
-</code></pre></div><h3 id="define-the-generator-model">Define the generator model</h3>
+    <span style="font-style:italic"># compile model</span>
+    opt = optimizers.Adam(lr=1e-4)
+    model.compile(loss=<span style="font-style:italic">&#39;binary_crossentropy&#39;</span>, optimizer=opt, metrics=[<span style="font-style:italic">&#39;accuracy&#39;</span>])
+    <span style="font-weight:bold">return</span> model
+</code></pre></div><h3 id="define-the-generator-model">
+  Define the generator model
+  <a class="heading-link" href="#define-the-generator-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>The generator model takes as input a point in the latent space and outputs a single 28×28 grayscale image. This is achieved by using a fully connected layer to interpret the point in the latent space and provide sufficient activations that can be reshaped into many copies (in this case 128) of a low-resolution version of the output image (e.g. 7×7). This is then upsampled twice, doubling the size and quadrupling the area of the activations each time using transpose convolutional layers. The model uses best practices such as the LeakyReLU activation, a kernel size that is a factor of the stride size, and a hyperbolic tangent (tanh) activation function in the output layer.</p>
 <p>The define_generator() function below defines the generator model, but intentionally does not compile it as it is not trained directly, then returns the model. The size of the latent space is parameterized as a function argument.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># define the standalone generator model</span>
-<span style="color:#fff;font-weight:bold">def</span> define_generator(latent_dim):
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># define the standalone generator model</span>
+<span style="font-weight:bold">def</span> define_generator(latent_dim):
     model = Sequential()
 
-    <span style="color:#007f7f"># foundation for 7x7 image</span>
-    n_nodes = <span style="color:#ff0;font-weight:bold">256</span> * <span style="color:#ff0;font-weight:bold">7</span> * <span style="color:#ff0;font-weight:bold">7</span>
+    <span style="font-style:italic"># foundation for 7x7 image</span>
+    n_nodes = 256 * 7 * 7
     model.add(Dense(n_nodes, use_bias=False, input_dim=latent_dim))
     model.add(BatchNormalization())
     model.add(LeakyReLU())
-    model.add(Reshape((<span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">256</span>)))
+    model.add(Reshape((7, 7, 256)))
 
-    <span style="color:#007f7f"># upsample to 14x14</span>
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">1</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    <span style="font-style:italic"># upsample to 14x14</span>
+    model.add(Conv2DTranspose(64, (5,5), strides=(1,1), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False))
     model.add(BatchNormalization())
     model.add(LeakyReLU())
 
-    <span style="color:#007f7f"># upsample to 28x28</span>
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">64</span>, (<span style="color:#ff0;font-weight:bold">5</span>,<span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False))
+    <span style="font-style:italic"># upsample to 28x28</span>
+    model.add(Conv2DTranspose(64, (5,5), strides=(2,2), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False))
     model.add(BatchNormalization())
     model.add(LeakyReLU())
 
-    <span style="color:#007f7f"># generate</span>
-    model.add(Conv2DTranspose(<span style="color:#ff0;font-weight:bold">1</span>, (<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">5</span>), strides=(<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">2</span>), padding=<span style="color:#0ff;font-weight:bold">&#39;same&#39;</span>, use_bias=False, activation=<span style="color:#0ff;font-weight:bold">&#39;tanh&#39;</span>))
+    <span style="font-style:italic"># generate</span>
+    model.add(Conv2DTranspose(1, (5, 5), strides=(2, 2), padding=<span style="font-style:italic">&#39;same&#39;</span>, use_bias=False, activation=<span style="font-style:italic">&#39;tanh&#39;</span>))
 
-    <span style="color:#fff;font-weight:bold">return</span> model
-</code></pre></div><h3 id="the-cgan-model">The cGAN model</h3>
+    <span style="font-weight:bold">return</span> model
+</code></pre></div><h3 id="the-cgan-model">
+  The cGAN model
+  <a class="heading-link" href="#the-cgan-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>Next, a cGAN model can be defined that combines both the generator model and the discriminator model into one larger model. This larger model will be used to train the model weights in the generator, using the output and error calculated by the discriminator model. The discriminator model is trained separately, and as such, the model weights are marked as not trainable in this larger GAN model to ensure that only the weights of the generator model are updated. This change to the trainability of the discriminator weights only has an effect when training the combined GAN model, not when training the discriminator standalone.</p>
 <p>This larger cGAN model takes as input a point in the latent space, uses the generator model to generate an image which is fed as input to the discriminator model, then is output or classified as real or fake.</p>
 <p>The <em>define_gan()</em> function below implements this, taking the already-defined generator and discriminator models as input.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> define_gan(generator, discriminator):
-    <span style="color:#007f7f"># make weights in the discriminator not trainable</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> define_gan(generator, discriminator):
+    <span style="font-style:italic"># make weights in the discriminator not trainable</span>
     discriminator.trainable = False
 
-    <span style="color:#007f7f"># connect them</span>
+    <span style="font-style:italic"># connect them</span>
     model = Sequential()
 
-    <span style="color:#007f7f"># add generator</span>
+    <span style="font-style:italic"># add generator</span>
     model.add(generator)
 
-    <span style="color:#007f7f"># add the discriminator</span>
+    <span style="font-style:italic"># add the discriminator</span>
     model.add(discriminator)
     
-    <span style="color:#007f7f"># compile model</span>
-    opt = optimizers.Adam(lr=<span style="color:#ff0;font-weight:bold">1e-4</span>)
-    model.compile(loss=<span style="color:#0ff;font-weight:bold">&#39;binary_crossentropy&#39;</span>, optimizer=opt)
-    <span style="color:#fff;font-weight:bold">return</span> model
-</code></pre></div><h3 id="load-and-generate-function">Load and generate function</h3>
+    <span style="font-style:italic"># compile model</span>
+    opt = optimizers.Adam(lr=1e-4)
+    model.compile(loss=<span style="font-style:italic">&#39;binary_crossentropy&#39;</span>, optimizer=opt)
+    <span style="font-weight:bold">return</span> model
+</code></pre></div><h3 id="load-and-generate-function">
+  Load and generate function
+  <a class="heading-link" href="#load-and-generate-function">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>Now that we have defined the cGAN model, we need to train it. But, before we can train the model, we require input data.</p>
 <ul>
 <li>
@@ -436,89 +532,94 @@ Test (10000, 28, 28) (10000,)
 <p>Next, we need to use the points in the latent space as input to the generator in order to generate new images. <em>The generate_fake_samples()</em> function below implements this, taking the generator model and size of the latent space as arguments, then generating points in the latent space and using them as input to the generator model. The function returns the generated images and their corresponding class label for the discriminator model, specifically class=0 to indicate they are fake or generated.</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># load real samples</span>
-<span style="color:#fff;font-weight:bold">def</span> load_real_samples():
-	<span style="color:#007f7f"># load dataset</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># load real samples</span>
+<span style="font-weight:bold">def</span> load_real_samples():
+	<span style="font-style:italic"># load dataset</span>
 	(trainX, _), (_, _) = datasets.mnist.load_data()
-	<span style="color:#007f7f"># expand to 3d, e.g. add channels</span>
-	X = expand_dims(trainX, axis=-<span style="color:#ff0;font-weight:bold">1</span>)
-	<span style="color:#007f7f"># convert from ints to floats</span>
-	X = X.astype(<span style="color:#0ff;font-weight:bold">&#39;float32&#39;</span>)
-	<span style="color:#007f7f"># scale from [0,255] to [-1,1]</span>
-	X = (X - <span style="color:#ff0;font-weight:bold">127.5</span>) / <span style="color:#ff0;font-weight:bold">127.5</span>
-	<span style="color:#fff;font-weight:bold">return</span> X
+	<span style="font-style:italic"># expand to 3d, e.g. add channels</span>
+	X = expand_dims(trainX, axis=-1)
+	<span style="font-style:italic"># convert from ints to floats</span>
+	X = X.astype(<span style="font-style:italic">&#39;float32&#39;</span>)
+	<span style="font-style:italic"># scale from [0,255] to [-1,1]</span>
+	X = (X - 127.5) / 127.5
+	<span style="font-weight:bold">return</span> X
 
-<span style="color:#007f7f"># select real samples</span>
-<span style="color:#fff;font-weight:bold">def</span> generate_real_samples(dataset, n_samples):
-	<span style="color:#007f7f"># choose random instances</span>
-	ix = randint(<span style="color:#ff0;font-weight:bold">0</span>, dataset.shape[<span style="color:#ff0;font-weight:bold">0</span>], n_samples)
-	<span style="color:#007f7f"># select images</span>
+<span style="font-style:italic"># select real samples</span>
+<span style="font-weight:bold">def</span> generate_real_samples(dataset, n_samples):
+	<span style="font-style:italic"># choose random instances</span>
+	ix = randint(0, dataset.shape[0], n_samples)
+	<span style="font-style:italic"># select images</span>
 	X = dataset[ix]
-	<span style="color:#007f7f"># generate class labels</span>
-	y = ones((n_samples, <span style="color:#ff0;font-weight:bold">1</span>))
-	<span style="color:#fff;font-weight:bold">return</span> X, y
+	<span style="font-style:italic"># generate class labels</span>
+	y = ones((n_samples, 1))
+	<span style="font-weight:bold">return</span> X, y
 
-<span style="color:#007f7f"># generate points in latent space as input for the generator</span>
-<span style="color:#fff;font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
-	<span style="color:#007f7f"># generate points in the latent space</span>
+<span style="font-style:italic"># generate points in latent space as input for the generator</span>
+<span style="font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
+	<span style="font-style:italic"># generate points in the latent space</span>
 	x_input = randn(latent_dim * n_samples)
-	<span style="color:#007f7f"># reshape into a batch of inputs for the network</span>
+	<span style="font-style:italic"># reshape into a batch of inputs for the network</span>
 	x_input = x_input.reshape(n_samples, latent_dim)
-	<span style="color:#fff;font-weight:bold">return</span> x_input
+	<span style="font-weight:bold">return</span> x_input
 
-<span style="color:#007f7f"># use the generator to generate n fake examples, with class labels</span>
-<span style="color:#fff;font-weight:bold">def</span> generate_fake_samples(generator, latent_dim, n_samples):
-	<span style="color:#007f7f"># generate points in latent space</span>
+<span style="font-style:italic"># use the generator to generate n fake examples, with class labels</span>
+<span style="font-weight:bold">def</span> generate_fake_samples(generator, latent_dim, n_samples):
+	<span style="font-style:italic"># generate points in latent space</span>
 	x_input = generate_latent_points(latent_dim, n_samples)
-	<span style="color:#007f7f"># predict outputs</span>
+	<span style="font-style:italic"># predict outputs</span>
 	X = generator.predict(x_input)
-	<span style="color:#007f7f"># create class labels</span>
-	y = zeros((n_samples, <span style="color:#ff0;font-weight:bold">1</span>))
-	<span style="color:#fff;font-weight:bold">return</span> X, y
-</code></pre></div><h3 id="training-model">Training model</h3>
+	<span style="font-style:italic"># create class labels</span>
+	y = zeros((n_samples, 1))
+	<span style="font-weight:bold">return</span> X, y
+</code></pre></div><h3 id="training-model">
+  Training model
+  <a class="heading-link" href="#training-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>We are now ready to fit the cGAN models.</p>
 <p>The model is fit for 100 training epochs, which is arbitrary, as the model begins generating plausible handwriten digits after perhaps 20 epochs. A batch size of 128 samples is used, and each training epoch involves 60,000/128, or about 468 batches of real and fake samples and updates to the model.</p>
 <p>First, the discriminator model is updated for a half batch of real samples, then a half batch of fake samples, together forming one batch of weight updates. The generator is then updated via the composite gan model. Importantly, the class label is set to 1 or real for the fake samples. This has the effect of updating the generator toward getting better at generating real samples on the next batch.</p>
 <p>The <em>train()</em> function below implements this, taking the defined models, dataset, and size of the latent dimension as arguments and parameterizing the number of epochs and batch size with default arguments. The generator model is saved at the end of training.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># train the generator and discriminator</span>
-<span style="color:#fff;font-weight:bold">def</span> train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=<span style="color:#ff0;font-weight:bold">100</span>, n_batch=<span style="color:#ff0;font-weight:bold">128</span>):
-	bat_per_epo = <span style="color:#fff;font-weight:bold">int</span>(dataset.shape[<span style="color:#ff0;font-weight:bold">0</span>] / n_batch)
-	half_batch = <span style="color:#fff;font-weight:bold">int</span>(n_batch / <span style="color:#ff0;font-weight:bold">2</span>)
-	<span style="color:#007f7f"># manually enumerate epochs</span>
-	<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n_epochs):
-		<span style="color:#007f7f"># enumerate batches over the training set</span>
-		<span style="color:#fff;font-weight:bold">for</span> j in <span style="color:#fff;font-weight:bold">range</span>(bat_per_epo):
-			<span style="color:#007f7f"># get randomly selected &#39;real&#39; samples</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># train the generator and discriminator</span>
+<span style="font-weight:bold">def</span> train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batch=128):
+	bat_per_epo = int(dataset.shape[0] / n_batch)
+	half_batch = int(n_batch / 2)
+	<span style="font-style:italic"># manually enumerate epochs</span>
+	<span style="font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(n_epochs):
+		<span style="font-style:italic"># enumerate batches over the training set</span>
+		<span style="font-weight:bold">for</span> j <span style="font-weight:bold">in</span> range(bat_per_epo):
+			<span style="font-style:italic"># get randomly selected &#39;real&#39; samples</span>
 			X_real, y_real = generate_real_samples(dataset, half_batch)
-			<span style="color:#007f7f"># update discriminator model weights</span>
+			<span style="font-style:italic"># update discriminator model weights</span>
 			d_loss1, _ = d_model.train_on_batch(X_real, y_real)
-			<span style="color:#007f7f"># generate &#39;fake&#39; examples</span>
+			<span style="font-style:italic"># generate &#39;fake&#39; examples</span>
 			X_fake, y_fake = generate_fake_samples(g_model, latent_dim, half_batch)
-			<span style="color:#007f7f"># update discriminator model weights</span>
+			<span style="font-style:italic"># update discriminator model weights</span>
 			d_loss2, _ = d_model.train_on_batch(X_fake, y_fake)
-			<span style="color:#007f7f"># prepare points in latent space as input for the generator</span>
+			<span style="font-style:italic"># prepare points in latent space as input for the generator</span>
 			X_gan = generate_latent_points(latent_dim, n_batch)
-			<span style="color:#007f7f"># create inverted labels for the fake samples</span>
-			y_gan = ones((n_batch, <span style="color:#ff0;font-weight:bold">1</span>))
-			<span style="color:#007f7f"># update the generator via the discriminator&#39;s error</span>
+			<span style="font-style:italic"># create inverted labels for the fake samples</span>
+			y_gan = ones((n_batch, 1))
+			<span style="font-style:italic"># update the generator via the discriminator&#39;s error</span>
 			g_loss = gan_model.train_on_batch(X_gan, y_gan)
-			<span style="color:#007f7f"># summarize loss on this batch</span>
-			<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;&gt;</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">, </span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">/</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">, d1=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold">, d2=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold"> g=</span><span style="color:#0ff;font-weight:bold">%.3f</span><span style="color:#0ff;font-weight:bold">&#39;</span> %
-				(i+<span style="color:#ff0;font-weight:bold">1</span>, j+<span style="color:#ff0;font-weight:bold">1</span>, bat_per_epo, d_loss1, d_loss2, g_loss))
-	<span style="color:#007f7f"># save the generator model</span>
-	g_model.save(<span style="color:#0ff;font-weight:bold">&#39;generator.h5&#39;</span>)
+			<span style="font-style:italic"># summarize loss on this batch</span>
+			<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;&gt;</span><span style="font-weight:bold;font-style:italic">%d</span><span style="font-style:italic">, </span><span style="font-weight:bold;font-style:italic">%d</span><span style="font-style:italic">/</span><span style="font-weight:bold;font-style:italic">%d</span><span style="font-style:italic">, d1=</span><span style="font-weight:bold;font-style:italic">%.3f</span><span style="font-style:italic">, d2=</span><span style="font-weight:bold;font-style:italic">%.3f</span><span style="font-style:italic"> g=</span><span style="font-weight:bold;font-style:italic">%.3f</span><span style="font-style:italic">&#39;</span> %
+				(i+1, j+1, bat_per_epo, d_loss1, d_loss2, g_loss))
+	<span style="font-style:italic"># save the generator model</span>
+	g_model.save(<span style="font-style:italic">&#39;generator.h5&#39;</span>)
  
-<span style="color:#007f7f"># size of the latent space</span>
-latent_dim = <span style="color:#ff0;font-weight:bold">16</span>
-<span style="color:#007f7f"># create the discriminator</span>
+<span style="font-style:italic"># size of the latent space</span>
+latent_dim = 16
+<span style="font-style:italic"># create the discriminator</span>
 discriminator = define_discriminator()
-<span style="color:#007f7f"># create the generator</span>
+<span style="font-style:italic"># create the generator</span>
 generator = define_generator(latent_dim)
-<span style="color:#007f7f"># create the gan</span>
+<span style="font-style:italic"># create the gan</span>
 gan_model = define_gan(generator, discriminator)
-<span style="color:#007f7f"># load image data</span>
+<span style="font-style:italic"># load image data</span>
 dataset = load_real_samples()
-<span style="color:#007f7f"># train model</span>
+<span style="font-style:italic"># train model</span>
 train(generator, discriminator, gan_model, dataset, latent_dim)
 
 </code></pre></div><pre><code>&gt;99, 458/468, d1=0.655, d2=0.662 g=0.804
@@ -1001,35 +1102,40 @@ train(generator, discriminator, gan_model, dataset, latent_dim)
 &gt;100, 467/468, d1=0.645, d2=0.566 g=0.870
 &gt;100, 468/468, d1=0.656, d2=0.677 g=0.790
 </code></pre>
-<h3 id="generate-16-random-handwritten-digits">Generate 16 random handwritten digits</h3>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># generate points in latent space as input for the generator</span>
-<span style="color:#fff;font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
-	<span style="color:#007f7f"># generate points in the latent space</span>
+<h3 id="generate-16-random-handwritten-digits">
+  Generate 16 random handwritten digits
+  <a class="heading-link" href="#generate-16-random-handwritten-digits">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># generate points in latent space as input for the generator</span>
+<span style="font-weight:bold">def</span> generate_latent_points(latent_dim, n_samples):
+	<span style="font-style:italic"># generate points in the latent space</span>
 	x_input = randn(latent_dim * n_samples)
-	<span style="color:#007f7f"># reshape into a batch of inputs for the network</span>
+	<span style="font-style:italic"># reshape into a batch of inputs for the network</span>
 	x_input = x_input.reshape(n_samples, latent_dim)
-	<span style="color:#fff;font-weight:bold">return</span> x_input
+	<span style="font-weight:bold">return</span> x_input
  
-<span style="color:#007f7f"># create and save a plot of generated images (reversed grayscale)</span>
-<span style="color:#fff;font-weight:bold">def</span> show_plot(examples, n):
-	<span style="color:#007f7f"># plot images</span>
-	<span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(n * n):
-		<span style="color:#007f7f"># define subplot</span>
-		pyplot.subplot(n, n, <span style="color:#ff0;font-weight:bold">1</span> + i)
-		<span style="color:#007f7f"># turn off axis</span>
-		pyplot.axis(<span style="color:#0ff;font-weight:bold">&#39;off&#39;</span>)
-		<span style="color:#007f7f"># plot raw pixel data</span>
-		pyplot.imshow(examples[i, :, :, <span style="color:#ff0;font-weight:bold">0</span>], cmap=<span style="color:#0ff;font-weight:bold">&#39;gray_r&#39;</span>)
+<span style="font-style:italic"># create and save a plot of generated images (reversed grayscale)</span>
+<span style="font-weight:bold">def</span> show_plot(examples, n):
+	<span style="font-style:italic"># plot images</span>
+	<span style="font-weight:bold">for</span> i <span style="font-weight:bold">in</span> range(n * n):
+		<span style="font-style:italic"># define subplot</span>
+		pyplot.subplot(n, n, 1 + i)
+		<span style="font-style:italic"># turn off axis</span>
+		pyplot.axis(<span style="font-style:italic">&#39;off&#39;</span>)
+		<span style="font-style:italic"># plot raw pixel data</span>
+		pyplot.imshow(examples[i, :, :, 0], cmap=<span style="font-style:italic">&#39;gray_r&#39;</span>)
 	pyplot.show()
  
-<span style="color:#007f7f"># load model</span>
-model = load_model(<span style="color:#0ff;font-weight:bold">&#39;generator.h5&#39;</span>)
-<span style="color:#007f7f"># generate images</span>
-latent_points = generate_latent_points(<span style="color:#ff0;font-weight:bold">16</span>, <span style="color:#ff0;font-weight:bold">16</span>)
-<span style="color:#007f7f"># generate images</span>
+<span style="font-style:italic"># load model</span>
+model = load_model(<span style="font-style:italic">&#39;generator.h5&#39;</span>)
+<span style="font-style:italic"># generate images</span>
+latent_points = generate_latent_points(16, 16)
+<span style="font-style:italic"># generate images</span>
 X = model.predict(latent_points)
-<span style="color:#007f7f"># plot the result</span>
-show_plot(X, <span style="color:#ff0;font-weight:bold">4</span>)
+<span style="font-style:italic"># plot the result</span>
+show_plot(X, 4)
 </code></pre></div><pre><code>WARNING:tensorflow:No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/Impelentation_of_GAN_and_cGAN/output_35_1.svg" alt="svg"></p>
@@ -1038,6 +1144,7 @@ show_plot(X, <span style="color:#ff0;font-weight:bold">4</span>)
   </article>
 </section>
 
+  
 
       </div>
 
@@ -1060,7 +1167,15 @@ show_plot(X, <span style="color:#ff0;font-weight:bold">4</span>)
     </section>
   </footer>
 
+
     </main>
+
+    
+      
+      <script src="https://rauzansumara.github.io/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    
+
+    
 
     
 
@@ -1079,6 +1194,15 @@ fathom('trackPageview');
 </script>
 
 
+    
+
+    
+
+    
+
+    
+
+    
   </body>
 
 </html>

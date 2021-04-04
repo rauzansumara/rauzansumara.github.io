@@ -4,18 +4,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
 
     <meta name="author" content="Rauzan Sumara">
-    <meta name="description" content="Rauzan&#39;s personal website">
+    <meta name="description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction">
     <meta name="keywords" content="blog,data,analyst,scientist,personal">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Predict Churning Customers"/>
-<meta name="twitter:description" content="Final Project of Data Mining Course - Big Data Analysis This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+<meta name="twitter:description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
 A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction"/>
 
     <meta property="og:title" content="Predict Churning Customers" />
-<meta property="og:description" content="Final Project of Data Mining Course - Big Data Analysis This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+<meta property="og:description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
 A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rauzansumara.github.io/post/predict-churning-customers/" />
@@ -23,9 +28,6 @@ A manager at the bank is disturbed with more and more customers leaving their cr
 <meta property="article:modified_time" content="2020-01-12T00:00:00+00:00" />
 
 
-    
-      <base href="https://rauzansumara.github.io/post/predict-churning-customers/">
-    
     <title>
   Predict Churning Customers · RAUZAN SUMARA&#39;S WEBSITE
 </title>
@@ -34,20 +36,22 @@ A manager at the bank is disturbed with more and more customers leaving their cr
       <link rel="canonical" href="https://rauzansumara.github.io/post/predict-churning-customers/">
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="preload" href="https://rauzansumara.github.io/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
 
     
       
       
-      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
     
 
     
 
     
-
+      
+        
+        
+        <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder-dark.min.dde8a61eb31a32353b4baf3d9113f03c4ea2a8ca9bb736f59ca2d2b2cb664f0b.css" integrity="sha256-3eimHrMaMjU7S689kRPwPE6iqMqbtzb1nKLSsstmTws=" crossorigin="anonymous" media="screen" />
+      
     
 
     
@@ -57,12 +61,29 @@ A manager at the bank is disturbed with more and more customers leaving their cr
     <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-16x16.png" sizes="16x16">
 
+    <link rel="apple-touch-icon" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
+
+    
+
     <meta name="generator" content="Hugo 0.80.0" />
   </head>
 
   
   
-  <body class="colorscheme-light">
+    
+  
+  <body class="preload-transitions colorscheme-auto"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
@@ -70,30 +91,32 @@ A manager at the bank is disturbed with more and more customers leaving their cr
       RAUZAN SUMARA&#39;S WEBSITE
     </a>
     
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
-          </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/post/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
+            </li>
+          
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/post/">Blog</a>
-          </li>
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
-          </li>
-        
-      
-      
-    </ul>
+      </ul>
     
   </section>
 </nav>
@@ -104,15 +127,29 @@ A manager at the bank is disturbed with more and more customers leaving their cr
   <section class="container page">
   <article>
     <header>
-      <h1>Predict Churning Customers</h1>
+      <h1 class="title">
+        <a class="title-link" href="https://rauzansumara.github.io/post/predict-churning-customers/">
+          Predict Churning Customers
+        </a>
+      </h1>
     </header>
 
-    <h1 id="final-project-of-data-mining-course---big-data-analysis">Final Project of Data Mining Course - Big Data Analysis</h1>
+    <h1 id="final-project-of-data-mining-course---big-data-analysis">
+  Final Project of Data Mining Course - Big Data Analysis
+  <a class="heading-link" href="#final-project-of-data-mining-course---big-data-analysis">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
 <p>This is my final project of Data Mining Course, dataset and Python code can be downloaded in <a href="https://github.com/rauzansumara/predict-churning-customers"><em>my Github</em></a></p>
 <p>A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers' decisions in the opposite direction</p>
 <p>This dataset is from original website with the URL of <a href="https://leaps.analyttica.com/home">https://leaps.analyttica.com/home</a> or <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers">Kaggle</a>. Now, this dataset consists of 10,000 customers mentioning their age, salary, marital_status, credit card limit, credit card category, etc. There are nearly 18 features.</p>
 <p>From this data set we can predict the customers who are going to stop using credit cards. Using this model/result, the company can make offer to employess to retain them.</p>
-<h2 id="attribute-information">Attribute Information</h2>
+<h2 id="attribute-information">
+  Attribute Information
+  <a class="heading-link" href="#attribute-information">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <ul>
 <li><strong>CLIENTNUM</strong>                : Client number. Unique identifier for the customer holding the account</li>
 <li><strong>Attrition_Flag</strong>           : Internal event (customer activity) variable - if the account is closed then 1 else 0</li>
@@ -136,23 +173,28 @@ A manager at the bank is disturbed with more and more customers leaving their cr
 <li><strong>Total_Ct_Chng_Q4_Q1</strong>      : Change in Transaction Count (Q4 over Q1)</li>
 <li><strong>Avg_Utilization_Ratio</strong>    : Average Card Utilization Ratio</li>
 </ul>
-<h2 id="import-dataset">Import Dataset</h2>
+<h2 id="import-dataset">
+  Import Dataset
+  <a class="heading-link" href="#import-dataset">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Import Dataset from local computer. Before doing it, we need to import packages as following :</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> pandas <span style="color:#fff;font-weight:bold">as</span> pd
-<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
-<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
-<span style="color:#fff;font-weight:bold">import</span> matplotlib.gridspec <span style="color:#fff;font-weight:bold">as</span> gridspec
-<span style="color:#fff;font-weight:bold">import</span> seaborn <span style="color:#fff;font-weight:bold">as</span> sns
-plt.style.use(<span style="color:#0ff;font-weight:bold">&#39;classic&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">import</span> <span style="font-weight:bold">pandas</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">pd</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">np</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">matplotlib.pyplot</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">plt</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">matplotlib.gridspec</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">gridspec</span>
+<span style="font-weight:bold">import</span> <span style="font-weight:bold">seaborn</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">sns</span>
+plt.style.use(<span style="font-style:italic">&#39;classic&#39;</span>)
 sns.set()
-<span style="color:#fff;font-weight:bold">from</span> sklearn.model_selection <span style="color:#fff;font-weight:bold">import</span> train_test_split, RandomizedSearchCV
-<span style="color:#fff;font-weight:bold">from</span> sklearn.metrics <span style="color:#fff;font-weight:bold">import</span> accuracy_score, classification_report, confusion_matrix, roc_curve, roc_auc_score
-<span style="color:#fff;font-weight:bold">from</span> sklearn.ensemble <span style="color:#fff;font-weight:bold">import</span> RandomForestClassifier
-</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd.set_option(<span style="color:#0ff;font-weight:bold">&#39;display.max_columns&#39;</span>, <span style="color:#ff0;font-weight:bold">6</span>)
-df = pd.read_csv(<span style="color:#0ff;font-weight:bold">&#39;D:/Material Lacture S2/3 Third Semester/Data Mining Methods/Final Project/BankChurners.csv&#39;</span>)
-df.drop(df.columns[[-<span style="color:#ff0;font-weight:bold">1</span>,-<span style="color:#ff0;font-weight:bold">2</span>]], axis=<span style="color:#ff0;font-weight:bold">1</span>, inplace=True) <span style="color:#007f7f"># Drop 2 last columns</span>
-<span style="color:#fff;font-weight:bold">print</span>(df.shape)
-df.head(<span style="color:#ff0;font-weight:bold">5</span>)
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.model_selection</span> <span style="font-weight:bold">import</span> train_test_split, RandomizedSearchCV
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.metrics</span> <span style="font-weight:bold">import</span> accuracy_score, classification_report, confusion_matrix, roc_curve, roc_auc_score
+<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.ensemble</span> <span style="font-weight:bold">import</span> RandomForestClassifier
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd.set_option(<span style="font-style:italic">&#39;display.max_columns&#39;</span>, 6)
+df = pd.read_csv(<span style="font-style:italic">&#39;D:/Material Lacture S2/3 Third Semester/Data Mining Methods/Final Project/BankChurners.csv&#39;</span>)
+df.drop(df.columns[[-1,-2]], axis=1, inplace=True) <span style="font-style:italic"># Drop 2 last columns</span>
+<span style="font-weight:bold">print</span>(df.shape)
+df.head(5)
 </code></pre></div><pre><code>(10127, 21)
 </code></pre>
 <!-- raw HTML omitted -->
@@ -167,7 +209,7 @@ df.head(<span style="color:#ff0;font-weight:bold">5</span>)
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
 <p>Here we can see that our data consist on <strong>10,127 observation with 21 features</strong>, the features names mantion down below,</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Show all names of features </span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Show all names of features </span>
 df.columns
 </code></pre></div><pre><code>Index(['CLIENTNUM', 'Attrition_Flag', 'Customer_Age', 'Gender',
        'Dependent_count', 'Education_Level', 'Marital_Status',
@@ -178,9 +220,14 @@ df.columns
        'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1', 'Avg_Utilization_Ratio'],
       dtype='object')
 </code></pre>
-<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<h2 id="exploratory-data-analysis">
+  Exploratory Data Analysis
+  <a class="heading-link" href="#exploratory-data-analysis">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>before modeling data, we would like to explore and vizualize them so that we can understand what kinds of data we have.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">print</span>(df.dtypes)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">print</span>(df.dtypes)
 </code></pre></div><pre><code>CLIENTNUM                     int64
 Attrition_Flag               object
 Customer_Age                  int64
@@ -205,49 +252,49 @@ Avg_Utilization_Ratio       float64
 dtype: object
 </code></pre>
 <p>as you can see that types of features are such as <strong>Object, Integer and Float</strong>. First of all, we would like to vizualize features with object types. Down there are code for making pie chart and bar chart in order to get  insight from <strong>Attrition_Flag, Gender, Education_Level, Marital_Status, Income_Category and Card_Category.</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(constrained_layout=False, figsize=(<span style="color:#ff0;font-weight:bold">17</span>, <span style="color:#ff0;font-weight:bold">20</span>))
-spec = gridspec.GridSpec(ncols=<span style="color:#ff0;font-weight:bold">2</span>, nrows=<span style="color:#ff0;font-weight:bold">3</span>, figure = fig)
-ax1 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#ff0;font-weight:bold">0</span>])
-ax2 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#ff0;font-weight:bold">1</span>])
-ax3 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">0</span>])
-ax4 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>])
-ax5 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">0</span>])
-ax6 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">1</span>])
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(constrained_layout=False, figsize=(17, 20))
+spec = gridspec.GridSpec(ncols=2, nrows=3, figure = fig)
+ax1 = fig.add_subplot(spec[0, 0])
+ax2 = fig.add_subplot(spec[0, 1])
+ax3 = fig.add_subplot(spec[1, 0])
+ax4 = fig.add_subplot(spec[1, 1])
+ax5 = fig.add_subplot(spec[2, 0])
+ax6 = fig.add_subplot(spec[2, 1])
 
-<span style="color:#007f7f"># Attrition_Flag</span>
-labels = df[<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
-ax1.pie(df[<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>].value_counts(),labels = labels,  autopct=<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">%.1f%%</span><span style="color:#0ff;font-weight:bold">&#39;</span>,
-        shadow=True, wedgeprops={<span style="color:#0ff;font-weight:bold">&#39;edgecolor&#39;</span>: <span style="color:#0ff;font-weight:bold">&#39;black&#39;</span>})
-ax1.set_title(<span style="color:#0ff;font-weight:bold">&#39;Proportion of Attrition_Flag&#39;</span>)
+<span style="font-style:italic"># Attrition_Flag</span>
+labels = df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
+ax1.pie(df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
+        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
+ax1.set_title(<span style="font-style:italic">&#39;Proportion of Attrition_Flag&#39;</span>)
 
-<span style="color:#007f7f"># Gender</span>
-labels = df[<span style="color:#0ff;font-weight:bold">&#39;Gender&#39;</span>].value_counts().keys()
-ax2.pie(df[<span style="color:#0ff;font-weight:bold">&#39;Gender&#39;</span>].value_counts(),labels = labels,  autopct=<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">%.1f%%</span><span style="color:#0ff;font-weight:bold">&#39;</span>,
-        shadow=True, wedgeprops={<span style="color:#0ff;font-weight:bold">&#39;edgecolor&#39;</span>: <span style="color:#0ff;font-weight:bold">&#39;black&#39;</span>})
-ax2.set_title(<span style="color:#0ff;font-weight:bold">&#39;Proportion of Gender&#39;</span>)
+<span style="font-style:italic"># Gender</span>
+labels = df[<span style="font-style:italic">&#39;Gender&#39;</span>].value_counts().keys()
+ax2.pie(df[<span style="font-style:italic">&#39;Gender&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
+        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
+ax2.set_title(<span style="font-style:italic">&#39;Proportion of Gender&#39;</span>)
 
-<span style="color:#007f7f"># Education_Level</span>
-sns.countplot(ax=ax3, x=df[<span style="color:#0ff;font-weight:bold">&#39;Education_Level&#39;</span>])
-ax3.set_title(<span style="color:#0ff;font-weight:bold">&#39;Education_Level of Customers&#39;</span>)
+<span style="font-style:italic"># Education_Level</span>
+sns.countplot(ax=ax3, x=df[<span style="font-style:italic">&#39;Education_Level&#39;</span>])
+ax3.set_title(<span style="font-style:italic">&#39;Education_Level of Customers&#39;</span>)
 
-<span style="color:#007f7f"># Marital_Status </span>
-sns.countplot(ax=ax4, x=df[<span style="color:#0ff;font-weight:bold">&#39;Marital_Status&#39;</span>])
-ax4.set_title(<span style="color:#0ff;font-weight:bold">&#39;Marital_Status of Customers&#39;</span>)
+<span style="font-style:italic"># Marital_Status </span>
+sns.countplot(ax=ax4, x=df[<span style="font-style:italic">&#39;Marital_Status&#39;</span>])
+ax4.set_title(<span style="font-style:italic">&#39;Marital_Status of Customers&#39;</span>)
 
-<span style="color:#007f7f"># Income_Category </span>
-sns.countplot(ax=ax5, x=df[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>])
-ax5.set_title(<span style="color:#0ff;font-weight:bold">&#39;Income_Category of Customers&#39;</span>)              
+<span style="font-style:italic"># Income_Category </span>
+sns.countplot(ax=ax5, x=df[<span style="font-style:italic">&#39;Income_Category&#39;</span>])
+ax5.set_title(<span style="font-style:italic">&#39;Income_Category of Customers&#39;</span>)              
 
-<span style="color:#007f7f"># Card_Category                 </span>
-labels = df[<span style="color:#0ff;font-weight:bold">&#39;Card_Category&#39;</span>].value_counts().keys()
-ax6.pie(df[<span style="color:#0ff;font-weight:bold">&#39;Card_Category&#39;</span>].value_counts(),labels = labels,  autopct=<span style="color:#0ff;font-weight:bold">&#39;</span><span style="color:#0ff;font-weight:bold">%.1f%%</span><span style="color:#0ff;font-weight:bold">&#39;</span>,
-        shadow=True, wedgeprops={<span style="color:#0ff;font-weight:bold">&#39;edgecolor&#39;</span>: <span style="color:#0ff;font-weight:bold">&#39;black&#39;</span>})
-ax6.set_title(<span style="color:#0ff;font-weight:bold">&#39;Proportion of Card_Category&#39;</span>)
+<span style="font-style:italic"># Card_Category                 </span>
+labels = df[<span style="font-style:italic">&#39;Card_Category&#39;</span>].value_counts().keys()
+ax6.pie(df[<span style="font-style:italic">&#39;Card_Category&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
+        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
+ax6.set_title(<span style="font-style:italic">&#39;Proportion of Card_Category&#39;</span>)
 </code></pre></div><pre><code>Text(0.5, 1.0, 'Proportion of Card_Category')
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_11_1.svg" alt="svg"></p>
 <p>based on charts above, we got proportion of Attrition_Flag 83.9% existing and 16.1% attrited customer. If we look from Gender, most of the customer are female 52.0%. They were also having Graduate and got merried in majority. Thus, according to income category, the customer has mostly less than 40,000 USD in a year. We can see also that more than 93% they hold blue card.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="color:#0ff;font-weight:bold">&#39;float64&#39;</span>).describe()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="font-style:italic">&#39;float64&#39;</span>).describe()
 </code></pre></div><!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
@@ -260,7 +307,7 @@ ax6.set_title(<span style="color:#0ff;font-weight:bold">&#39;Proportion of Card_
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
 <p>here we consider to calculate summary statistics towards numeric features such as <strong>Credit_Limit, Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio</strong>. We can interpret Credit_Limit as that feature has mean 8631.953698 less than standar deviation 9088.776650, which mean that the data has high volatility and it happens to Avg_Open_To_Buy as well.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby(<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>)[df.select_dtypes(include=<span style="color:#0ff;font-weight:bold">&#39;float64&#39;</span>).columns].describe().T
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)[df.select_dtypes(include=<span style="font-style:italic">&#39;float64&#39;</span>).columns].describe().T
 </code></pre></div><!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
@@ -273,33 +320,33 @@ ax6.set_title(<span style="color:#0ff;font-weight:bold">&#39;Proportion of Card_
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
 <p>We may compare between Attrited Customer and Existing Customer based on Credit_Limit, Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio. As you can see above that those two categories have no much difference coresponding to mean and standar deviation. for example, mean of Attrited Customer is 7463.216472 (std: 9109.208129) and mean of Attrited Customer 7470.273400 (std: 9087.671862), and so are other features.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">17</span>, <span style="color:#ff0;font-weight:bold">20</span>))
-spec = gridspec.GridSpec(ncols=<span style="color:#ff0;font-weight:bold">2</span>, nrows=<span style="color:#ff0;font-weight:bold">3</span>, figure=fig)
-ax1 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#ff0;font-weight:bold">0</span>])
-ax2 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#ff0;font-weight:bold">1</span>])
-ax3 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">0</span>])
-ax4 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>])
-ax5 = fig.add_subplot(spec[<span style="color:#ff0;font-weight:bold">2</span>, <span style="color:#ff0;font-weight:bold">0</span>])
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(figsize=(17, 20))
+spec = gridspec.GridSpec(ncols=2, nrows=3, figure=fig)
+ax1 = fig.add_subplot(spec[0, 0])
+ax2 = fig.add_subplot(spec[0, 1])
+ax3 = fig.add_subplot(spec[1, 0])
+ax4 = fig.add_subplot(spec[1, 1])
+ax5 = fig.add_subplot(spec[2, 0])
 
-df.boxplot(column=[<span style="color:#0ff;font-weight:bold">&#39;Credit_Limit&#39;</span>], by=[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>], ax=ax1)
-df.boxplot(column=[<span style="color:#0ff;font-weight:bold">&#39;Avg_Open_To_Buy&#39;</span>], by=[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>], ax=ax2)
-df.boxplot(column=[<span style="color:#0ff;font-weight:bold">&#39;Total_Amt_Chng_Q4_Q1&#39;</span>], by=[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>], ax=ax3)
-df.boxplot(column=[<span style="color:#0ff;font-weight:bold">&#39;Total_Ct_Chng_Q4_Q1&#39;</span>], by=[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>], ax=ax4)
-df.boxplot(column=[<span style="color:#0ff;font-weight:bold">&#39;Avg_Utilization_Ratio&#39;</span>], by=[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>], ax=ax5)
+df.boxplot(column=[<span style="font-style:italic">&#39;Credit_Limit&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax1)
+df.boxplot(column=[<span style="font-style:italic">&#39;Avg_Open_To_Buy&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax2)
+df.boxplot(column=[<span style="font-style:italic">&#39;Total_Amt_Chng_Q4_Q1&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax3)
+df.boxplot(column=[<span style="font-style:italic">&#39;Total_Ct_Chng_Q4_Q1&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax4)
+df.boxplot(column=[<span style="font-style:italic">&#39;Avg_Utilization_Ratio&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax5)
 </code></pre></div><pre><code>&lt;AxesSubplot:title={'center':'Avg_Utilization_Ratio'}, xlabel='[Income_Category]'&gt;
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_17_1.svg" alt="svg"></p>
 <p>if we are grouping by Income_Category using boxplot, we can recognize that a lot of data points are above and below of the mean value there. let say we only concert to one feature which is Credit_Limit for example. according to <strong>&ldquo;less than 40K USD&rdquo;</strong> and <strong>&ldquo;40K - 60K&rdquo;</strong> categories, many customers have too high credit comparing to its average. The company should consider some rule for customers who want to propose the credit so that use of credit card by customers might be optimum.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Categorizing of Customer_Age into 4 categories</span>
-df[<span style="color:#0ff;font-weight:bold">&#39;Customer_Age_Categorized&#39;</span>] = pd.cut(df[<span style="color:#0ff;font-weight:bold">&#39;Customer_Age&#39;</span>], bins=<span style="color:#ff0;font-weight:bold">4</span>, precision=<span style="color:#ff0;font-weight:bold">0</span>) 
-plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">15</span>,<span style="color:#ff0;font-weight:bold">8</span>))
-sns.countplot(y=<span style="color:#0ff;font-weight:bold">&#39;Card_Category&#39;</span>, hue=<span style="color:#0ff;font-weight:bold">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Categorizing of Customer_Age into 4 categories</span>
+df[<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>] = pd.cut(df[<span style="font-style:italic">&#39;Customer_Age&#39;</span>], bins=4, precision=0) 
+plt.figure(figsize=(15,8))
+sns.countplot(y=<span style="font-style:italic">&#39;Card_Category&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
+plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
 </code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a087a430&gt;
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_19_1.svg" alt="svg"></p>
 <p>Graph above says that most of customers are using blue card, and Age between 38 - 50 year old is dominant at every categories.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="color:#0ff;font-weight:bold">&#39;int64&#39;</span>).columns
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="font-style:italic">&#39;int64&#39;</span>).columns
 </code></pre></div><pre><code>Index(['CLIENTNUM', 'Customer_Age', 'Dependent_count', 'Months_on_book',
        'Total_Relationship_Count', 'Months_Inactive_12_mon',
        'Contacts_Count_12_mon', 'Total_Revolving_Bal', 'Total_Trans_Amt',
@@ -307,7 +354,7 @@ plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39
       dtype='object')
 </code></pre>
 <p>Now, we also want to get some insight from count (Integer) features, such as <strong>Customer_Age, Dependent_count,Months_on_book, Total_Relationship_Count, Months_Inactive_12_mon, Contacts_Count_12_mon, Total_Revolving_Bal, Total_Trans_Amt, and Total_Trans_Ct</strong></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby([<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>])[<span style="color:#0ff;font-weight:bold">&#39;Total_Relationship_Count&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;Total_Revolving_Bal&#39;</span>,                            <span style="color:#0ff;font-weight:bold">&#39;Total_Trans_Amt&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;Total_Trans_Ct&#39;</span>].sum()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby([<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>,<span style="font-style:italic">&#39;Income_Category&#39;</span>])[<span style="font-style:italic">&#39;Total_Relationship_Count&#39;</span>,<span style="font-style:italic">&#39;Total_Revolving_Bal&#39;</span>,                            <span style="font-style:italic">&#39;Total_Trans_Amt&#39;</span>,<span style="font-style:italic">&#39;Total_Trans_Ct&#39;</span>].sum()
 </code></pre></div><!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
@@ -320,22 +367,22 @@ plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
 <p>Attrited Customer with <strong>incoming less than 40k usd</strong>, have big number of <strong>Total_Relationship_Count, Total_Revolving_Bal, Total_Trans_Amt, and Total_Trans_Ct</strong>. It does also happen in existing Customer.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">15</span>,<span style="color:#ff0;font-weight:bold">8</span>))
-sns.countplot(y=<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>, hue=<span style="color:#0ff;font-weight:bold">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt.figure(figsize=(15,8))
+sns.countplot(y=<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
+plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
 </code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a0f0cbb0&gt;
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_25_1.svg" alt="svg"></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Bar chart Income_Category groupby Attrition_Flag </span>
-plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">13</span>,<span style="color:#ff0;font-weight:bold">8</span>))
-sns.countplot(y=<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>, hue=<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>, data = df)
-plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39;</span>)
-plt.xlabel(<span style="color:#0ff;font-weight:bold">&#39;Number of Customers&#39;</span>)
-plt.ylabel(<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>)
-plt.title(<span style="color:#0ff;font-weight:bold">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Bar chart Income_Category groupby Attrition_Flag </span>
+plt.figure(figsize=(13,8))
+sns.countplot(y=<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>, hue=<span style="font-style:italic">&#39;Income_Category&#39;</span>, data = df)
+plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
+plt.xlabel(<span style="font-style:italic">&#39;Number of Customers&#39;</span>)
+plt.ylabel(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)
+plt.title(<span style="font-style:italic">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
 
-<span style="color:#007f7f"># Table Income_Category groupby Attrition_Flag </span>
-df.groupby(<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>)[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>].value_counts()
+<span style="font-style:italic"># Table Income_Category groupby Attrition_Flag </span>
+df.groupby(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)[<span style="font-style:italic">&#39;Income_Category&#39;</span>].value_counts()
 </code></pre></div><pre><code>Attrition_Flag     Income_Category
 Attrited Customer  Less than $40K      612
                    $40K - $60K         271
@@ -352,16 +399,16 @@ Existing Customer  Less than $40K     2949
 Name: Income_Category, dtype: int64
 </code></pre>
 <p><img src="output_26_1.png" alt="png"></p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Bar chart Income_Category groupby Attrition_Flag </span>
-plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">13</span>,<span style="color:#ff0;font-weight:bold">8</span>))
-sns.countplot(y=<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>, hue=<span style="color:#0ff;font-weight:bold">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="color:#0ff;font-weight:bold">&#39;center right&#39;</span>)
-plt.xlabel(<span style="color:#0ff;font-weight:bold">&#39;Number of Customers&#39;</span>)
-plt.ylabel(<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>)
-plt.title(<span style="color:#0ff;font-weight:bold">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Bar chart Income_Category groupby Attrition_Flag </span>
+plt.figure(figsize=(13,8))
+sns.countplot(y=<span style="font-style:italic">&#39;Income_Category&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
+plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
+plt.xlabel(<span style="font-style:italic">&#39;Number of Customers&#39;</span>)
+plt.ylabel(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)
+plt.title(<span style="font-style:italic">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
 
-<span style="color:#007f7f"># Table Income_Category groupby Attrition_Flag </span>
-df.groupby(<span style="color:#0ff;font-weight:bold">&#39;Customer_Age_Categorized&#39;</span>)[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>].value_counts()
+<span style="font-style:italic"># Table Income_Category groupby Attrition_Flag </span>
+df.groupby(<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>)[<span style="font-style:italic">&#39;Income_Category&#39;</span>].value_counts()
 </code></pre></div><pre><code>Customer_Age_Categorized  Income_Category
 (26.0, 38.0]              Less than $40K      537
                           $40K - $60K         275
@@ -391,17 +438,22 @@ Name: Income_Category, dtype: int64
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_27_1.svg" alt="svg"></p>
 <p>Based on some graphs above, we can conclude that most customers have age <strong>between 38 - 50 year old</strong>. It also imply that many of them are having <strong>income less than 40k usd</strong>.</p>
-<h2 id="data-preprocessing">Data Preprocessing</h2>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
+<h2 id="data-preprocessing">
+  Data Preprocessing
+  <a class="heading-link" href="#data-preprocessing">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
 </code></pre></div><pre><code>Index(['Existing Customer', 'Attrited Customer'], dtype='object')
 </code></pre>
 <p>Before applying mechine learning model in order to clasify <strong>Attrition_Flag (Existing Customer :0, Attrited Customer: 1)</strong>, we are going to prepare the data (cleaning data) so that it will be easy to use into algorithm.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Remove &#39;Unknown&#39; Observation and &#39;CLIENTNUM&#39; column  </span>
-df.replace({<span style="color:#0ff;font-weight:bold">&#39;Unknown&#39;</span>: np.nan}, inplace=True)
-df.dropna(inplace=True) <span style="color:#007f7f"># Remove &#39;Unknown&#39; observation</span>
-df.drop([<span style="color:#0ff;font-weight:bold">&#39;CLIENTNUM&#39;</span>], axis=<span style="color:#ff0;font-weight:bold">1</span>, inplace=True) <span style="color:#007f7f"># Delete &#39;CLIENTNUM&#39; column</span>
-<span style="color:#fff;font-weight:bold">print</span>(df.shape)
-df.head(<span style="color:#ff0;font-weight:bold">5</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Remove &#39;Unknown&#39; Observation and &#39;CLIENTNUM&#39; column  </span>
+df.replace({<span style="font-style:italic">&#39;Unknown&#39;</span>: np.nan}, inplace=True)
+df.dropna(inplace=True) <span style="font-style:italic"># Remove &#39;Unknown&#39; observation</span>
+df.drop([<span style="font-style:italic">&#39;CLIENTNUM&#39;</span>], axis=1, inplace=True) <span style="font-style:italic"># Delete &#39;CLIENTNUM&#39; column</span>
+<span style="font-weight:bold">print</span>(df.shape)
+df.head(5)
 </code></pre></div><pre><code>(7081, 21)
 </code></pre>
 <!-- raw HTML omitted -->
@@ -415,18 +467,18 @@ df.head(<span style="color:#ff0;font-weight:bold">5</span>)
 </code></pre>
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Change categorical variables into dummy variables</span>
-df2 = pd.concat([df[<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>].replace({<span style="color:#0ff;font-weight:bold">&#39;Existing Customer&#39;</span>: <span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#0ff;font-weight:bold">&#39;Attrited Customer&#39;</span>: <span style="color:#ff0;font-weight:bold">1</span>}),
-                df[<span style="color:#0ff;font-weight:bold">&#39;Gender&#39;</span>].replace({<span style="color:#0ff;font-weight:bold">&#39;M&#39;</span>: <span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#0ff;font-weight:bold">&#39;F&#39;</span>:<span style="color:#ff0;font-weight:bold">1</span>}),
-                pd.get_dummies(df[<span style="color:#0ff;font-weight:bold">&#39;Education_Level&#39;</span>]), 
-                pd.get_dummies(df[<span style="color:#0ff;font-weight:bold">&#39;Marital_Status&#39;</span>]), 
-                pd.get_dummies(df[<span style="color:#0ff;font-weight:bold">&#39;Income_Category&#39;</span>]), 
-                pd.get_dummies(df[<span style="color:#0ff;font-weight:bold">&#39;Card_Category&#39;</span>]),
-                df.select_dtypes(include=[<span style="color:#0ff;font-weight:bold">&#39;int64&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;float64&#39;</span>])], axis=<span style="color:#ff0;font-weight:bold">1</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Change categorical variables into dummy variables</span>
+df2 = pd.concat([df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].replace({<span style="font-style:italic">&#39;Existing Customer&#39;</span>: 0, <span style="font-style:italic">&#39;Attrited Customer&#39;</span>: 1}),
+                df[<span style="font-style:italic">&#39;Gender&#39;</span>].replace({<span style="font-style:italic">&#39;M&#39;</span>: 0, <span style="font-style:italic">&#39;F&#39;</span>:1}),
+                pd.get_dummies(df[<span style="font-style:italic">&#39;Education_Level&#39;</span>]), 
+                pd.get_dummies(df[<span style="font-style:italic">&#39;Marital_Status&#39;</span>]), 
+                pd.get_dummies(df[<span style="font-style:italic">&#39;Income_Category&#39;</span>]), 
+                pd.get_dummies(df[<span style="font-style:italic">&#39;Card_Category&#39;</span>]),
+                df.select_dtypes(include=[<span style="font-style:italic">&#39;int64&#39;</span>,<span style="font-style:italic">&#39;float64&#39;</span>])], axis=1)
 
-df2.drop([<span style="color:#0ff;font-weight:bold">&#39;Uneducated&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;Divorced&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;$120K +&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;Platinum&#39;</span>], axis=<span style="color:#ff0;font-weight:bold">1</span>, inplace=True) <span style="color:#007f7f"># Delete because of base categories</span>
+df2.drop([<span style="font-style:italic">&#39;Uneducated&#39;</span>,<span style="font-style:italic">&#39;Divorced&#39;</span>,<span style="font-style:italic">&#39;$120K +&#39;</span>,<span style="font-style:italic">&#39;Platinum&#39;</span>], axis=1, inplace=True) <span style="font-style:italic"># Delete because of base categories</span>
 </code></pre></div><p>As we can see that some of our features are categorical variables, therefore we have to make dummy variables instead of categorical features.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df2.columns
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df2.columns
 </code></pre></div><pre><code>Index(['Attrition_Flag', 'Gender', 'College', 'Doctorate', 'Graduate',
        'High School', 'Post-Graduate', 'Married', 'Single', '$40K - $60K',
        '$60K - $80K', '$80K - $120K', 'Less than $40K', 'Blue', 'Gold',
@@ -438,16 +490,21 @@ df2.drop([<span style="color:#0ff;font-weight:bold">&#39;Uneducated&#39;</span>,
       dtype='object')
 </code></pre>
 <p>Here is final dataset, which is <strong>&lsquo;Attrition_Flag&rsquo;</strong> as output, and the others are input variables</p>
-<h2 id="data-modeling-1-random-forest-default-hyperparameter">Data Modeling 1: Random Forest (Default Hyperparameter)</h2>
+<h2 id="data-modeling-1-random-forest-default-hyperparameter">
+  Data Modeling 1: Random Forest (Default Hyperparameter)
+  <a class="heading-link" href="#data-modeling-1-random-forest-default-hyperparameter">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>In clasification problem, many machine learning method are used, one of them is Random forest. This algorithm is a supervised learning algorithm. The &ldquo;forest&rdquo; it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. <strong>Why do we use this algorithm?</strong> bacause Random forest is flexible, easy to use machine learning algorithm that produces a great result most of the time. It is also one of the most used algorithms, because of its simplicity and diversity (it can be used for both classification and regression tasks).</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># Spliting dataset into training and testing</span>
-x = df2.drop([<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>], axis=<span style="color:#ff0;font-weight:bold">1</span>)
-y = df2[<span style="color:#0ff;font-weight:bold">&#39;Attrition_Flag&#39;</span>]
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span style="color:#ff0;font-weight:bold">0.2</span>, random_state=<span style="color:#ff0;font-weight:bold">42</span>)
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;Proportion of training set :&#34;</span>)
-<span style="color:#fff;font-weight:bold">print</span>(y_train.value_counts())
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;Proportion of testing set :&#34;</span>)
-<span style="color:#fff;font-weight:bold">print</span>(y_test.value_counts())
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Spliting dataset into training and testing</span>
+x = df2.drop([<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>], axis=1)
+y = df2[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>]
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#34;Proportion of training set :&#34;</span>)
+<span style="font-weight:bold">print</span>(y_train.value_counts())
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#34;Proportion of testing set :&#34;</span>)
+<span style="font-weight:bold">print</span>(y_test.value_counts())
 </code></pre></div><pre><code>Proportion of training set :
 0    4763
 1     901
@@ -457,18 +514,18 @@ Proportion of testing set :
 1     212
 Name: Attrition_Flag, dtype: int64
 </code></pre>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model1 = RandomForestClassifier(random_state= <span style="color:#ff0;font-weight:bold">0</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model1 = RandomForestClassifier(random_state= 0)
 model1.fit(x_train, y_train)
 yhat = model1.predict(x_test)
-plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">4</span>))
+plt.figure(figsize=(5, 4))
 cf_mat = confusion_matrix(y_test, yhat)
-sns.heatmap(cf_mat, annot=True, fmt=<span style="color:#0ff;font-weight:bold">&#39;g&#39;</span>)
+sns.heatmap(cf_mat, annot=True, fmt=<span style="font-style:italic">&#39;g&#39;</span>)
 plt.show()
 
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Random Forest Classifier :</span><span style="color:#0ff;font-weight:bold">\n\n\t</span><span style="color:#0ff;font-weight:bold">&#39;</span>,
-     f<span style="color:#0ff;font-weight:bold">&#39;The Training model accuracy :{model1.score(x_train, y_train)}</span><span style="color:#0ff;font-weight:bold">\n\t</span><span style="color:#0ff;font-weight:bold">&#39;</span>, 
-     f<span style="color:#0ff;font-weight:bold">&#39;The Test model accuracy: {model1.score(x_test, y_test)}&#39;</span>)
-<span style="color:#fff;font-weight:bold">print</span>(classification_report(y_test, yhat))
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Random Forest Classifier :</span><span style="font-weight:bold;font-style:italic">\n\n\t</span><span style="font-style:italic">&#39;</span>,
+     f<span style="font-style:italic">&#39;The Training model accuracy :{model1.score(x_train, y_train)}</span><span style="font-weight:bold;font-style:italic">\n\t</span><span style="font-style:italic">&#39;</span>, 
+     f<span style="font-style:italic">&#39;The Test model accuracy: {model1.score(x_test, y_test)}&#39;</span>)
+<span style="font-weight:bold">print</span>(classification_report(y_test, yhat))
 </code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_40_0.svg" alt="svg"></p>
 <pre><code>Random Forest Classifier :
 
@@ -484,19 +541,24 @@ plt.show()
 weighted avg       0.96      0.96      0.96      1417
 </code></pre>
 <p>by using hyperparameter from python which are <strong>criterion =&lsquo;gini&rsquo;, n_estimators=100, max_depth=None, max_features = &lsquo;auto&rsquo;, min_samples_leaf = 1,</strong> and <strong>min_samples_split = 2 default from python</strong>, we got accuracy <strong>95.8%</strong>, sensitivity/recall <strong>77.0%</strong>, and precision <strong>94.0%</strong>. it&rsquo;s quite good so far. But to be honest, we can improve accuracy by doing some treatments, here we try to increase accuracy in choosing hyperparameter by <strong>Randomized SearchCV</strong>.</p>
-<h2 id="data-modeling-2-improving-random-forest-randomized-searchcv">Data Modeling 2: Improving Random Forest (Randomized SearchCV)</h2>
+<h2 id="data-modeling-2-improving-random-forest-randomized-searchcv">
+  Data Modeling 2: Improving Random Forest (Randomized SearchCV)
+  <a class="heading-link" href="#data-modeling-2-improving-random-forest-randomized-searchcv">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Randomized search is the most widely used strategies for hyper-parameter optimization. Many papers showed empirically and theoretically that randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid. In Random Search, we create a grid of hyperparameters and train/test our model on just some random combination of these hyperparameters. In this example, I additionally decided to perform Cross-Validation on the training set.</p>
 <p>We can now start implementing Random Search by first defying a grid of hyperparameters which will be randomly sampled when calling RandomizedSearchCV(). For this example, I decided to divide our training set into 5 Folds (cv = 5) and select 20 as the number of combinations to sample (n_iter = 20). Using the scikit-learn best_estimator_ attribute, we can then retrieve the set of hyperparameters which performed best during training to test our model.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">random_search = {<span style="color:#0ff;font-weight:bold">&#39;criterion&#39;</span>: [<span style="color:#0ff;font-weight:bold">&#39;entropy&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;gini&#39;</span>],
-               <span style="color:#0ff;font-weight:bold">&#39;max_depth&#39;</span>: <span style="color:#fff;font-weight:bold">list</span>(np.linspace(<span style="color:#ff0;font-weight:bold">10</span>, <span style="color:#ff0;font-weight:bold">1200</span>, <span style="color:#ff0;font-weight:bold">10</span>, dtype = <span style="color:#fff;font-weight:bold">int</span>)) + [None],
-               <span style="color:#0ff;font-weight:bold">&#39;max_features&#39;</span>: [<span style="color:#0ff;font-weight:bold">&#39;auto&#39;</span>, <span style="color:#0ff;font-weight:bold">&#39;sqrt&#39;</span>,<span style="color:#0ff;font-weight:bold">&#39;log2&#39;</span>, None],
-               <span style="color:#0ff;font-weight:bold">&#39;min_samples_leaf&#39;</span>: [<span style="color:#ff0;font-weight:bold">4</span>, <span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">6</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">8</span>, <span style="color:#ff0;font-weight:bold">9</span>, <span style="color:#ff0;font-weight:bold">10</span>, <span style="color:#ff0;font-weight:bold">11</span>, <span style="color:#ff0;font-weight:bold">12</span>],
-               <span style="color:#0ff;font-weight:bold">&#39;min_samples_split&#39;</span>: [<span style="color:#ff0;font-weight:bold">3</span>, <span style="color:#ff0;font-weight:bold">4</span>, <span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">6</span>, <span style="color:#ff0;font-weight:bold">7</span>, <span style="color:#ff0;font-weight:bold">8</span>, <span style="color:#ff0;font-weight:bold">9</span>, <span style="color:#ff0;font-weight:bold">10</span>, <span style="color:#ff0;font-weight:bold">11</span>, <span style="color:#ff0;font-weight:bold">12</span>, <span style="color:#ff0;font-weight:bold">13</span>, <span style="color:#ff0;font-weight:bold">14</span>],
-               <span style="color:#0ff;font-weight:bold">&#39;n_estimators&#39;</span>: <span style="color:#fff;font-weight:bold">list</span>(np.linspace(<span style="color:#ff0;font-weight:bold">100</span>, <span style="color:#ff0;font-weight:bold">1200</span>, <span style="color:#ff0;font-weight:bold">5</span>, dtype = <span style="color:#fff;font-weight:bold">int</span>))}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">random_search = {<span style="font-style:italic">&#39;criterion&#39;</span>: [<span style="font-style:italic">&#39;entropy&#39;</span>, <span style="font-style:italic">&#39;gini&#39;</span>],
+               <span style="font-style:italic">&#39;max_depth&#39;</span>: list(np.linspace(10, 1200, 10, dtype = int)) + [None],
+               <span style="font-style:italic">&#39;max_features&#39;</span>: [<span style="font-style:italic">&#39;auto&#39;</span>, <span style="font-style:italic">&#39;sqrt&#39;</span>,<span style="font-style:italic">&#39;log2&#39;</span>, None],
+               <span style="font-style:italic">&#39;min_samples_leaf&#39;</span>: [4, 5, 6, 7, 8, 9, 10, 11, 12],
+               <span style="font-style:italic">&#39;min_samples_split&#39;</span>: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+               <span style="font-style:italic">&#39;n_estimators&#39;</span>: list(np.linspace(100, 1200, 5, dtype = int))}
 
 clf = RandomForestClassifier()
-model2 = RandomizedSearchCV(estimator = clf, param_distributions = random_search, n_iter = <span style="color:#ff0;font-weight:bold">20</span>, 
-                            cv = <span style="color:#ff0;font-weight:bold">5</span>, verbose= <span style="color:#ff0;font-weight:bold">5</span>, n_jobs = -<span style="color:#ff0;font-weight:bold">1</span>)
+model2 = RandomizedSearchCV(estimator = clf, param_distributions = random_search, n_iter = 20, 
+                            cv = 5, verbose= 5, n_jobs = -1)
 model2.fit(x_train,y_train)
 </code></pre></div><pre><code>Fitting 5 folds for each of 20 candidates, totalling 100 fits
 [Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
@@ -525,25 +587,25 @@ RandomizedSearchCV(cv=5, estimator=RandomForestClassifier(), n_iter=20,
                                                          1200]},
                    verbose=5)
 </code></pre>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table = pd.pivot_table(pd.DataFrame(model2.cv_results_), values=<span style="color:#0ff;font-weight:bold">&#39;mean_test_score&#39;</span>, index=<span style="color:#0ff;font-weight:bold">&#39;param_n_estimators&#39;</span>, 
-                       columns=<span style="color:#0ff;font-weight:bold">&#39;param_criterion&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table = pd.pivot_table(pd.DataFrame(model2.cv_results_), values=<span style="font-style:italic">&#39;mean_test_score&#39;</span>, index=<span style="font-style:italic">&#39;param_n_estimators&#39;</span>, 
+                       columns=<span style="font-style:italic">&#39;param_criterion&#39;</span>)
 sns.heatmap(table)
-<span style="color:#fff;font-weight:bold">print</span>(model2.best_estimator_)
+<span style="font-weight:bold">print</span>(model2.best_estimator_)
 </code></pre></div><pre><code>RandomForestClassifier(criterion='entropy', max_depth=1067, max_features=None,
                        min_samples_leaf=4, min_samples_split=8,
                        n_estimators=650)
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_45_1.svg" alt="svg"></p>
 <p>According to Randomized SearchCV above, we got the best hyperparameter are <strong>criterion=&lsquo;entropy&rsquo;, n_estimators=650, max_depth=1067, max_features = None, min_samples_leaf = 4,</strong> and <strong>min_samples_split = 8</strong>.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">yhat2 = model2.best_estimator_.predict(x_test)
-plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">5</span>, <span style="color:#ff0;font-weight:bold">4</span>))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">yhat2 = model2.best_estimator_.predict(x_test)
+plt.figure(figsize=(5, 4))
 cf_mat2 = confusion_matrix(y_test, yhat2)
-sns.heatmap(cf_mat2, annot=True, fmt=<span style="color:#0ff;font-weight:bold">&#39;g&#39;</span>)
+sns.heatmap(cf_mat2, annot=True, fmt=<span style="font-style:italic">&#39;g&#39;</span>)
 plt.show()
 
-<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;Random Forest Classifier 2:</span><span style="color:#0ff;font-weight:bold">\n\n\t</span><span style="color:#0ff;font-weight:bold">&#39;</span>,  
-     f<span style="color:#0ff;font-weight:bold">&#39;The Test model accuracy: {model2.best_estimator_.score(x_test, y_test)}&#39;</span>)
-<span style="color:#fff;font-weight:bold">print</span>(classification_report(y_test, yhat2))
+<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Random Forest Classifier 2:</span><span style="font-weight:bold;font-style:italic">\n\n\t</span><span style="font-style:italic">&#39;</span>,  
+     f<span style="font-style:italic">&#39;The Test model accuracy: {model2.best_estimator_.score(x_test, y_test)}&#39;</span>)
+<span style="font-weight:bold">print</span>(classification_report(y_test, yhat2))
 </code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_47_0.svg" alt="svg"></p>
 <pre><code>Random Forest Classifier 2:
 
@@ -558,38 +620,48 @@ plt.show()
 weighted avg       0.96      0.96      0.96      1417
 </code></pre>
 <p>By using the best hyperparameter from Randomized SearchCV, we got accuracy <strong>96.1%</strong>, sensitivity/recall <strong>84.0%</strong>, and precision <strong>89.0%</strong>. This <strong>(model 2)</strong> is bit better than previous one <strong>(model 1)</strong>.</p>
-<h2 id="comparison-of-roc-curve-of-both-models">Comparison of ROC Curve of Both Models</h2>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007f7f"># predict probabilities</span>
+<h2 id="comparison-of-roc-curve-of-both-models">
+  Comparison of ROC Curve of Both Models
+  <a class="heading-link" href="#comparison-of-roc-curve-of-both-models">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># predict probabilities</span>
 pred_prob1 = model1.predict_proba(x_test)
 pred_prob2 = model2.predict_proba(x_test)
 
-<span style="color:#007f7f"># roc curve for models</span>
-fpr1, tpr1, thresh1 = roc_curve(y_test, pred_prob1[:,<span style="color:#ff0;font-weight:bold">1</span>], pos_label=<span style="color:#ff0;font-weight:bold">1</span>)
-fpr2, tpr2, thresh2 = roc_curve(y_test, pred_prob2[:,<span style="color:#ff0;font-weight:bold">1</span>], pos_label=<span style="color:#ff0;font-weight:bold">1</span>)
+<span style="font-style:italic"># roc curve for models</span>
+fpr1, tpr1, thresh1 = roc_curve(y_test, pred_prob1[:,1], pos_label=1)
+fpr2, tpr2, thresh2 = roc_curve(y_test, pred_prob2[:,1], pos_label=1)
 
-<span style="color:#007f7f"># auc scores</span>
-auc_score1 = roc_auc_score(y_test, pred_prob1[:,<span style="color:#ff0;font-weight:bold">1</span>])
-auc_score2 = roc_auc_score(y_test, pred_prob2[:,<span style="color:#ff0;font-weight:bold">1</span>])
+<span style="font-style:italic"># auc scores</span>
+auc_score1 = roc_auc_score(y_test, pred_prob1[:,1])
+auc_score2 = roc_auc_score(y_test, pred_prob2[:,1])
 
-<span style="color:#007f7f"># plot roc curves</span>
-plt.plot(fpr1, tpr1, linestyle=<span style="color:#0ff;font-weight:bold">&#39;--&#39;</span>,color=<span style="color:#0ff;font-weight:bold">&#39;orange&#39;</span>, label=<span style="color:#0ff;font-weight:bold">&#39;Model 1 (area = </span><span style="color:#0ff;font-weight:bold">%0.2f</span><span style="color:#0ff;font-weight:bold">)&#39;</span> % auc_score1)
-plt.plot(fpr2, tpr2, linestyle=<span style="color:#0ff;font-weight:bold">&#39;--&#39;</span>,color=<span style="color:#0ff;font-weight:bold">&#39;green&#39;</span>, label=<span style="color:#0ff;font-weight:bold">&#39;Model 2 (area = </span><span style="color:#0ff;font-weight:bold">%0.2f</span><span style="color:#0ff;font-weight:bold">)&#39;</span> % auc_score2)
+<span style="font-style:italic"># plot roc curves</span>
+plt.plot(fpr1, tpr1, linestyle=<span style="font-style:italic">&#39;--&#39;</span>,color=<span style="font-style:italic">&#39;orange&#39;</span>, label=<span style="font-style:italic">&#39;Model 1 (area = </span><span style="font-weight:bold;font-style:italic">%0.2f</span><span style="font-style:italic">)&#39;</span> % auc_score1)
+plt.plot(fpr2, tpr2, linestyle=<span style="font-style:italic">&#39;--&#39;</span>,color=<span style="font-style:italic">&#39;green&#39;</span>, label=<span style="font-style:italic">&#39;Model 2 (area = </span><span style="font-weight:bold;font-style:italic">%0.2f</span><span style="font-style:italic">)&#39;</span> % auc_score2)
 
-<span style="color:#007f7f"># title</span>
-plt.title(<span style="color:#0ff;font-weight:bold">&#39;ROC curve&#39;</span>)
-<span style="color:#007f7f"># x label</span>
-plt.xlabel(<span style="color:#0ff;font-weight:bold">&#39;False Positive Rate&#39;</span>)
-<span style="color:#007f7f"># y label</span>
-plt.ylabel(<span style="color:#0ff;font-weight:bold">&#39;True Positive rate&#39;</span>)
+<span style="font-style:italic"># title</span>
+plt.title(<span style="font-style:italic">&#39;ROC curve&#39;</span>)
+<span style="font-style:italic"># x label</span>
+plt.xlabel(<span style="font-style:italic">&#39;False Positive Rate&#39;</span>)
+<span style="font-style:italic"># y label</span>
+plt.ylabel(<span style="font-style:italic">&#39;True Positive rate&#39;</span>)
 
-plt.legend(loc=<span style="color:#0ff;font-weight:bold">&#39;best&#39;</span>)
+plt.legend(loc=<span style="font-style:italic">&#39;best&#39;</span>)
 plt.show()
 </code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_50_0.svg" alt="svg"></p>
 <p>As we can see that ROC curves of both models are not significantly different. We also got AUC for <strong>model 1 = 0.98</strong> and <strong>model 2 = 0.99</strong>. Even it&rsquo;s so, we still believe that hyperparameters have effected big enough to the accuracy of the model in circumstance situation.</p>
-<h2 id="feature-importance">Feature Importance</h2>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx = model1.feature_importances_.argsort()
+<h2 id="feature-importance">
+  Feature Importance
+  <a class="heading-link" href="#feature-importance">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx = model1.feature_importances_.argsort()
 plt.barh(x_train.columns[sorted_idx], model1.feature_importances_[sorted_idx])
-plt.xlabel(<span style="color:#0ff;font-weight:bold">&#34;Random Forest Feature Importance&#34;</span>)
+plt.xlabel(<span style="font-style:italic">&#34;Random Forest Feature Importance&#34;</span>)
 </code></pre></div><pre><code>Text(0.5, 0, 'Random Forest Feature Importance')
 </code></pre>
 <p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_53_1.svg" alt="svg"></p>
@@ -598,6 +670,7 @@ plt.xlabel(<span style="color:#0ff;font-weight:bold">&#34;Random Forest Feature 
   </article>
 </section>
 
+  
 
       </div>
 
@@ -620,7 +693,15 @@ plt.xlabel(<span style="color:#0ff;font-weight:bold">&#34;Random Forest Feature 
     </section>
   </footer>
 
+
     </main>
+
+    
+      
+      <script src="https://rauzansumara.github.io/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    
+
+    
 
     
 
@@ -639,6 +720,15 @@ fathom('trackPageview');
 </script>
 
 
+    
+
+    
+
+    
+
+    
+
+    
   </body>
 
 </html>

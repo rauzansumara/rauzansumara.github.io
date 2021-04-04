@@ -14,7 +14,7 @@
       
       <guid>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</guid>
       <description>Here we are going to talk into the detail of how to improve Siamese Network Using Gabor Filter. I will also explain and give a comparison of Siamese Network without and with Gabor Filter seperately. Full code also can be obtained from my GitHub.
-Siamese Network In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well. But for particular problems, we can’t always rely on getting more data, to solve this kind of tasks we have a new type of the CNN architecture called Siamese Networks.</description>
+Siamese Network    In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well.</description>
     </item>
     
     <item>
