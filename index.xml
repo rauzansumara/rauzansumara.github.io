@@ -6,72 +6,63 @@
     <description>Recent content on RAUZAN SUMARA&#39;S WEBSITE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving Siamese Network Using Gabor Filter</title>
-      <link>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</link>
-      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <link>https://rauzansumara.github.io/posts/improving-siamese-network-using-gabor-filter/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</guid>
+      <guid>https://rauzansumara.github.io/posts/improving-siamese-network-using-gabor-filter/</guid>
       <description>Here we are going to talk into the detail of how to improve Siamese Network Using Gabor Filter. I will also explain and give a comparison of Siamese Network without and with Gabor Filter seperately. Full code also can be obtained from my GitHub.
-Siamese Network In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well. But for particular problems, we can’t always rely on getting more data, to solve this kind of tasks we have a new type of the CNN architecture called Siamese Networks.</description>
+Siamese Network    In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well.</description>
     </item>
     
     <item>
       <title>Implementation of GAN and cGAN Models</title>
-      <link>https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      <link>https://rauzansumara.github.io/posts/implementation-of-gan-and-cgan/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/</guid>
+      <guid>https://rauzansumara.github.io/posts/implementation-of-gan-and-cgan/</guid>
       <description>Here we are going to talk into the detail of what Generative Adversarial Network (GAN) and Conditional Generative Adversarial Network (cGAN) are. I will also explain and give an implementation both of them seperately. Code also can be obtained from my GitHub. This model is one of the most interesting ideas in computer science today. Two models are trained simultaneously by an adversarial process. A generator (&amp;ldquo;the artist&amp;rdquo;) learns to create images that look real, while a discriminator (&amp;ldquo;the art critic&amp;rdquo;) learns to tell real images apart from fakes.</description>
     </item>
     
     <item>
       <title>Predict Churning Customers</title>
-      <link>https://rauzansumara.github.io/post/predict-churning-customers/</link>
-      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      <link>https://rauzansumara.github.io/posts/predict-churning-customers/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/predict-churning-customers/</guid>
-      <description>Final Project of Data Mining Course - Big Data Analysis This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+      <guid>https://rauzansumara.github.io/posts/predict-churning-customers/</guid>
+      <description>Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
 A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction</description>
     </item>
     
     <item>
       <title>Dummy</title>
-      <link>https://rauzansumara.github.io/post/dummy/</link>
+      <link>https://rauzansumara.github.io/posts/dummy/</link>
       <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/dummy/</guid>
+      <guid>https://rauzansumara.github.io/posts/dummy/</guid>
       <description>Try markdown!</description>
     </item>
     
     <item>
       <title>Creating a New Theme</title>
-      <link>https://rauzansumara.github.io/post/creating-a-new-theme/</link>
+      <link>https://rauzansumara.github.io/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+      <guid>https://rauzansumara.github.io/posts/creating-a-new-theme/</guid>
+      <description>Introduction    This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
       <title>First snippet</title>
-      <link>https://rauzansumara.github.io/post/snippets/first/</link>
+      <link>https://rauzansumara.github.io/snippets/first/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/snippets/first/</guid>
+      <guid>https://rauzansumara.github.io/snippets/first/</guid>
       <description>This content is in snippets/first/index.md
 pwd </description>
-    </item>
-    
-    <item>
-      <title>How to Support Rauzan?</title>
-      <link>https://rauzansumara.github.io/support/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/support/</guid>
-      <description>Nothing to see here&amp;hellip; Move along!</description>
     </item>
     
     <item>
@@ -94,12 +85,21 @@ pwd </description>
     
     <item>
       <title>Second snippet</title>
-      <link>https://rauzansumara.github.io/post/snippets/second/</link>
+      <link>https://rauzansumara.github.io/snippets/second/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://rauzansumara.github.io/post/snippets/second/</guid>
+      <guid>https://rauzansumara.github.io/snippets/second/</guid>
       <description>This content is in snippets/second/index.md
 ls -la </description>
+    </item>
+    
+    <item>
+      <title>Support Me</title>
+      <link>https://rauzansumara.github.io/support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/support/</guid>
+      <description>Nothing to see here&amp;hellip; Move along!</description>
     </item>
     
   </channel>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random Forest on RAUZAN SUMARA&#39;S WEBSITE</title>
+    <link>https://rauzansumara.github.io/tags/random-forest/</link>
+    <description>Recent content in Random Forest on RAUZAN SUMARA&#39;S WEBSITE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/tags/random-forest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Predict Churning Customers</title>
+      <link>https://rauzansumara.github.io/posts/predict-churning-customers/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/posts/predict-churning-customers/</guid>
+      <description>Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction</description>
+    </item>
+    
+  </channel>
+</rss>

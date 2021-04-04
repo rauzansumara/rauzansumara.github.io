@@ -4,51 +4,86 @@
   
   <url>
     <loc>https://rauzansumara.github.io/categories/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://rauzansumara.github.io/categories/deep-learning/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/improving-siamese-network-using-gabor-filter/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+    <loc>https://rauzansumara.github.io/tags/gabor-filter/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+    <loc>https://rauzansumara.github.io/posts/improving-siamese-network-using-gabor-filter/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/posts/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://rauzansumara.github.io/</loc>
-    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/implementation-of-gan-and-cgan/</loc>
-    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
+    <loc>https://rauzansumara.github.io/tags/siamese-network/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/cgan/</loc>
+    <lastmod>2021-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/gan/</loc>
+    <lastmod>2021-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/posts/implementation-of-gan-and-cgan/</loc>
+    <lastmod>2021-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://rauzansumara.github.io/categories/machine-learning/</loc>
-    <lastmod>2020-01-12T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/predict-churning-customers/</loc>
-    <lastmod>2020-01-12T00:00:00+00:00</lastmod>
+    <loc>https://rauzansumara.github.io/posts/predict-churning-customers/</loc>
+    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/categories/blog/</loc>
+    <loc>https://rauzansumara.github.io/tags/random-forest/</loc>
+    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/randomized-searchcv/</loc>
+    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/coder/</loc>
     <lastmod>2018-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/dummy/</loc>
+    <loc>https://rauzansumara.github.io/posts/dummy/</loc>
     <lastmod>2018-12-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -58,17 +93,22 @@
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/tags/i18n/</loc>
+    <loc>https://rauzansumara.github.io/categories/tutorial/</loc>
     <lastmod>2018-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/tags/</loc>
-    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
+    <loc>https://rauzansumara.github.io/posts/creating-a-new-theme/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/creating-a-new-theme/</loc>
+    <loc>https://rauzansumara.github.io/tags/html/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/tags/markdown/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -77,11 +117,7 @@
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/snippets/first/</loc>
-  </url>
-  
-  <url>
-    <loc>https://rauzansumara.github.io/support/</loc>
+    <loc>https://rauzansumara.github.io/snippets/first/</loc>
   </url>
   
   <url>
@@ -93,7 +129,7 @@
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/snippets/second/</loc>
+    <loc>https://rauzansumara.github.io/snippets/second/</loc>
   </url>
   
   <url>
@@ -101,7 +137,11 @@
   </url>
   
   <url>
-    <loc>https://rauzansumara.github.io/post/snippets/</loc>
+    <loc>https://rauzansumara.github.io/snippets/</loc>
+  </url>
+  
+  <url>
+    <loc>https://rauzansumara.github.io/support/</loc>
   </url>
   
 </urlset>

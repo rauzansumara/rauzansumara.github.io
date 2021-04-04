@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Siamese Network on RAUZAN SUMARA&#39;S WEBSITE</title>
+    <link>https://rauzansumara.github.io/tags/siamese-network/</link>
+    <description>Recent content in Siamese Network on RAUZAN SUMARA&#39;S WEBSITE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/tags/siamese-network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improving Siamese Network Using Gabor Filter</title>
+      <link>https://rauzansumara.github.io/posts/improving-siamese-network-using-gabor-filter/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/posts/improving-siamese-network-using-gabor-filter/</guid>
+      <description>Here we are going to talk into the detail of how to improve Siamese Network Using Gabor Filter. I will also explain and give a comparison of Siamese Network without and with Gabor Filter seperately. Full code also can be obtained from my GitHub.
+Siamese Network    In recent years, convolutional neural networks (CNNs) are almost good at every task, but these CNNs rely on more data to perform well.</description>
+    </item>
+    
+  </channel>
+</rss>
