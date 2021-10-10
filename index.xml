@@ -66,6 +66,15 @@ pwd </description>
     </item>
     
     <item>
+      <title>Laboratory</title>
+      <link>https://rauzansumara.github.io/laboratory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rauzansumara.github.io/laboratory/</guid>
+      <description>Introduction to Machine Learning    This laboratory will provide you a foundational understanding of machine learning models (linear regression, logistic regression, multilayer perceptrons, convolutional neural networks, natural language processing, computer vision, etc.) as well as demonstrate how these models can solve problems in a variety of industries. In addition, we have designed demonstration exercises that will give you hands-on experience implementing these data science models on data sets. This laboratory is conducted under Warsaw University of Technology.</description>
+    </item>
+    
+    <item>
       <title>Projects</title>
       <link>https://rauzansumara.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -82,7 +91,7 @@ pwd </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://rauzansumara.github.io/about/</guid>
-      <description>I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia. I currently study for my master’s degree at Warsaw University of Life Sciences in Computer Science &amp;amp; Econometrics: specialization in big data analytics, Poland. My research is focused on Bayesian inference and time series analysis; meanwhile, I am also interested in big data analytics and machine learning. I am used to doing for a living as a freelance data analyst.</description>
+      <description>I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia. I obtained my master’s degree at Warsaw University of Life Sciences in Informatics &amp;amp; Econometrics: specialization in big data analytics, Poland. My skills are focused on applied statistical analysis; meanwhile, I am also interested in big data analytics and machine learning. I am used to doing for a living as a freelance data analyst.</description>
     </item>
     
     <item>
