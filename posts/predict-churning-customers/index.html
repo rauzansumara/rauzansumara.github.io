@@ -1,113 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="color-scheme" content="light dark">
-
-    
-
-    <meta name="author" content="Rauzan Sumara">
-    <meta name="description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
-A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction">
-    <meta name="keywords" content="blog,AI,data mining,machine learning,data analyst,scientist,statistician,personal">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Predict Churning Customers"/>
-<meta name="twitter:description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
-A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction"/>
-
-    <meta property="og:title" content="Predict Churning Customers" />
-<meta property="og:description" content="Final Project of Data Mining Course - Big Data Analysis    This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
-A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&#39; decisions in the opposite direction" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://rauzansumara.github.io/posts/predict-churning-customers/" />
-<meta property="article:published_time" content="2021-01-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-12T00:00:00+00:00" />
-
-
-    <title>
+<head>
+  <title>
   Predict Churning Customers · RAUZAN&#39;S BLOG
 </title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
+
+
+
+<meta name="author" content="Rauzan Sumara">
+<meta name="description" content="
+  Final Project of Data Mining Course - Big Data Analysis
+  
     
-      <link rel="canonical" href="https://rauzansumara.github.io/posts/predict-churning-customers/">
-    
+    Link to heading
+  
 
-    <link rel="preload" href="https://rauzansumara.github.io/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" crossorigin>
+This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&rsquo; decisions in the opposite direction">
+<meta name="keywords" content="blog,AI,data mining,machine learning,data analyst,scientist,statistician,personal">
 
-    
-      
-      
-      <link rel="stylesheet" href="https://rauzansumara.github.io/css/coder.min.eb7743f94930acfd17146aecc1f80e86fe35b3e451f2ec0c98485f9c4d962f34.css" integrity="sha256-63dD&#43;UkwrP0XFGrswfgOhv41s&#43;RR8uwMmEhfnE2WLzQ=" crossorigin="anonymous" media="screen" />
-    
 
-    
 
-    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Predict Churning Customers">
+  <meta name="twitter:description" content="Final Project of Data Mining Course - Big Data Analysis Link to heading This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers’ decisions in the opposite direction">
 
-    
+<meta property="og:url" content="https://rauzansumara.github.io/posts/predict-churning-customers/">
+  <meta property="og:site_name" content="RAUZAN&#39;S BLOG">
+  <meta property="og:title" content="Predict Churning Customers">
+  <meta property="og:description" content="Final Project of Data Mining Course - Big Data Analysis Link to heading This is my final project of Data Mining Course, dataset and Python code can be downloaded in my Github
+A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers’ decisions in the opposite direction">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-01-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-01-12T00:00:00+00:00">
+    <meta property="article:tag" content="Random Forest">
+    <meta property="article:tag" content="Randomized SearchCV">
 
-    
 
-    <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://rauzansumara.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    <link rel="apple-touch-icon" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://rauzansumara.github.io/images/apple-touch-icon.png">
 
-    
+<link rel="canonical" href="https://rauzansumara.github.io/posts/predict-churning-customers/">
 
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
 
   
   
-  <body class="preload-transitions colorscheme-light"
-        onload=""
-  >
+  <link rel="stylesheet" href="/css/coder.min.b886fe0d9034709648f91f4ce178f51dd367d9350f82dd1132d54fd69bfca66f.css" integrity="sha256-uIb&#43;DZA0cJZI&#43;R9M4Xj1HdNn2TUPgt0RMtVP1pv8pm8=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
     
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
 <div class="float-container">
     <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
     </a>
 </div>
 
 
-    <main class="wrapper">
-      <nav class="navigation">
+  <main class="wrapper">
+    <nav class="navigation">
   <section class="container">
+    
     <a class="navigation-title" href="https://rauzansumara.github.io/">
       RAUZAN&#39;S BLOG
     </a>
     
+    
       <input type="checkbox" id="menu-toggle" />
       <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
       </label>
       <ul class="navigation-list">
         
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://rauzansumara.github.io/about/">About Me</a>
+              <a class="navigation-link " href="/about/">About Me</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://rauzansumara.github.io/posts/">Blog</a>
+              <a class="navigation-link " href="/posts/">Blog</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://rauzansumara.github.io/laboratory/">Laboratory</a>
+              <a class="navigation-link " href="/laboratory/">Laboratory</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://rauzansumara.github.io/projects/">Projects</a>
+              <a class="navigation-link " href="/projects/">Projects</a>
             </li>
           
             <li class="navigation-item">
-              <a class="navigation-link" href="https://rauzansumara.github.io/support/">How to Support</a>
+              <a class="navigation-link " href="/support/">How to Support</a>
             </li>
           
         
@@ -118,8 +155,8 @@ A manager at the bank is disturbed with more and more customers leaving their cr
 </nav>
 
 
-      <div class="content">
-        
+    <div class="content">
+      
   <section class="container post">
     <article>
       <header>
@@ -133,46 +170,52 @@ A manager at the bank is disturbed with more and more customers leaving their cr
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2021-01-12T00:00:00Z'>
-                January 12, 2021
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-01-12T00:00:00Z">
+                January 12, 2023
               </time>
             </span>
             <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              13-minute read
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              14-minute read
             </span>
           </div>
           
           <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="https://rauzansumara.github.io/categories/machine-learning/">Machine Learning</a></div>
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/machine-learning/">Machine Learning</a></div>
 
           <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://rauzansumara.github.io/tags/random-forest/">Random Forest</a>
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/random-forest/">Random Forest</a>
+    </span>
       <span class="separator">•</span>
-    <a href="https://rauzansumara.github.io/tags/randomized-searchcv/">Randomized SearchCV</a></div>
+    <span class="tag">
+      <a href="/tags/randomized-searchcv/">Randomized SearchCV</a>
+    </span></div>
 
         </div>
       </header>
 
-      <div>
+      <div class="post-content">
         
         <h1 id="final-project-of-data-mining-course---big-data-analysis">
   Final Project of Data Mining Course - Big Data Analysis
   <a class="heading-link" href="#final-project-of-data-mining-course---big-data-analysis">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h1>
-<p>This is my final project of Data Mining Course, dataset and Python code can be downloaded in <a href="https://github.com/rauzansumara/predict-churning-customers"><em>my Github</em></a></p>
-<p>A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers' decisions in the opposite direction</p>
-<p>This dataset is from original website with the URL of <a href="https://leaps.analyttica.com/home">https://leaps.analyttica.com/home</a> or <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers">Kaggle</a>. Now, this dataset consists of 10,000 customers mentioning their age, salary, marital_status, credit card limit, credit card category, etc. There are nearly 18 features.</p>
+<p>This is my final project of Data Mining Course, dataset and Python code can be downloaded in <a href="https://github.com/rauzansumara/predict-churning-customers"  class="external-link" target="_blank" rel="noopener"><em>my Github</em></a></p>
+<p>A manager at the bank is disturbed with more and more customers leaving their credit card services. They would really appreciate if one could predict for them who is gonna get churned so they can proactively go to the customer to provide them better services and turn customers&rsquo; decisions in the opposite direction</p>
+<p>This dataset is from original website with the URL of <a href="https://leaps.analyttica.com/home"  class="external-link" target="_blank" rel="noopener">https://leaps.analyttica.com/home</a> or <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers"  class="external-link" target="_blank" rel="noopener">Kaggle</a>. Now, this dataset consists of 10,000 customers mentioning their age, salary, marital_status, credit card limit, credit card category, etc. There are nearly 18 features.</p>
 <p>From this data set we can predict the customers who are going to stop using credit cards. Using this model/result, the company can make offer to employess to retain them.</p>
 <h2 id="attribute-information">
   Attribute Information
   <a class="heading-link" href="#attribute-information">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <ul>
@@ -201,28 +244,33 @@ A manager at the bank is disturbed with more and more customers leaving their cr
 <h2 id="import-dataset">
   Import Dataset
   <a class="heading-link" href="#import-dataset">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <p>Import Dataset from local computer. Before doing it, we need to import packages as following :</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">import</span> <span style="font-weight:bold">pandas</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">pd</span>
-<span style="font-weight:bold">import</span> <span style="font-weight:bold">numpy</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">np</span>
-<span style="font-weight:bold">import</span> <span style="font-weight:bold">matplotlib.pyplot</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">plt</span>
-<span style="font-weight:bold">import</span> <span style="font-weight:bold">matplotlib.gridspec</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">gridspec</span>
-<span style="font-weight:bold">import</span> <span style="font-weight:bold">seaborn</span> <span style="font-weight:bold">as</span> <span style="font-weight:bold">sns</span>
-plt.style.use(<span style="font-style:italic">&#39;classic&#39;</span>)
-sns.set()
-<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.model_selection</span> <span style="font-weight:bold">import</span> train_test_split, RandomizedSearchCV
-<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.metrics</span> <span style="font-weight:bold">import</span> accuracy_score, classification_report, confusion_matrix, roc_curve, roc_auc_score
-<span style="font-weight:bold">from</span> <span style="font-weight:bold">sklearn.ensemble</span> <span style="font-weight:bold">import</span> RandomForestClassifier
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd.set_option(<span style="font-style:italic">&#39;display.max_columns&#39;</span>, 6)
-df = pd.read_csv(<span style="font-style:italic">&#39;D:/Material Lacture S2/3 Third Semester/Data Mining Methods/Final Project/BankChurners.csv&#39;</span>)
-df.drop(df.columns[[-1,-2]], axis=1, inplace=True) <span style="font-style:italic"># Drop 2 last columns</span>
-<span style="font-weight:bold">print</span>(df.shape)
-df.head(5)
-</code></pre></div><pre><code>(10127, 21)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">RandomizedSearchCV</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;D:/Material Lacture S2/3 Third Semester/Data Mining Methods/Final Project/BankChurners.csv&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Drop 2 last columns</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>(10127, 21)
 </code></pre>
-<!-- raw HTML omitted -->
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -231,12 +279,79 @@ df.head(5)
     text-align: right;
 }
 </code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CLIENTNUM</th>
+      <th>Attrition_Flag</th>
+      <th>Customer_Age</th>
+      <th>...</th>
+      <th>Total_Trans_Ct</th>
+      <th>Total_Ct_Chng_Q4_Q1</th>
+      <th>Avg_Utilization_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>768805383</td>
+      <td>Existing Customer</td>
+      <td>45</td>
+      <td>...</td>
+      <td>42</td>
+      <td>1.625</td>
+      <td>0.061</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>818770008</td>
+      <td>Existing Customer</td>
+      <td>49</td>
+      <td>...</td>
+      <td>33</td>
+      <td>3.714</td>
+      <td>0.105</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>713982108</td>
+      <td>Existing Customer</td>
+      <td>51</td>
+      <td>...</td>
+      <td>20</td>
+      <td>2.333</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>769911858</td>
+      <td>Existing Customer</td>
+      <td>40</td>
+      <td>...</td>
+      <td>20</td>
+      <td>2.333</td>
+      <td>0.760</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>709106358</td>
+      <td>Existing Customer</td>
+      <td>40</td>
+      <td>...</td>
+      <td>28</td>
+      <td>2.500</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div>
 <p>Here we can see that our data consist on <strong>10,127 observation with 21 features</strong>, the features names mantion down below,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Show all names of features </span>
-df.columns
-</code></pre></div><pre><code>Index(['CLIENTNUM', 'Attrition_Flag', 'Customer_Age', 'Gender',
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Show all names of features </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></div><pre><code>Index(['CLIENTNUM', 'Attrition_Flag', 'Customer_Age', 'Gender',
        'Dependent_count', 'Education_Level', 'Marital_Status',
        'Income_Category', 'Card_Category', 'Months_on_book',
        'Total_Relationship_Count', 'Months_Inactive_12_mon',
@@ -248,12 +363,13 @@ df.columns
 <h2 id="exploratory-data-analysis">
   Exploratory Data Analysis
   <a class="heading-link" href="#exploratory-data-analysis">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <p>before modeling data, we would like to explore and vizualize them so that we can understand what kinds of data we have.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">print</span>(df.dtypes)
-</code></pre></div><pre><code>CLIENTNUM                     int64
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>CLIENTNUM                     int64
 Attrition_Flag               object
 Customer_Age                  int64
 Gender                       object
@@ -277,50 +393,54 @@ Avg_Utilization_Ratio       float64
 dtype: object
 </code></pre>
 <p>as you can see that types of features are such as <strong>Object, Integer and Float</strong>. First of all, we would like to vizualize features with object types. Down there are code for making pie chart and bar chart in order to get  insight from <strong>Attrition_Flag, Gender, Education_Level, Marital_Status, Income_Category and Card_Category.</strong></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(constrained_layout=False, figsize=(17, 20))
-spec = gridspec.GridSpec(ncols=2, nrows=3, figure = fig)
-ax1 = fig.add_subplot(spec[0, 0])
-ax2 = fig.add_subplot(spec[0, 1])
-ax3 = fig.add_subplot(spec[1, 0])
-ax4 = fig.add_subplot(spec[1, 1])
-ax5 = fig.add_subplot(spec[2, 0])
-ax6 = fig.add_subplot(spec[2, 1])
-
-<span style="font-style:italic"># Attrition_Flag</span>
-labels = df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
-ax1.pie(df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
-        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
-ax1.set_title(<span style="font-style:italic">&#39;Proportion of Attrition_Flag&#39;</span>)
-
-<span style="font-style:italic"># Gender</span>
-labels = df[<span style="font-style:italic">&#39;Gender&#39;</span>].value_counts().keys()
-ax2.pie(df[<span style="font-style:italic">&#39;Gender&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
-        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
-ax2.set_title(<span style="font-style:italic">&#39;Proportion of Gender&#39;</span>)
-
-<span style="font-style:italic"># Education_Level</span>
-sns.countplot(ax=ax3, x=df[<span style="font-style:italic">&#39;Education_Level&#39;</span>])
-ax3.set_title(<span style="font-style:italic">&#39;Education_Level of Customers&#39;</span>)
-
-<span style="font-style:italic"># Marital_Status </span>
-sns.countplot(ax=ax4, x=df[<span style="font-style:italic">&#39;Marital_Status&#39;</span>])
-ax4.set_title(<span style="font-style:italic">&#39;Marital_Status of Customers&#39;</span>)
-
-<span style="font-style:italic"># Income_Category </span>
-sns.countplot(ax=ax5, x=df[<span style="font-style:italic">&#39;Income_Category&#39;</span>])
-ax5.set_title(<span style="font-style:italic">&#39;Income_Category of Customers&#39;</span>)              
-
-<span style="font-style:italic"># Card_Category                 </span>
-labels = df[<span style="font-style:italic">&#39;Card_Category&#39;</span>].value_counts().keys()
-ax6.pie(df[<span style="font-style:italic">&#39;Card_Category&#39;</span>].value_counts(),labels = labels,  autopct=<span style="font-style:italic">&#39;</span><span style="font-weight:bold;font-style:italic">%.1f%%</span><span style="font-style:italic">&#39;</span>,
-        shadow=True, wedgeprops={<span style="font-style:italic">&#39;edgecolor&#39;</span>: <span style="font-style:italic">&#39;black&#39;</span>})
-ax6.set_title(<span style="font-style:italic">&#39;Proportion of Card_Category&#39;</span>)
-</code></pre></div><pre><code>Text(0.5, 1.0, 'Proportion of Card_Category')
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">spec</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax6</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Attrition_Flag</span>
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span>  <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.1f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion of Attrition_Flag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Gender</span>
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span>  <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.1f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion of Gender&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Education_Level</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Education_Level&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Education_Level of Customers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Marital_Status </span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Marital_Status&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marital_Status of Customers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Income_Category </span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Income_Category of Customers&#39;</span><span class="p">)</span>              
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Card_Category                 </span>
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Card_Category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax6</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Card_Category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span>  <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.1f%%</span><span class="s1">&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax6</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion of Card_Category&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>Text(0.5, 1.0, 'Proportion of Card_Category')
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_11_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_11_1.svg" alt="svg"></p>
 <p>based on charts above, we got proportion of Attrition_Flag 83.9% existing and 16.1% attrited customer. If we look from Gender, most of the customer are female 52.0%. They were also having Graduate and got merried in majority. Thus, according to income category, the customer has mostly less than 40,000 USD in a year. We can see also that more than 93% they hold blue card.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="font-style:italic">&#39;float64&#39;</span>).describe()
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -329,11 +449,93 @@ ax6.set_title(<span style="font-style:italic">&#39;Proportion of Card_Category&#
     text-align: right;
 }
 </code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Credit_Limit</th>
+      <th>Avg_Open_To_Buy</th>
+      <th>Total_Amt_Chng_Q4_Q1</th>
+      <th>Total_Ct_Chng_Q4_Q1</th>
+      <th>Avg_Utilization_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10127.000000</td>
+      <td>10127.000000</td>
+      <td>10127.000000</td>
+      <td>10127.000000</td>
+      <td>10127.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>8631.953698</td>
+      <td>7469.139637</td>
+      <td>0.759941</td>
+      <td>0.712222</td>
+      <td>0.274894</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9088.776650</td>
+      <td>9090.685324</td>
+      <td>0.219207</td>
+      <td>0.238086</td>
+      <td>0.275691</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1438.300000</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2555.000000</td>
+      <td>1324.500000</td>
+      <td>0.631000</td>
+      <td>0.582000</td>
+      <td>0.023000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4549.000000</td>
+      <td>3474.000000</td>
+      <td>0.736000</td>
+      <td>0.702000</td>
+      <td>0.176000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11067.500000</td>
+      <td>9859.000000</td>
+      <td>0.859000</td>
+      <td>0.818000</td>
+      <td>0.503000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>34516.000000</td>
+      <td>34516.000000</td>
+      <td>3.397000</td>
+      <td>3.714000</td>
+      <td>0.999000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <p>here we consider to calculate summary statistics towards numeric features such as <strong>Credit_Limit, Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio</strong>. We can interpret Credit_Limit as that feature has mean 8631.953698 less than standar deviation 9088.776650, which mean that the data has high volatility and it happens to Avg_Open_To_Buy as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)[df.select_dtypes(include=<span style="font-style:italic">&#39;float64&#39;</span>).columns].describe().T
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">)[</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -342,45 +544,266 @@ ax6.set_title(<span style="font-style:italic">&#39;Proportion of Card_Category&#
     text-align: right;
 }
 </code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Attrition_Flag</th>
+      <th>Attrited Customer</th>
+      <th>Existing Customer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">Credit_Limit</th>
+      <th>count</th>
+      <td>1627.000000</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>8136.039459</td>
+      <td>8726.877518</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9095.334105</td>
+      <td>9084.969807</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1438.300000</td>
+      <td>1438.300000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2114.000000</td>
+      <td>2602.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4178.000000</td>
+      <td>4643.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>9933.500000</td>
+      <td>11252.750000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>34516.000000</td>
+      <td>34516.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Avg_Open_To_Buy</th>
+      <th>count</th>
+      <td>1627.000000</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7463.216472</td>
+      <td>7470.273400</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9109.208129</td>
+      <td>9087.671862</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.000000</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1587.000000</td>
+      <td>1184.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3488.000000</td>
+      <td>3469.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>9257.500000</td>
+      <td>9978.250000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>34516.000000</td>
+      <td>34516.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Total_Amt_Chng_Q4_Q1</th>
+      <th>count</th>
+      <td>1627.000000</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.694277</td>
+      <td>0.772510</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.214924</td>
+      <td>0.217783</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.256000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.544500</td>
+      <td>0.643000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.701000</td>
+      <td>0.743000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.856000</td>
+      <td>0.860000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.492000</td>
+      <td>3.397000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Total_Ct_Chng_Q4_Q1</th>
+      <th>count</th>
+      <td>1627.000000</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.554386</td>
+      <td>0.742434</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.226854</td>
+      <td>0.228054</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.028000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.400000</td>
+      <td>0.617000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.531000</td>
+      <td>0.721000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.692000</td>
+      <td>0.833000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.500000</td>
+      <td>3.714000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Avg_Utilization_Ratio</th>
+      <th>count</th>
+      <td>1627.000000</td>
+      <td>8500.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.162475</td>
+      <td>0.296412</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.264458</td>
+      <td>0.272568</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>0.055000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>0.211000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.231000</td>
+      <td>0.529250</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.999000</td>
+      <td>0.994000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <p>We may compare between Attrited Customer and Existing Customer based on Credit_Limit, Avg_Open_To_Buy, Total_Amt_Chng_Q4_Q1, Total_Ct_Chng_Q4_Q1 and Avg_Utilization_Ratio. As you can see above that those two categories have no much difference coresponding to mean and standar deviation. for example, mean of Attrited Customer is 7463.216472 (std: 9109.208129) and mean of Attrited Customer 7470.273400 (std: 9087.671862), and so are other features.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(figsize=(17, 20))
-spec = gridspec.GridSpec(ncols=2, nrows=3, figure=fig)
-ax1 = fig.add_subplot(spec[0, 0])
-ax2 = fig.add_subplot(spec[0, 1])
-ax3 = fig.add_subplot(spec[1, 0])
-ax4 = fig.add_subplot(spec[1, 1])
-ax5 = fig.add_subplot(spec[2, 0])
-
-df.boxplot(column=[<span style="font-style:italic">&#39;Credit_Limit&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax1)
-df.boxplot(column=[<span style="font-style:italic">&#39;Avg_Open_To_Buy&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax2)
-df.boxplot(column=[<span style="font-style:italic">&#39;Total_Amt_Chng_Q4_Q1&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax3)
-df.boxplot(column=[<span style="font-style:italic">&#39;Total_Ct_Chng_Q4_Q1&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax4)
-df.boxplot(column=[<span style="font-style:italic">&#39;Avg_Utilization_Ratio&#39;</span>], by=[<span style="font-style:italic">&#39;Income_Category&#39;</span>], ax=ax5)
-</code></pre></div><pre><code>&lt;AxesSubplot:title={'center':'Avg_Utilization_Ratio'}, xlabel='[Income_Category]'&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">spec</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Credit_Limit&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Avg_Open_To_Buy&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Total_Amt_Chng_Q4_Q1&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Total_Ct_Chng_Q4_Q1&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Avg_Utilization_Ratio&#39;</span><span class="p">],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax5</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>&lt;AxesSubplot:title={'center':'Avg_Utilization_Ratio'}, xlabel='[Income_Category]'&gt;
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_17_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_17_1.svg" alt="svg"></p>
 <p>if we are grouping by Income_Category using boxplot, we can recognize that a lot of data points are above and below of the mean value there. let say we only concert to one feature which is Credit_Limit for example. according to <strong>&ldquo;less than 40K USD&rdquo;</strong> and <strong>&ldquo;40K - 60K&rdquo;</strong> categories, many customers have too high credit comparing to its average. The company should consider some rule for customers who want to propose the credit so that use of credit card by customers might be optimum.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Categorizing of Customer_Age into 4 categories</span>
-df[<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>] = pd.cut(df[<span style="font-style:italic">&#39;Customer_Age&#39;</span>], bins=4, precision=0) 
-plt.figure(figsize=(15,8))
-sns.countplot(y=<span style="font-style:italic">&#39;Card_Category&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
-</code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a087a430&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Categorizing of Customer_Age into 4 categories</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Customer_Age_Categorized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Customer_Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Card_Category&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Customer_Age_Categorized&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a087a430&gt;
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_19_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_19_1.svg" alt="svg"></p>
 <p>Graph above says that most of customers are using blue card, and Age between 38 - 50 year old is dominant at every categories.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.select_dtypes(include=<span style="font-style:italic">&#39;int64&#39;</span>).columns
-</code></pre></div><pre><code>Index(['CLIENTNUM', 'Customer_Age', 'Dependent_count', 'Months_on_book',
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></div><pre><code>Index(['CLIENTNUM', 'Customer_Age', 'Dependent_count', 'Months_on_book',
        'Total_Relationship_Count', 'Months_Inactive_12_mon',
        'Contacts_Count_12_mon', 'Total_Revolving_Bal', 'Total_Trans_Amt',
        'Total_Trans_Ct'],
       dtype='object')
 </code></pre>
 <p>Now, we also want to get some insight from count (Integer) features, such as <strong>Customer_Age, Dependent_count,Months_on_book, Total_Relationship_Count, Months_Inactive_12_mon, Contacts_Count_12_mon, Total_Revolving_Bal, Total_Trans_Amt, and Total_Trans_Ct</strong></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df.groupby([<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>,<span style="font-style:italic">&#39;Income_Category&#39;</span>])[<span style="font-style:italic">&#39;Total_Relationship_Count&#39;</span>,<span style="font-style:italic">&#39;Total_Revolving_Bal&#39;</span>,                            <span style="font-style:italic">&#39;Total_Trans_Amt&#39;</span>,<span style="font-style:italic">&#39;Total_Trans_Ct&#39;</span>].sum()
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">,</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">])[</span><span class="s1">&#39;Total_Relationship_Count&#39;</span><span class="p">,</span><span class="s1">&#39;Total_Revolving_Bal&#39;</span><span class="p">,</span>                            <span class="s1">&#39;Total_Trans_Amt&#39;</span><span class="p">,</span><span class="s1">&#39;Total_Trans_Ct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -389,26 +812,134 @@ plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
     text-align: right;
 }
 </code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Total_Relationship_Count</th>
+      <th>Total_Revolving_Bal</th>
+      <th>Total_Trans_Amt</th>
+      <th>Total_Trans_Ct</th>
+    </tr>
+    <tr>
+      <th>Attrition_Flag</th>
+      <th>Income_Category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">Attrited Customer</th>
+      <th>$120K +</th>
+      <td>409</td>
+      <td>85407</td>
+      <td>427527</td>
+      <td>5752</td>
+    </tr>
+    <tr>
+      <th>$40K - $60K</th>
+      <td>878</td>
+      <td>172016</td>
+      <td>811029</td>
+      <td>12090</td>
+    </tr>
+    <tr>
+      <th>$60K - $80K</th>
+      <td>613</td>
+      <td>107579</td>
+      <td>613566</td>
+      <td>8474</td>
+    </tr>
+    <tr>
+      <th>$80K - $120K</th>
+      <td>705</td>
+      <td>183586</td>
+      <td>905229</td>
+      <td>11488</td>
+    </tr>
+    <tr>
+      <th>Less than $40K</th>
+      <td>2123</td>
+      <td>419902</td>
+      <td>1753529</td>
+      <td>27048</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>608</td>
+      <td>126193</td>
+      <td>524727</td>
+      <td>8255</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">Existing Customer</th>
+      <th>$120K +</th>
+      <td>2338</td>
+      <td>803130</td>
+      <td>2865396</td>
+      <td>40561</td>
+    </tr>
+    <tr>
+      <th>$40K - $60K</th>
+      <td>5894</td>
+      <td>1925854</td>
+      <td>7075029</td>
+      <td>104261</td>
+    </tr>
+    <tr>
+      <th>$60K - $80K</th>
+      <td>4762</td>
+      <td>1511722</td>
+      <td>5626333</td>
+      <td>80199</td>
+    </tr>
+    <tr>
+      <th>$80K - $120K</th>
+      <td>5154</td>
+      <td>1668740</td>
+      <td>5976115</td>
+      <td>84751</td>
+    </tr>
+    <tr>
+      <th>Less than $40K</th>
+      <td>11492</td>
+      <td>3657930</td>
+      <td>13784610</td>
+      <td>208529</td>
+    </tr>
+    <tr>
+      <th>Unknown</th>
+      <td>3634</td>
+      <td>1113759</td>
+      <td>4237092</td>
+      <td>65416</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <p>Attrited Customer with <strong>incoming less than 40k usd</strong>, have big number of <strong>Total_Relationship_Count, Total_Revolving_Bal, Total_Trans_Amt, and Total_Trans_Ct</strong>. It does also happen in existing Customer.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt.figure(figsize=(15,8))
-sns.countplot(y=<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
-</code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a0f0cbb0&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Customer_Age_Categorized&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>&lt;matplotlib.legend.Legend at 0x1b2a0f0cbb0&gt;
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_25_1.svg" alt="svg"></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Bar chart Income_Category groupby Attrition_Flag </span>
-plt.figure(figsize=(13,8))
-sns.countplot(y=<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>, hue=<span style="font-style:italic">&#39;Income_Category&#39;</span>, data = df)
-plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
-plt.xlabel(<span style="font-style:italic">&#39;Number of Customers&#39;</span>)
-plt.ylabel(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)
-plt.title(<span style="font-style:italic">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
-
-<span style="font-style:italic"># Table Income_Category groupby Attrition_Flag </span>
-df.groupby(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)[<span style="font-style:italic">&#39;Income_Category&#39;</span>].value_counts()
-</code></pre></div><pre><code>Attrition_Flag     Income_Category
+<p><img src="/post/predict-churning-customers/output_25_1.svg" alt="svg"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Bar chart Income_Category groupby Attrition_Flag </span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Customers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Income_Category groupby Attrition_Flag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Table Income_Category groupby Attrition_Flag </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">)[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>Attrition_Flag     Income_Category
 Attrited Customer  Less than $40K      612
                    $40K - $60K         271
                    $80K - $120K        242
@@ -424,17 +955,17 @@ Existing Customer  Less than $40K     2949
 Name: Income_Category, dtype: int64
 </code></pre>
 <p><img src="output_26_1.png" alt="png"></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Bar chart Income_Category groupby Attrition_Flag </span>
-plt.figure(figsize=(13,8))
-sns.countplot(y=<span style="font-style:italic">&#39;Income_Category&#39;</span>, hue=<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>, data = df)
-plt.legend(loc = <span style="font-style:italic">&#39;center right&#39;</span>)
-plt.xlabel(<span style="font-style:italic">&#39;Number of Customers&#39;</span>)
-plt.ylabel(<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>)
-plt.title(<span style="font-style:italic">&#39;Income_Category groupby Attrition_Flag&#39;</span>)
-
-<span style="font-style:italic"># Table Income_Category groupby Attrition_Flag </span>
-df.groupby(<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</span>)[<span style="font-style:italic">&#39;Income_Category&#39;</span>].value_counts()
-</code></pre></div><pre><code>Customer_Age_Categorized  Income_Category
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Bar chart Income_Category groupby Attrition_Flag </span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Customer_Age_Categorized&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Customers&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Income_Category groupby Attrition_Flag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Table Income_Category groupby Attrition_Flag </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Customer_Age_Categorized&#39;</span><span class="p">)[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>Customer_Age_Categorized  Income_Category
 (26.0, 38.0]              Less than $40K      537
                           $40K - $60K         275
                           Unknown             179
@@ -461,27 +992,32 @@ df.groupby(<span style="font-style:italic">&#39;Customer_Age_Categorized&#39;</s
                           $120K +               1
 Name: Income_Category, dtype: int64
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_27_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_27_1.svg" alt="svg"></p>
 <p>Based on some graphs above, we can conclude that most customers have age <strong>between 38 - 50 year old</strong>. It also imply that many of them are having <strong>income less than 40k usd</strong>.</p>
 <h2 id="data-preprocessing">
   Data Preprocessing
   <a class="heading-link" href="#data-preprocessing">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].value_counts().keys()
-</code></pre></div><pre><code>Index(['Existing Customer', 'Attrited Customer'], dtype='object')
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>Index(['Existing Customer', 'Attrited Customer'], dtype='object')
 </code></pre>
 <p>Before applying mechine learning model in order to clasify <strong>Attrition_Flag (Existing Customer :0, Attrited Customer: 1)</strong>, we are going to prepare the data (cleaning data) so that it will be easy to use into algorithm.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Remove &#39;Unknown&#39; Observation and &#39;CLIENTNUM&#39; column  </span>
-df.replace({<span style="font-style:italic">&#39;Unknown&#39;</span>: np.nan}, inplace=True)
-df.dropna(inplace=True) <span style="font-style:italic"># Remove &#39;Unknown&#39; observation</span>
-df.drop([<span style="font-style:italic">&#39;CLIENTNUM&#39;</span>], axis=1, inplace=True) <span style="font-style:italic"># Delete &#39;CLIENTNUM&#39; column</span>
-<span style="font-weight:bold">print</span>(df.shape)
-df.head(5)
-</code></pre></div><pre><code>(7081, 21)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Remove &#39;Unknown&#39; Observation and &#39;CLIENTNUM&#39; column  </span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Unknown&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Remove &#39;Unknown&#39; observation</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;CLIENTNUM&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Delete &#39;CLIENTNUM&#39; column</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>(7081, 21)
 </code></pre>
-<!-- raw HTML omitted -->
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -490,21 +1026,88 @@ df.head(5)
     text-align: right;
 }
 </code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Change categorical variables into dummy variables</span>
-df2 = pd.concat([df[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>].replace({<span style="font-style:italic">&#39;Existing Customer&#39;</span>: 0, <span style="font-style:italic">&#39;Attrited Customer&#39;</span>: 1}),
-                df[<span style="font-style:italic">&#39;Gender&#39;</span>].replace({<span style="font-style:italic">&#39;M&#39;</span>: 0, <span style="font-style:italic">&#39;F&#39;</span>:1}),
-                pd.get_dummies(df[<span style="font-style:italic">&#39;Education_Level&#39;</span>]), 
-                pd.get_dummies(df[<span style="font-style:italic">&#39;Marital_Status&#39;</span>]), 
-                pd.get_dummies(df[<span style="font-style:italic">&#39;Income_Category&#39;</span>]), 
-                pd.get_dummies(df[<span style="font-style:italic">&#39;Card_Category&#39;</span>]),
-                df.select_dtypes(include=[<span style="font-style:italic">&#39;int64&#39;</span>,<span style="font-style:italic">&#39;float64&#39;</span>])], axis=1)
-
-df2.drop([<span style="font-style:italic">&#39;Uneducated&#39;</span>,<span style="font-style:italic">&#39;Divorced&#39;</span>,<span style="font-style:italic">&#39;$120K +&#39;</span>,<span style="font-style:italic">&#39;Platinum&#39;</span>], axis=1, inplace=True) <span style="font-style:italic"># Delete because of base categories</span>
-</code></pre></div><p>As we can see that some of our features are categorical variables, therefore we have to make dummy variables instead of categorical features.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df2.columns
-</code></pre></div><pre><code>Index(['Attrition_Flag', 'Gender', 'College', 'Doctorate', 'Graduate',
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Attrition_Flag</th>
+      <th>Customer_Age</th>
+      <th>Gender</th>
+      <th>...</th>
+      <th>Total_Ct_Chng_Q4_Q1</th>
+      <th>Avg_Utilization_Ratio</th>
+      <th>Customer_Age_Categorized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Existing Customer</td>
+      <td>45</td>
+      <td>M</td>
+      <td>...</td>
+      <td>1.625</td>
+      <td>0.061</td>
+      <td>(38.0, 50.0]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Existing Customer</td>
+      <td>49</td>
+      <td>F</td>
+      <td>...</td>
+      <td>3.714</td>
+      <td>0.105</td>
+      <td>(38.0, 50.0]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Existing Customer</td>
+      <td>51</td>
+      <td>M</td>
+      <td>...</td>
+      <td>2.333</td>
+      <td>0.000</td>
+      <td>(50.0, 61.0]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Existing Customer</td>
+      <td>40</td>
+      <td>M</td>
+      <td>...</td>
+      <td>2.500</td>
+      <td>0.000</td>
+      <td>(38.0, 50.0]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Existing Customer</td>
+      <td>44</td>
+      <td>M</td>
+      <td>...</td>
+      <td>0.846</td>
+      <td>0.311</td>
+      <td>(38.0, 50.0]</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Change categorical variables into dummy variables</span>
+</span></span><span class="line"><span class="cl"><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Existing Customer&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Attrited Customer&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Education_Level&#39;</span><span class="p">]),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Marital_Status&#39;</span><span class="p">]),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Income_Category&#39;</span><span class="p">]),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Card_Category&#39;</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;int64&#39;</span><span class="p">,</span><span class="s1">&#39;float64&#39;</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Uneducated&#39;</span><span class="p">,</span><span class="s1">&#39;Divorced&#39;</span><span class="p">,</span><span class="s1">&#39;$120K +&#39;</span><span class="p">,</span><span class="s1">&#39;Platinum&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Delete because of base categories</span>
+</span></span></code></pre></div><p>As we can see that some of our features are categorical variables, therefore we have to make dummy variables instead of categorical features.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df2</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></div><pre><code>Index(['Attrition_Flag', 'Gender', 'College', 'Doctorate', 'Graduate',
        'High School', 'Post-Graduate', 'Married', 'Single', '$40K - $60K',
        '$60K - $80K', '$80K - $120K', 'Less than $40K', 'Blue', 'Gold',
        'Silver', 'Customer_Age', 'Dependent_count', 'Months_on_book',
@@ -518,19 +1121,20 @@ df2.drop([<span style="font-style:italic">&#39;Uneducated&#39;</span>,<span styl
 <h2 id="data-modeling-1-random-forest-default-hyperparameter">
   Data Modeling 1: Random Forest (Default Hyperparameter)
   <a class="heading-link" href="#data-modeling-1-random-forest-default-hyperparameter">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <p>In clasification problem, many machine learning method are used, one of them is Random forest. This algorithm is a supervised learning algorithm. The &ldquo;forest&rdquo; it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. <strong>Why do we use this algorithm?</strong> bacause Random forest is flexible, easy to use machine learning algorithm that produces a great result most of the time. It is also one of the most used algorithms, because of its simplicity and diversity (it can be used for both classification and regression tasks).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># Spliting dataset into training and testing</span>
-x = df2.drop([<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>], axis=1)
-y = df2[<span style="font-style:italic">&#39;Attrition_Flag&#39;</span>]
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#34;Proportion of training set :&#34;</span>)
-<span style="font-weight:bold">print</span>(y_train.value_counts())
-<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#34;Proportion of testing set :&#34;</span>)
-<span style="font-weight:bold">print</span>(y_test.value_counts())
-</code></pre></div><pre><code>Proportion of training set :
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Spliting dataset into training and testing</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Attrition_Flag&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Proportion of training set :&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Proportion of testing set :&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</span></span></code></pre></div><pre><code>Proportion of training set :
 0    4763
 1     901
 Name: Attrition_Flag, dtype: int64
@@ -539,23 +1143,23 @@ Proportion of testing set :
 1     212
 Name: Attrition_Flag, dtype: int64
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model1 = RandomForestClassifier(random_state= 0)
-model1.fit(x_train, y_train)
-yhat = model1.predict(x_test)
-plt.figure(figsize=(5, 4))
-cf_mat = confusion_matrix(y_test, yhat)
-sns.heatmap(cf_mat, annot=True, fmt=<span style="font-style:italic">&#39;g&#39;</span>)
-plt.show()
-
-<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Random Forest Classifier :</span><span style="font-weight:bold;font-style:italic">\n\n\t</span><span style="font-style:italic">&#39;</span>,
-     f<span style="font-style:italic">&#39;The Training model accuracy :{model1.score(x_train, y_train)}</span><span style="font-weight:bold;font-style:italic">\n\t</span><span style="font-style:italic">&#39;</span>, 
-     f<span style="font-style:italic">&#39;The Test model accuracy: {model1.score(x_test, y_test)}&#39;</span>)
-<span style="font-weight:bold">print</span>(classification_report(y_test, yhat))
-</code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_40_0.svg" alt="svg"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model1</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">yhat</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">cf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">yhat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_mat</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Random Forest Classifier :</span><span class="se">\n\n\t</span><span class="s1">&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="sa">f</span><span class="s1">&#39;The Training model accuracy :</span><span class="si">{</span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="se">\n\t</span><span class="s1">&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">     <span class="sa">f</span><span class="s1">&#39;The Test model accuracy: </span><span class="si">{</span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">yhat</span><span class="p">))</span>
+</span></span></code></pre></div><p><img src="/post/predict-churning-customers/output_40_0.svg" alt="svg"></p>
 <pre><code>Random Forest Classifier :
 
-     The Training model accuracy :1.0
-     The Test model accuracy: 0.958362738179252
+	 The Training model accuracy :1.0
+	 The Test model accuracy: 0.958362738179252
               precision    recall  f1-score   support
 
            0       0.96      0.99      0.98      1205
@@ -569,23 +1173,24 @@ weighted avg       0.96      0.96      0.96      1417
 <h2 id="data-modeling-2-improving-random-forest-randomized-searchcv">
   Data Modeling 2: Improving Random Forest (Randomized SearchCV)
   <a class="heading-link" href="#data-modeling-2-improving-random-forest-randomized-searchcv">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
 <p>Randomized search is the most widely used strategies for hyper-parameter optimization. Many papers showed empirically and theoretically that randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid. In Random Search, we create a grid of hyperparameters and train/test our model on just some random combination of these hyperparameters. In this example, I additionally decided to perform Cross-Validation on the training set.</p>
 <p>We can now start implementing Random Search by first defying a grid of hyperparameters which will be randomly sampled when calling RandomizedSearchCV(). For this example, I decided to divide our training set into 5 Folds (cv = 5) and select 20 as the number of combinations to sample (n_iter = 20). Using the scikit-learn best_estimator_ attribute, we can then retrieve the set of hyperparameters which performed best during training to test our model.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">random_search = {<span style="font-style:italic">&#39;criterion&#39;</span>: [<span style="font-style:italic">&#39;entropy&#39;</span>, <span style="font-style:italic">&#39;gini&#39;</span>],
-               <span style="font-style:italic">&#39;max_depth&#39;</span>: list(np.linspace(10, 1200, 10, dtype = int)) + [None],
-               <span style="font-style:italic">&#39;max_features&#39;</span>: [<span style="font-style:italic">&#39;auto&#39;</span>, <span style="font-style:italic">&#39;sqrt&#39;</span>,<span style="font-style:italic">&#39;log2&#39;</span>, None],
-               <span style="font-style:italic">&#39;min_samples_leaf&#39;</span>: [4, 5, 6, 7, 8, 9, 10, 11, 12],
-               <span style="font-style:italic">&#39;min_samples_split&#39;</span>: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-               <span style="font-style:italic">&#39;n_estimators&#39;</span>: list(np.linspace(100, 1200, 5, dtype = int))}
-
-clf = RandomForestClassifier()
-model2 = RandomizedSearchCV(estimator = clf, param_distributions = random_search, n_iter = 20, 
-                            cv = 5, verbose= 5, n_jobs = -1)
-model2.fit(x_train,y_train)
-</code></pre></div><pre><code>Fitting 5 folds for each of 20 candidates, totalling 100 fits
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">random_search</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="s1">&#39;gini&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">               <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">               <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span><span class="s1">&#39;log2&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">               <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">               <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">               <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">))}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">model2</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">clf</span><span class="p">,</span> <span class="n">param_distributions</span> <span class="o">=</span> <span class="n">random_search</span><span class="p">,</span> <span class="n">n_iter</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">cv</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>Fitting 5 folds for each of 20 candidates, totalling 100 fits
 [Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
 [Parallel(n_jobs=-1)]: Done  40 tasks      | elapsed:   17.9s
 [Parallel(n_jobs=-1)]: Done  90 out of 100 | elapsed:   44.1s remaining:    4.8s
@@ -612,29 +1217,29 @@ RandomizedSearchCV(cv=5, estimator=RandomForestClassifier(), n_iter=20,
                                                          1200]},
                    verbose=5)
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">table = pd.pivot_table(pd.DataFrame(model2.cv_results_), values=<span style="font-style:italic">&#39;mean_test_score&#39;</span>, index=<span style="font-style:italic">&#39;param_n_estimators&#39;</span>, 
-                       columns=<span style="font-style:italic">&#39;param_criterion&#39;</span>)
-sns.heatmap(table)
-<span style="font-weight:bold">print</span>(model2.best_estimator_)
-</code></pre></div><pre><code>RandomForestClassifier(criterion='entropy', max_depth=1067, max_features=None,
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">),</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;param_n_estimators&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>RandomForestClassifier(criterion='entropy', max_depth=1067, max_features=None,
                        min_samples_leaf=4, min_samples_split=8,
                        n_estimators=650)
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_45_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_45_1.svg" alt="svg"></p>
 <p>According to Randomized SearchCV above, we got the best hyperparameter are <strong>criterion=&lsquo;entropy&rsquo;, n_estimators=650, max_depth=1067, max_features = None, min_samples_leaf = 4,</strong> and <strong>min_samples_split = 8</strong>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">yhat2 = model2.best_estimator_.predict(x_test)
-plt.figure(figsize=(5, 4))
-cf_mat2 = confusion_matrix(y_test, yhat2)
-sns.heatmap(cf_mat2, annot=True, fmt=<span style="font-style:italic">&#39;g&#39;</span>)
-plt.show()
-
-<span style="font-weight:bold">print</span>(<span style="font-style:italic">&#39;Random Forest Classifier 2:</span><span style="font-weight:bold;font-style:italic">\n\n\t</span><span style="font-style:italic">&#39;</span>,  
-     f<span style="font-style:italic">&#39;The Test model accuracy: {model2.best_estimator_.score(x_test, y_test)}&#39;</span>)
-<span style="font-weight:bold">print</span>(classification_report(y_test, yhat2))
-</code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_47_0.svg" alt="svg"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">yhat2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">cf_mat2</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">yhat2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cf_mat2</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Random Forest Classifier 2:</span><span class="se">\n\n\t</span><span class="s1">&#39;</span><span class="p">,</span>  
+</span></span><span class="line"><span class="cl">     <span class="sa">f</span><span class="s1">&#39;The Test model accuracy: </span><span class="si">{</span><span class="n">model2</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">yhat2</span><span class="p">))</span>
+</span></span></code></pre></div><p><img src="/post/predict-churning-customers/output_47_0.svg" alt="svg"></p>
 <pre><code>Random Forest Classifier 2:
 
-     The Test model accuracy: 0.9611856033874383
+	 The Test model accuracy: 0.9611856033874383
               precision    recall  f1-score   support
 
            0       0.97      0.98      0.98      1205
@@ -648,48 +1253,50 @@ weighted avg       0.96      0.96      0.96      1417
 <h2 id="comparison-of-roc-curve-of-both-models">
   Comparison of ROC Curve of Both Models
   <a class="heading-link" href="#comparison-of-roc-curve-of-both-models">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-style:italic"># predict probabilities</span>
-pred_prob1 = model1.predict_proba(x_test)
-pred_prob2 = model2.predict_proba(x_test)
-
-<span style="font-style:italic"># roc curve for models</span>
-fpr1, tpr1, thresh1 = roc_curve(y_test, pred_prob1[:,1], pos_label=1)
-fpr2, tpr2, thresh2 = roc_curve(y_test, pred_prob2[:,1], pos_label=1)
-
-<span style="font-style:italic"># auc scores</span>
-auc_score1 = roc_auc_score(y_test, pred_prob1[:,1])
-auc_score2 = roc_auc_score(y_test, pred_prob2[:,1])
-
-<span style="font-style:italic"># plot roc curves</span>
-plt.plot(fpr1, tpr1, linestyle=<span style="font-style:italic">&#39;--&#39;</span>,color=<span style="font-style:italic">&#39;orange&#39;</span>, label=<span style="font-style:italic">&#39;Model 1 (area = </span><span style="font-weight:bold;font-style:italic">%0.2f</span><span style="font-style:italic">)&#39;</span> % auc_score1)
-plt.plot(fpr2, tpr2, linestyle=<span style="font-style:italic">&#39;--&#39;</span>,color=<span style="font-style:italic">&#39;green&#39;</span>, label=<span style="font-style:italic">&#39;Model 2 (area = </span><span style="font-weight:bold;font-style:italic">%0.2f</span><span style="font-style:italic">)&#39;</span> % auc_score2)
-
-<span style="font-style:italic"># title</span>
-plt.title(<span style="font-style:italic">&#39;ROC curve&#39;</span>)
-<span style="font-style:italic"># x label</span>
-plt.xlabel(<span style="font-style:italic">&#39;False Positive Rate&#39;</span>)
-<span style="font-style:italic"># y label</span>
-plt.ylabel(<span style="font-style:italic">&#39;True Positive rate&#39;</span>)
-
-plt.legend(loc=<span style="font-style:italic">&#39;best&#39;</span>)
-plt.show()
-</code></pre></div><p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_50_0.svg" alt="svg"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># predict probabilities</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred_prob1</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred_prob2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># roc curve for models</span>
+</span></span><span class="line"><span class="cl"><span class="n">fpr1</span><span class="p">,</span> <span class="n">tpr1</span><span class="p">,</span> <span class="n">thresh1</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_prob1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fpr2</span><span class="p">,</span> <span class="n">tpr2</span><span class="p">,</span> <span class="n">thresh2</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_prob2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># auc scores</span>
+</span></span><span class="line"><span class="cl"><span class="n">auc_score1</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_prob1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">auc_score2</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_prob2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># plot roc curves</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr1</span><span class="p">,</span> <span class="n">tpr1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model 1 (area = </span><span class="si">%0.2f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">auc_score1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr2</span><span class="p">,</span> <span class="n">tpr2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model 2 (area = </span><span class="si">%0.2f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">auc_score2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># title</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ROC curve&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># x label</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># y label</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive rate&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><p><img src="/post/predict-churning-customers/output_50_0.svg" alt="svg"></p>
 <p>As we can see that ROC curves of both models are not significantly different. We also got AUC for <strong>model 1 = 0.98</strong> and <strong>model 2 = 0.99</strong>. Even it&rsquo;s so, we still believe that hyperparameters have effected big enough to the accuracy of the model in circumstance situation.</p>
 <h2 id="feature-importance">
   Feature Importance
   <a class="heading-link" href="#feature-importance">
-    <i class="fa fa-link" aria-hidden="true"></i>
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
   </a>
 </h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx = model1.feature_importances_.argsort()
-plt.barh(x_train.columns[sorted_idx], model1.feature_importances_[sorted_idx])
-plt.xlabel(<span style="font-style:italic">&#34;Random Forest Feature Importance&#34;</span>)
-</code></pre></div><pre><code>Text(0.5, 0, 'Random Forest Feature Importance')
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">feature_importances_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">],</span> <span class="n">model1</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Random Forest Feature Importance&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>Text(0.5, 0, 'Random Forest Feature Importance')
 </code></pre>
-<p><img src="https://rauzansumara.github.io/post/predict-churning-customers/output_53_1.svg" alt="svg"></p>
+<p><img src="/post/predict-churning-customers/output_53_1.svg" alt="svg"></p>
 <p>According to the graph, we can get that 5 most dominant/important features are <strong>Total_Trans_Amt, Total_Trans_Ct, Total_Revolving_Bal, Total_Ct_Chng_Q4_Q1</strong> and <strong>Avg_Utilization_Ratio</strong>. Therefore the company can put effort more through these features.</p>
 
       </div>
@@ -700,8 +1307,8 @@ plt.xlabel(<span style="font-style:italic">&#34;Random Forest Feature Importance
 
 
         <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+  window.disqus_config = function () {
     
     
     
@@ -712,40 +1319,33 @@ plt.xlabel(<span style="font-style:italic">&#34;Random Forest Feature Importance
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "rauzansumara" + '.disqus.com/embed.js';
+        s.src = '//' + "RS" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
+    
+    document.addEventListener('themeChanged', function (e) { 
+        if (document.readyState == 'complete') {
+          DISQUS.reset({ reload: true, config: disqus_config });
+        }
+    });
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+        
+        
         
         
       </footer>
     </article>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
   
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [
-          ['$', '$'], ['\\(', '\\)']
-        ],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
-  </script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
-    integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous">
-  
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"
-    integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
-    integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous"
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
     onload="renderMathInElement(document.body,
       {
         delimiters: [
@@ -758,50 +1358,71 @@ plt.xlabel(<span style="font-style:italic">&#34;Random Forest Feature Importance
     );"></script>
   </section>
 
-      </div>
+    </div>
 
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Use data to reveal the future</p>
-      
-      
-        ©
-        
-        2024
-         Rauzan Sumara 
-      
-      
-      
-        
-      
-    </section>
-  </footer>
-
-
-    </main>
-
+    <footer class="footer">
+  <section class="container">
+  
+    <div class="footerContent">  
+      <p>Use data to reveal the future</p>  
+    </div>  
+  
+    ©
     
-      
-      <script src="https://rauzansumara.github.io/js/coder.min.f92783b4545b68f3523e5d6ad91d93f76818f9d0db2ffa13bda31b6119cde62b.js" integrity="sha256-&#43;SeDtFRbaPNSPl1q2R2T92gY&#43;dDbL/oTvaMbYRnN5is="></script>
+    2025
+     Rauzan Sumara 
     
-
     
-
     
+  </section>
+</footer>
 
-    
+  </main>
 
-    
+  
 
-    
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-    
+  
 
-    
+  
 
-    
-  </body>
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 </html>

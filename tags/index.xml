@@ -4,80 +4,93 @@
     <title>Tags on RAUZAN&#39;S BLOG</title>
     <link>https://rauzansumara.github.io/tags/</link>
     <description>Recent content in Tags on RAUZAN&#39;S BLOG</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rauzansumara.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>cGAN</title>
+      <title>CGAN</title>
       <link>https://rauzansumara.github.io/tags/cgan/</link>
-      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://rauzansumara.github.io/tags/cgan/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>GAN</title>
       <link>https://rauzansumara.github.io/tags/gan/</link>
-      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://rauzansumara.github.io/tags/gan/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Random Forest</title>
-      <link>https://rauzansumara.github.io/tags/random-forest/</link>
-      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/tags/random-forest/</guid>
+      <title>Css</title>
+      <link>https://rauzansumara.github.io/tags/css/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/css/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Randomized SearchCV</title>
-      <link>https://rauzansumara.github.io/tags/randomized-searchcv/</link>
-      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/tags/randomized-searchcv/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>coder</title>
-      <link>https://rauzansumara.github.io/tags/coder/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/tags/coder/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://rauzansumara.github.io/tags/hugo/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://rauzansumara.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html</title>
+      <title>Html</title>
       <link>https://rauzansumara.github.io/tags/html/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://rauzansumara.github.io/tags/html/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Hugo</title>
+      <link>https://rauzansumara.github.io/tags/hugo/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Markdown</title>
       <link>https://rauzansumara.github.io/tags/markdown/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://rauzansumara.github.io/tags/markdown/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Shortcodes</title>
+      <link>https://rauzansumara.github.io/tags/shortcodes/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/shortcodes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emoji</title>
+      <link>https://rauzansumara.github.io/tags/emoji/</link>
+      <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/emoji/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Text</title>
+      <link>https://rauzansumara.github.io/tags/text/</link>
+      <pubDate>Wed, 05 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/text/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Random Forest</title>
+      <link>https://rauzansumara.github.io/tags/random-forest/</link>
+      <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/random-forest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Randomized SearchCV</title>
+      <link>https://rauzansumara.github.io/tags/randomized-searchcv/</link>
+      <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/randomized-searchcv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coder</title>
+      <link>https://rauzansumara.github.io/tags/coder/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://rauzansumara.github.io/tags/coder/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

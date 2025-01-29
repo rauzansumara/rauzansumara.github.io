@@ -4,27 +4,23 @@
     <title>Tutorial on RAUZAN&#39;S BLOG</title>
     <link>https://rauzansumara.github.io/categories/tutorial/</link>
     <description>Recent content in Tutorial on RAUZAN&#39;S BLOG</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 31 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://rauzansumara.github.io/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rauzansumara.github.io/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dummy</title>
       <link>https://rauzansumara.github.io/posts/dummy/</link>
       <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://rauzansumara.github.io/posts/dummy/</guid>
-      <description>Try markdown!</description>
+      <description>&lt;p&gt;Try markdown!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Creating a New Theme</title>
       <link>https://rauzansumara.github.io/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://rauzansumara.github.io/posts/creating-a-new-theme/</guid>
-      <description>Introduction    This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
