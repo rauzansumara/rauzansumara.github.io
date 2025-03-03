@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RAUZAN&#39;S BLOG</title>
-    <link>https://rauzansumara.github.io/</link>
-    <description>Recent content on RAUZAN&#39;S BLOG</description>
+    <title>Rauzan Sumara on RAUZAN&#39;S BLOG</title>
+    <link>https://rauzansumara.github.io/authors/rauzan-sumara/</link>
+    <description>Recent content in Rauzan Sumara on RAUZAN&#39;S BLOG</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 18 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://rauzansumara.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://rauzansumara.github.io/authors/rauzan-sumara/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementation of GAN and cGAN Models</title>
       <link>https://rauzansumara.github.io/posts/implementation-of-gan-and-cgan/</link>
@@ -72,13 +72,6 @@
       <description></description>
     </item>
     <item>
-      <title>Placeholder Text</title>
-      <link>https://rauzansumara.github.io/posts/placeholder-text/</link>
-      <pubDate>Wed, 05 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://rauzansumara.github.io/posts/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Predict Churning Customers</title>
       <link>https://rauzansumara.github.io/posts/predict-churning-customers/</link>
       <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
@@ -98,34 +91,6 @@
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       <guid>https://rauzansumara.github.io/posts/creating-a-new-theme/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Laboratory</title>
-      <link>https://rauzansumara.github.io/laboratory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://rauzansumara.github.io/laboratory/</guid>
-      <description>&lt;h2 id=&#34;introduction-to-machine-learning&#34;&gt;&#xA;  Introduction to Machine Learning&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#introduction-to-machine-learning&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This laboratory will provide you a foundational understanding of machine learning models (linear regression, logistic regression, multilayer perceptrons, convolutional neural networks, natural language processing, computer vision, etc.) as well as demonstrate how these models can solve problems in a variety of industries. In addition, we have designed demonstration exercises that will give you hands-on experience implementing these data science models on data sets. This laboratory is conducted under Warsaw University of Technology.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>https://rauzansumara.github.io/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://rauzansumara.github.io/projects/</guid>
-      <description>&lt;h2 id=&#34;project-on-progress-1&#34;&gt;&#xA;  Project on Progress #1&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#project-on-progress-1&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rauzansumara.github.io/images/unavailable_image.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Book Title: &lt;strong&gt;&amp;ldquo;Bayesian Ekonometrika Terapan dengan Software R&amp;rdquo;&lt;/strong&gt; (&lt;code&gt;English: Applied Bayesian Econometrics in R&lt;/code&gt;)&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;project-on-progress-2&#34;&gt;&#xA;  Project on Progress #2&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#project-on-progress-2&#34;&gt;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://rauzansumara.github.io/images/unavailable_image.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Book Title: &lt;strong&gt;&amp;ldquo;Konsep dan Penerapan Pembelajaran Mesin dengan Python&amp;rdquo;&lt;/strong&gt; (&lt;code&gt;English: Theory and Applied Machine Learning in Python&lt;/code&gt;)&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Rauzan Sumara</title>
-      <link>https://rauzansumara.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://rauzansumara.github.io/about/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;I finished my bachelor of science in the department of statistics, Brawijaya University in Indonesia, and my master’s degree at Warsaw University of Life Sciences in Informatics &amp;amp; Econometrics: specialization in big data analytics, Poland. Currently, I work as a data scientist and doctoral student in the field of informatics and telecommunication, Warsaw University of Technology, Poland. Advanced understanding of applied statistics, big data analytics, time series modeling, and machine learning.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Support Me</title>
-      <link>https://rauzansumara.github.io/support/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://rauzansumara.github.io/support/</guid>
-      <description>&lt;p&gt;Nothing to see here&amp;hellip; Move along!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
