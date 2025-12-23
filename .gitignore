@@ -36,14 +36,6 @@ cache/
 *.utf8.md
 *.knit.md
 
-# Quarto / R Markdown output
-*.html
-*.pdf
-*.docx
-*.odt
-*.rtf
-*.md
-
 # Shiny app logs
 rsconnect/
 
