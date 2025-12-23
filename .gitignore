@@ -1,0 +1,64 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+*.Rproj
+
+# RStudio project settings (optional to ignore)
+# Uncomment if you don't want to track .Rproj
+# *.Rproj
+
+# Temporary files created by R
+*.Rout
+*.Rout.save
+*.Rout.fail
+*.Rout.log
+
+# Temporary files created during knitting
+*_cache/
+cache/
+*.utf8.md
+*.knit.md
+
+# Quarto / R Markdown output
+*.html
+*.pdf
+*.docx
+*.odt
+*.rtf
+*.md
+
+# Shiny app logs
+rsconnect/
+
+# renv cache (optional)
+# If using renv, keep renv.lock but ignore the cache
+renv/library/
+renv/staging/
+
+# Python virtual environments (if using reticulate)
+venv/
+.env/
+__pycache__/
+
+# MacOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data files you don't want in Git
+# (uncomment and customize)
+# data/raw/
+# *.csv
+# *.xlsx
