@@ -11,6 +11,9 @@
 .hugo_build.lock
 renv.lock
 
+# Hugo build output (never commit)
+public/
+
 # RStudio files
 .Rproj.user/
 *.Rproj
