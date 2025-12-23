@@ -11,6 +11,7 @@
 .hugo_build.lock
 renv.lock
 index.Rmd
+.Rprofile
 
 # Hugo build output (never commit)
 public/
