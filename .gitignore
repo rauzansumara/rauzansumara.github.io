@@ -9,6 +9,7 @@
 # User-specific files
 .Ruserdata
 .hugo_build.lock
+renv.lock
 
 # RStudio files
 .Rproj.user/
