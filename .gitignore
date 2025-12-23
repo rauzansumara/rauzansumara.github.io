@@ -36,7 +36,6 @@ cache/
 *.utf8.md
 *.knit.md
 
-
 # Shiny app logs
 rsconnect/
 
@@ -44,7 +43,7 @@ rsconnect/
 # If using renv, keep renv.lock but ignore the cache
 renv/library/
 renv/staging/
-renv
+renv/
 
 # Python virtual environments (if using reticulate)
 venv/
