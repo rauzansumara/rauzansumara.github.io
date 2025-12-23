@@ -10,6 +10,7 @@
 .Ruserdata
 .hugo_build.lock
 renv.lock
+index.Rmd
 
 # Hugo build output (never commit)
 public/
